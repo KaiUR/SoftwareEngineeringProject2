@@ -20,8 +20,16 @@ public class BoardTest
 	{
 
 		Board myBoard = new Board();
+		
+		int[] dice = new int[4];
+		
 		myBoard.printBoard();
-
+		dice = myBoard.diceRoll();
+		myBoard.makeAMove(0, dice[0]);
+		myBoard.printBoard();
+		myBoard.makeAMove(0, dice[1]);
+		myBoard.printBoard();
+		
 		System.exit(0);
 	}
 
