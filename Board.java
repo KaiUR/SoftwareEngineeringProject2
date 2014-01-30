@@ -32,25 +32,16 @@ public class Board
 	private int[] off = new int[2];
 
 	/**
-	 * A variable to hold information for the top Left section of the board,
+	 * A variable to hold information for the top section of the board,
 	 * this is for the headings of the board only.
 	 */
-	private final static String topLeftOfBoard = "13---+---+---+---+---18\t BAR";
-	/**
-	 * A variable to hold information for the top Right section of the board,
-	 * this is for the headings of the board only.
-	 */
-	private final static String topRightOfBoard = "19---+---+---+---+---24";
-	/**
-	 * A variable to hold information for the bottom Left section of the board,
-	 * this is for the headings of the board only.
-	 */
-	private final static String bottomLeftOfBoard = "12---+---+---+---+---07\t BAR";
+	private final static String topOfBoard = "13---++---++---++---++---18   BAR   19---++---++---++---++---24\n";
+
 	/**
 	 * A variable to hold information for the bottom Right section of the board,
 	 * this is for the headings of the board only.
 	 */
-	private final static String bottomRightOfBoard = "06---+---+---+---+---01";
+	private final static String bottomOfBoard = "12---++---++---++---++---07   BAR   06---++---++---++---++---01\n\n";
 
 	/**
 	 * This two element array holds the information for the four dice in the
@@ -115,39 +106,52 @@ public class Board
 	public void printBoard()
 	{
 
-		System.out.print(topLeftOfBoard);
-		System.out.print("   ");
-		System.out.print(topRightOfBoard);
-
-		System.out.println();
+		System.out.print(topOfBoard);
 
 		printCorner(1);
 
-		System.out.print(" ");
+		printBar(2);
 
 		printCorner(2);
 
-		System.out.println();
-		System.out.println();
-
 		printCorner(3);
 
-		System.out.print(" ");
+		printBar(1);
 
 		printCorner(4);
 
-		System.out.println();
-
-		System.out.print(bottomLeftOfBoard);
-
-		System.out.print("   ");
-
-		System.out.print(bottomRightOfBoard);
-
-		System.out.println();
-		System.out.println();
-
+		System.out.print(bottomOfBoard);
+		
 		return;
+	}
+
+	/**
+	 * This method is used for printing the different sections of the board,
+	 * i.e. The bar.
+	 * 
+	 * @param corner
+	 *            This variable represents which sections is to be printed.
+	 */
+	private void printBar(int teambar)
+	{
+		switch(teambar)
+		{
+		case 1:
+			if (bar[0]!=0)
+			{
+				System.out.print("O-"+bar[0]+"   ");
+			}
+			else System.out.print("      ");
+			break;
+			
+		case 2:
+			if (bar[1]!=0)
+			{
+				System.out.print("X-"+bar[1]+"   ");
+			}
+			else System.out.print("      ");
+			break;
+		}
 	}
 
 	/**
@@ -172,11 +176,11 @@ public class Board
 			}
 			break;
 		case 2:
-			System.out.print("    ");
 			for (index = 18; index < 24; index++)
 			{
 				System.out.print(positions[index] + "   ");
 			}
+			System.out.print("\n\n");
 			break;
 		case 3:
 			for (index = 11; index > 5; index--)
@@ -185,11 +189,11 @@ public class Board
 			}
 			break;
 		case 4:
-			System.out.print("    ");
 			for (index = 5; index >= 0; index--)
 			{
 				System.out.print(positions[index] + "   ");
 			}
+			System.out.print("\n");
 			break;
 		default:
 			break;
@@ -206,12 +210,12 @@ public class Board
 	{
 
 		String[] initialBoard =
-		{ "O2", "|", "|", "|", "|", "X5", "|", "X3", "|", "|", "|", "O5", "X5", "|", "|", "|",
-				"O3", "|", "O5", "|", "|", "|", "|", "X2" };
+		{ "O2", "||", "||", "||", "||", "X5", "||", "X3", "||", "||", "||", "O5", "X5", "||", "||", "||",
+				"O3", "||", "O5", "||", "||", "||", "||", "X2" };
 
 		positions = initialBoard;
-		bar[0] = 0;
-		bar[1] = 0;
+		bar[0] = 1;
+		bar[1] = 1;
 		off[0] = 0;
 		off[1] = 0;
 
@@ -285,7 +289,7 @@ public class Board
 		char team = positions[position].charAt(0);
 		if (positions[position].charAt(1) == '1')
 		{
-			positions[position] = "|";
+			positions[position] = "||";
 		}
 		else
 		{
@@ -325,7 +329,7 @@ public class Board
 	 */
 	private void incrementCounters(int index, char team)
 	{
-		if (positions[index].charAt(0) == '|')
+		if (positions[index] == "||")
 		{
 			positions[index] = "";
 			positions[index] = positions[index] + team + '1';
@@ -348,7 +352,7 @@ public class Board
 			else
 				bar[1]++;
 		}
-		else if(move == -1)
+		else if(index == -1)
 		{
 			if (team == 'O')
 
