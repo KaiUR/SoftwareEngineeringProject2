@@ -6,7 +6,7 @@ import java.util.Random;
  * A class representing a Backgammon Board
  * 
  * @author Laurence Quinn, Ciarán O'Niell, Kai-Uwe Rathjen
- * @version 0.04, 26 JAN 2014
+ * @version 0.05, 26 JAN 2014
  * @see Assignment1Backgammon
  * 
  */
@@ -236,7 +236,7 @@ public class Board
 	{
 
 		String[] initialBoard =
-		{ "O2", EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL,
+		{ PLAYER1_SYMBOL + "2", EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL,
 				PLAYER2_SYMBOL + "5", EMPTY_SPACE_SYMBOL, PLAYER2_SYMBOL + "3", EMPTY_SPACE_SYMBOL,
 				EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, PLAYER1_SYMBOL + "5", PLAYER2_SYMBOL + "5",
 				EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, PLAYER1_SYMBOL + "3",
