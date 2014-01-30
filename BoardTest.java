@@ -3,7 +3,7 @@ package Assignment1Backgammon;
 /**
  * A tester class used to test the Board class
  * 
- * @author Laurence Quinn, Cairan O'Niell, Kai-Uwe Rathjen
+ * @author Laurence Quinn, Ciarán O'Neill, Kai-Uwe Rathjen
  * @version 0.03, 26 JAN 2014
  * @see Assignment1Backgammon
  */
@@ -23,7 +23,6 @@ public class BoardTest
 		
 		int[] dice = new int[4];
 		
-		myBoard.printBoard();
 		dice = myBoard.diceRoll();
 		myBoard.makeAMove(0, dice[0]);
 		myBoard.printBoard();
