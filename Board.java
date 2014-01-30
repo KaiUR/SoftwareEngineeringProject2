@@ -348,7 +348,7 @@ public class Board
 			else
 				bar[1]++;
 		}
-		else
+		else if(move == -1)
 		{
 			if (team == 'O')
 
