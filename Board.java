@@ -6,7 +6,7 @@ import java.util.Random;
  * A class representing a Backgammon Board
  * 
  * @author Laurence Quinn, Ciarán O'Niell, Kai-Uwe Rathjen
- * @version 0.03, 26 JAN 2014
+ * @version 0.04, 26 JAN 2014
  * @see Assignment1Backgammon
  * 
  */
@@ -49,6 +49,27 @@ public class Board
 	 * the last two will be set to zero.
 	 */
 	private int[] dice = new int[4];
+	
+	/**
+	 * This defines the index of player 1
+	 */
+	private final static int PLAYER1 = 0;
+	
+	/**
+	 * This defines the index of player 2
+	 */
+	private final static int PLAYER2 = 1;
+	
+	/**
+	 * This defines the symbol of player 1, must be only one letter or didgt
+	 */
+	private final static String PLAYER1_SYMBOL = "O";
+	
+	/**
+	 * This defines the symbol of player 2, must be only one letter or didgt
+	 */
+	private final static String PLAYER2_SYMBOL = "X";
+	
 
 	/**
 	 * Constructor method for class Board This method prints out the Board for
@@ -110,13 +131,13 @@ public class Board
 
 		printCorner(1);
 
-		printBar(2);
+		printBar(PLAYER2);
 
 		printCorner(2);
 
 		printCorner(3);
 
-		printBar(1);
+		printBar(PLAYER1);
 
 		printCorner(4);
 
@@ -136,18 +157,18 @@ public class Board
 	{
 		switch(teambar)
 		{
-		case 1:
-			if (bar[0]!=0)
+		case PLAYER1:
+			if (bar[PLAYER1]!=0)
 			{
-				System.out.print("O-"+bar[0]+"   ");
+				System.out.print(PLAYER1_SYMBOL  +"-"+bar[PLAYER1]+"   ");
 			}
 			else System.out.print("      ");
 			break;
 			
-		case 2:
-			if (bar[1]!=0)
+		case PLAYER2:
+			if (bar[PLAYER2]!=0)
 			{
-				System.out.print("X-"+bar[1]+"   ");
+				System.out.print(PLAYER2_SYMBOL + "-"+bar[PLAYER2]+"   ");
 			}
 			else System.out.print("      ");
 			break;
@@ -214,10 +235,10 @@ public class Board
 				"O3", "||", "O5", "||", "||", "||", "||", "X2" };
 
 		positions = initialBoard;
-		bar[0] = 1;
-		bar[1] = 1;
-		off[0] = 0;
-		off[1] = 0;
+		bar[PLAYER1] = 1;
+		bar[PLAYER2] = 1;
+		off[PLAYER1] = 0;
+		off[PLAYER2] = 0;
 
 		printBoard();
 
@@ -254,17 +275,17 @@ public class Board
 
 	/**
 	 * This method prints out the dice values depending on the input. If the
-	 * input is either 0 or 1 then the corresponding dice is printed, if the
-	 * input is 2 then both dice are printed
+	 * input is either 0 or 1 or 2 or 3 then the corresponding dice is printed, if the
+	 * input is 4 then both dice are printed
 	 * 
 	 * @param index
 	 *            The variable to control the option, i.e. input
 	 */
 	public void printDice(int index)
 	{
-		if (index == 0 || index == 1)
+		if (index >= 0 && index <= 3)
 			System.out.print(dice[index]);
-		else if (index == 2)
+		else if (index == 4)
 			System.out.print(dice[0] + "\t" + dice[1]);
 		return;
 	}
@@ -346,19 +367,19 @@ public class Board
 		{
 			positions[index] = "";
 			positions[index] = positions[index] + team + '1';
-			if (team == 'O')
+			if (team == PLAYER1_SYMBOL.charAt(0))
 
-				bar[0]++;
+				bar[PLAYER1]++;
 			else
-				bar[1]++;
+				bar[PLAYER2]++;
 		}
 		else if(index == -1)
 		{
-			if (team == 'O')
+			if (team == PLAYER1_SYMBOL.charAt(0)
 
-				off[0]++;
+				off[PLAYER1]++;
 			else
-				off[1]++;
+				off[PLAYER2]++;
 		}
 		return;
 
