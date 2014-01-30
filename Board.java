@@ -70,6 +70,11 @@ public class Board
 	 */
 	private final static String PLAYER2_SYMBOL = "X";
 	
+	/**
+	 * This defines the symbol for empty spaces on the board
+	 * 
+	 */
+	private final static String EMPTY_SPACE_SYMBOL = "||";
 
 	/**
 	 * Constructor method for class Board This method prints out the Board for
@@ -231,8 +236,12 @@ public class Board
 	{
 
 		String[] initialBoard =
-		{ "O2", "||", "||", "||", "||", "X5", "||", "X3", "||", "||", "||", "O5", "X5", "||", "||", "||",
-				"O3", "||", "O5", "||", "||", "||", "||", "X2" };
+		{ "O2", EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL,
+				PLAYER2_SYMBOL + "5", EMPTY_SPACE_SYMBOL, PLAYER2_SYMBOL + "3", EMPTY_SPACE_SYMBOL,
+				EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, PLAYER1_SYMBOL + "5", PLAYER2_SYMBOL + "5",
+				EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, PLAYER1_SYMBOL + "3",
+				EMPTY_SPACE_SYMBOL, PLAYER1_SYMBOL + "5", EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL,
+				EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, PLAYER2_SYMBOL + "2" };
 
 		positions = initialBoard;
 		bar[PLAYER1] = 1;
@@ -310,7 +319,7 @@ public class Board
 		char team = positions[position].charAt(0);
 		if (positions[position].charAt(1) == '1')
 		{
-			positions[position] = "||";
+			positions[position] = EMPTY_SPACE_SYMBOL;
 		}
 		else
 		{
@@ -350,7 +359,7 @@ public class Board
 	 */
 	private void incrementCounters(int index, char team)
 	{
-		if (positions[index] == "||")
+		if (positions[index] == EMPTY_SPACE_SYMBOL)
 		{
 			positions[index] = "";
 			positions[index] = positions[index] + team + '1';
@@ -375,7 +384,7 @@ public class Board
 		}
 		else if(index == -1)
 		{
-			if (team == PLAYER1_SYMBOL.charAt(0)
+			if (team == PLAYER1_SYMBOL.charAt(0))
 
 				off[PLAYER1]++;
 			else
