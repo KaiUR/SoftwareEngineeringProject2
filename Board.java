@@ -53,12 +53,12 @@ public class Board
 	/**
 	 * This defines the index of player 1
 	 */
-	private final static int PLAYER1 = 0;
+	public final static int PLAYER1 = 0;
 	
 	/**
 	 * This defines the index of player 2
 	 */
-	private final static int PLAYER2 = 1;
+	public final static int PLAYER2 = 1;
 	
 	/**
 	 * This defines the symbol of player 1, must be only one letter or didgt
