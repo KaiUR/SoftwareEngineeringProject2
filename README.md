@@ -8,3 +8,4 @@ Assignment 1
 
     Board.java
     BoardTest.java
+    package-info.java
