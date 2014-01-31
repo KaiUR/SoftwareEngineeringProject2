@@ -395,7 +395,14 @@ public class Board
 	 */
 	private void incrementCounters(int index, char team)
 	{
-		if (positions[index] == EMPTY_SPACE_SYMBOL)
+		if (index == -1)
+		{
+			if (team == PLAYER1_SYMBOL.charAt(0))
+
+				off[PLAYER1]++;
+			else
+				off[PLAYER2]++;
+		else if (positions[index] == EMPTY_SPACE_SYMBOL)
 		{
 			positions[index] = "";
 			positions[index] = positions[index] + team + '1';
@@ -417,14 +424,6 @@ public class Board
 				bar[PLAYER1]++;
 			else
 				bar[PLAYER2]++;
-		}
-		else if(index == -1)
-		{
-			if (team == PLAYER1_SYMBOL.charAt(0))
-
-				off[PLAYER1]++;
-			else
-				off[PLAYER2]++;
 		}
 		return;
 
