@@ -35,13 +35,13 @@ public class Board
 	 * A variable to hold information for the top section of the board,
 	 * this is for the headings of the board only.
 	 */
-	private final static String topOfBoard = "13---++---++---++---++---18   BAR   19---++---++---++---++---24\n";
+	private final static String topOfBoard = "13---++---++---++---++---18   BAR   19---++---++---++---++---24   OFF\n";
 
 	/**
-	 * A variable to hold information for the bottom Right section of the board,
+	 * A variable to hold information for the bottom section of the board,
 	 * this is for the headings of the board only.
 	 */
-	private final static String bottomOfBoard = "12---++---++---++---++---07   BAR   06---++---++---++---++---01\n\n";
+	private final static String bottomOfBoard = "12---++---++---++---++---07   BAR   06---++---++---++---++---01   OFF\n\n";
 
 	/**
 	 * This two element array holds the information for the four dice in the
@@ -139,12 +139,16 @@ public class Board
 		printBar(PLAYER2);
 
 		printCorner(2);
+		
+		printOff(PLAYER2);
 
 		printCorner(3);
 
 		printBar(PLAYER1);
 
 		printCorner(4);
+		
+		printOff(PLAYER1);
 
 		System.out.print(bottomOfBoard);
 		
@@ -155,7 +159,36 @@ public class Board
 	 * This method is used for printing the different sections of the board,
 	 * i.e. The bar.
 	 * 
-	 * @param corner
+	 * @param teambar
+	 *            This variable represents which sections is to be printed.
+	 */
+	private void printOff(int teamoff)
+	{
+		switch(teamoff)
+		{
+		case PLAYER1:
+			if (bar[PLAYER1]!=0)
+			{
+				System.out.print("   " + PLAYER1_SYMBOL  +"-"+bar[PLAYER1]);
+			}
+			else System.out.print("\n");
+			break;
+			
+		case PLAYER2:
+			if (bar[PLAYER2]!=0)
+			{
+				System.out.print("   " + PLAYER2_SYMBOL + "-"+bar[PLAYER2]);
+			}
+			else System.out.print("\n\n");
+			break;
+		}
+	}
+	
+	/**
+	 * This method is used for printing the different sections of the board,
+	 * i.e. The bar.
+	 * 
+	 * @param teambar
 	 *            This variable represents which sections is to be printed.
 	 */
 	private void printBar(int teambar)
@@ -163,17 +196,17 @@ public class Board
 		switch(teambar)
 		{
 		case PLAYER1:
-			if (bar[PLAYER1]!=0)
+			if (off[PLAYER1]!=0)
 			{
-				System.out.print(PLAYER1_SYMBOL  +"-"+bar[PLAYER1]+"   ");
+				System.out.print(PLAYER1_SYMBOL  +"-"+off[PLAYER1]+"   ");
 			}
 			else System.out.print("      ");
 			break;
 			
 		case PLAYER2:
-			if (bar[PLAYER2]!=0)
+			if (off[PLAYER2]!=0)
 			{
-				System.out.print(PLAYER2_SYMBOL + "-"+bar[PLAYER2]+"   ");
+				System.out.print(PLAYER2_SYMBOL + "-"+off[PLAYER2]+"   ");
 			}
 			else System.out.print("      ");
 			break;
@@ -206,7 +239,6 @@ public class Board
 			{
 				System.out.print(positions[index] + "   ");
 			}
-			System.out.print("\n\n");
 			break;
 		case 3:
 			for (index = 11; index > 5; index--)
@@ -219,7 +251,6 @@ public class Board
 			{
 				System.out.print(positions[index] + "   ");
 			}
-			System.out.print("\n");
 			break;
 		default:
 			break;
@@ -246,8 +277,8 @@ public class Board
 		positions = initialBoard;
 		bar[PLAYER1] = 1;
 		bar[PLAYER2] = 1;
-		off[PLAYER1] = 0;
-		off[PLAYER2] = 0;
+		off[PLAYER1] = 1;
+		off[PLAYER2] = 1;
 
 		printBoard();
 
@@ -297,9 +328,10 @@ public class Board
 		else if (index == 4)
 		{
 			System.out.print(dice[0] + "\t" + dice[1]);
-			if(dice[o] == dice[1])
-				System.out.print(dice[2] + "\t" + dice[3]);
+			if(dice[0] == dice[1])
+				System.out.print("\t" + dice[2] + "\t" + dice[3]);
 		}
+		System.out.print("\n");
 		return;
 	}
 
