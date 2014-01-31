@@ -403,6 +403,12 @@ public class Board
 	private void incrementCounters(int position, int move, char team)
 	{
 		int index = position + move;
+		
+		if(team == PLAYER2_SYMBOL)
+		{
+			index = position + (move * -1);
+		}
+		
 		if (move == -1)
 		{
 			if (team == PLAYER1_SYMBOL)
@@ -410,7 +416,7 @@ public class Board
 				off[PLAYER1]++;
 			else
 				off[PLAYER2]++;
-		} else if(team == PLAYER2_SYMBOL){index *= -1;}
+		}
 		else if (positions[index] == EMPTY_SPACE_SYMBOL)
 		{
 			positions[index] = "";
