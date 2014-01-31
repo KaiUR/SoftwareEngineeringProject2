@@ -68,7 +68,7 @@ public class Board
 	/**
 	 * This defines the symbol of player 2, must be only one letter or didgt
 	 */
-	private final static char PLAYER2_SYMBOL = 'O';
+	private final static char PLAYER2_SYMBOL = 'X';
 	
 	/**
 	 * This defines the symbol for empty spaces on the board
