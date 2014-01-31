@@ -358,28 +358,29 @@ public class Board
 	{
 		position--;
 		int bar_flag = position;
-		if (team_modifier == PLAYER1)
-			position = 0;
-		else
-			position = 23;
 		char team = ' ';
 		if (team_modifier == PLAYER1)
 			team = PLAYER1_SYMBOL;
 		else if (team_modifier == PLAYER2)
 			team = PLAYER2_SYMBOL;
-		if (bar_flag == -1)
+		if (bar_flag == -2)
 		{
-			bar[team_modifier]--;
 			if (team_modifier == PLAYER1)
 				position = 0;
 			else
 				position = 23;
-		}
-		else if (positions[position].charAt(1) == '1')
+			bar[team_modifier]--;
+			if (team_modifier == PLAYER1)
+			{
+				position = -1;
+			} else
+			{
+				position = 24;
+			}
+		} else if (positions[position].charAt(1) == '1')
 		{
 			positions[position] = EMPTY_SPACE_SYMBOL;
-		}
-		else
+		} else
 		{
 			decrementCounters(position, team);
 		}
