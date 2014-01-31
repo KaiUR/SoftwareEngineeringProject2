@@ -402,7 +402,7 @@ public class Board
 				off[PLAYER1]++;
 			else
 				off[PLAYER2]++;
-		else if (positions[index] == EMPTY_SPACE_SYMBOL)
+		}else if (positions[index] == EMPTY_SPACE_SYMBOL)
 		{
 			positions[index] = "";
 			positions[index] = positions[index] + team + '1';
