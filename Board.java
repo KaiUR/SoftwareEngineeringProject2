@@ -140,7 +140,7 @@ public class Board
 
 		printCorner(2);
 		
-		printOff(PLAYER2);
+		printOff(PLAYER1);
 
 		printCorner(3);
 
@@ -148,7 +148,7 @@ public class Board
 
 		printCorner(4);
 		
-		printOff(PLAYER1);
+		printOff(PLAYER2);
 
 		System.out.print(bottomOfBoard);
 		
@@ -171,7 +171,7 @@ public class Board
 			{
 				System.out.print(PLAYER1_SYMBOL  +"-"+off[PLAYER1]);
 			}
-			System.out.print("\n");
+			System.out.print("\n\n");
 			break;
 			
 		case PLAYER2:
@@ -179,7 +179,7 @@ public class Board
 			{
 				System.out.print(PLAYER2_SYMBOL + "-"+off[PLAYER2]);
 			}
-			System.out.print("\n\n");
+			System.out.print("\n");
 			break;
 		}
 	}
@@ -369,7 +369,7 @@ public class Board
 			decrementCounters(position, team);
 		}
 
-		incrementCounters(move, team);
+		incrementCounters(position + move, team);
 
 		return;
 	}
@@ -408,7 +408,8 @@ public class Board
 				off[PLAYER1]++;
 			else
 				off[PLAYER2]++;
-		}else if (positions[index] == EMPTY_SPACE_SYMBOL)
+		} else if(team == PLAYER2_SYMBOL){index *= -1;}
+		else if (positions[index] == EMPTY_SPACE_SYMBOL)
 		{
 			positions[index] = "";
 			positions[index] = positions[index] + team + '1';
