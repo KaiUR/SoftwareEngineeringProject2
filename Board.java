@@ -295,7 +295,11 @@ public class Board
 		if (index >= 0 && index <= 3)
 			System.out.print(dice[index]);
 		else if (index == 4)
+		{
 			System.out.print(dice[0] + "\t" + dice[1]);
+			if(dice[o] == dice[1])
+				System.out.print(dice[2] + "\t" + dice[3]);
+		}
 		return;
 	}
 
