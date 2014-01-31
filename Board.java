@@ -352,6 +352,7 @@ public class Board
 	 */
 	public void makeAMove(int position, int move,  int team_modifier)
 	{
+		position--;
 		char team = ' ';
 		if (team_modifier == PLAYER1)
 			team = PLAYER1_SYMBOL;
