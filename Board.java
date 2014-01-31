@@ -346,6 +346,10 @@ public class Board
 	 * @param move
 	 *            This is the number of spaces that the checkers going to be
 	 *            moved
+	 * @param team_modifier
+	 *            This is the player that is moving
+	 * @param bar_flag 
+	 * 	      Sets move from bar
 	 * @see #decrementCounters(int)
 	 * @see #incrementCounters(int, char)
 	 * 
@@ -353,15 +357,25 @@ public class Board
 	public void makeAMove(int position, int move,  int team_modifier)
 	{
 		position--;
+		int bar_flag = position;
+		if (team_modifier == PLAYER1)
+			position = 0;
+		else
+			position = 23;
 		char team = ' ';
 		if (team_modifier == PLAYER1)
 			team = PLAYER1_SYMBOL;
 		else if (team_modifier == PLAYER2)
 			team = PLAYER2_SYMBOL;
-		if (position == -1)
+		if (bar_flag == -1)
 		{
 			bar[team_modifier]--;
-		}else if (positions[position].charAt(1) == '1')
+			if (team_modifier == PLAYER1)
+				position = 0;
+			else
+				position = 23;
+		}
+		else if (positions[position].charAt(1) == '1')
 		{
 			positions[position] = EMPTY_SPACE_SYMBOL;
 		}
@@ -380,6 +394,9 @@ public class Board
 	 * 
 	 * @param index
 	 *            This keeps track of the position
+	 * @param team
+	 *            This is the player that is moving
+	 * 
 	 */
 	private void decrementCounters(int index, char team)
 	{
@@ -395,10 +412,12 @@ public class Board
 	/**
 	 * This method is used to place the checkers on the board
 	 * 
-	 * @param index
+	 * @param position
 	 *            This keeps track of the position
 	 * @param team
 	 *            This is the player that is moving
+	 * @param move
+	 *            This is the distance to move
 	 */
 	private void incrementCounters(int position, int move, char team)
 	{
