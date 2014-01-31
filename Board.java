@@ -6,7 +6,7 @@ import java.util.Random;
  * A class representing a Backgammon Board
  * 
  * @author Laurence Quinn, Ciarán O'Niell, Kai-Uwe Rathjen
- * @version 0.05, 26 JAN 2014
+ * @version 0.06, 26 JAN 2014
  * @see Assignment1Backgammon
  * 
  */
@@ -436,9 +436,9 @@ public class Board
 			positions[index] = positions[index] + team + '1';
 			if (team == PLAYER1_SYMBOL)
 
-				bar[PLAYER1]++;
-			else
 				bar[PLAYER2]++;
+			else
+				bar[PLAYER1]++;
 		}
 		return;
 
