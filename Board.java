@@ -157,9 +157,9 @@ public class Board
 
 	/**
 	 * This method is used for printing the different sections of the board,
-	 * i.e. The bar.
+	 * i.e. printing the off table.
 	 * 
-	 * @param teambar
+	 * @param teamoff
 	 *            This variable represents which sections is to be printed.
 	 */
 	private void printOff(int teamoff)
@@ -167,19 +167,19 @@ public class Board
 		switch(teamoff)
 		{
 		case PLAYER1:
-			if (bar[PLAYER1]!=0)
+			if (off[PLAYER1]!=0)
 			{
-				System.out.print("   " + PLAYER1_SYMBOL  +"-"+bar[PLAYER1]);
+				System.out.print(PLAYER1_SYMBOL  +"-"+off[PLAYER1]);
 			}
-			else System.out.print("\n");
+			System.out.print("\n");
 			break;
 			
 		case PLAYER2:
-			if (bar[PLAYER2]!=0)
+			if (off[PLAYER2]!=0)
 			{
-				System.out.print("   " + PLAYER2_SYMBOL + "-"+bar[PLAYER2]);
+				System.out.print(PLAYER2_SYMBOL + "-"+off[PLAYER2]);
 			}
-			else System.out.print("\n\n");
+			System.out.print("\n\n");
 			break;
 		}
 	}
@@ -196,17 +196,17 @@ public class Board
 		switch(teambar)
 		{
 		case PLAYER1:
-			if (off[PLAYER1]!=0)
+			if (bar[PLAYER1]!=0)
 			{
-				System.out.print(PLAYER1_SYMBOL  +"-"+off[PLAYER1]+"   ");
+				System.out.print(PLAYER1_SYMBOL  +"-"+bar[PLAYER1]+"   ");
 			}
 			else System.out.print("      ");
 			break;
 			
 		case PLAYER2:
-			if (off[PLAYER2]!=0)
+			if (bar[PLAYER2]!=0)
 			{
-				System.out.print(PLAYER2_SYMBOL + "-"+off[PLAYER2]+"   ");
+				System.out.print(PLAYER2_SYMBOL + "-"+bar[PLAYER2]+"   ");
 			}
 			else System.out.print("      ");
 			break;
@@ -275,10 +275,10 @@ public class Board
 				EMPTY_SPACE_SYMBOL, EMPTY_SPACE_SYMBOL, PLAYER2_SYMBOL + "2" };
 
 		positions = initialBoard;
-		bar[PLAYER1] = 1;
-		bar[PLAYER2] = 1;
-		off[PLAYER1] = 1;
-		off[PLAYER2] = 1;
+		bar[PLAYER1] = 0;
+		bar[PLAYER2] = 0;
+		off[PLAYER1] = 0;
+		off[PLAYER2] = 0;
 
 		printBoard();
 
