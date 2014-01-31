@@ -63,12 +63,12 @@ public class Board
 	/**
 	 * This defines the symbol of player 1, must be only one letter or didgt
 	 */
-	private final static String PLAYER1_SYMBOL = "O";
+	private final static char PLAYER1_SYMBOL = 'O';
 	
 	/**
 	 * This defines the symbol of player 2, must be only one letter or didgt
 	 */
-	private final static String PLAYER2_SYMBOL = "X";
+	private final static char PLAYER2_SYMBOL = 'O';
 	
 	/**
 	 * This defines the symbol for empty spaces on the board
@@ -350,16 +350,23 @@ public class Board
 	 * @see #incrementCounters(int, char)
 	 * 
 	 */
-	public void makeAMove(int position, int move)
+	public void makeAMove(int position, int move,  int team_modifier)
 	{
-		char team = positions[position].charAt(0);
-		if (positions[position].charAt(1) == '1')
+		char team = ' ';
+		if (team_modifier == PLAYER1)
+			team = PLAYER1_SYMBOL;
+		else if (team_modifier == PLAYER2)
+			team = PLAYER2_SYMBOL;
+		if (position == -1)
+		{
+			bar[team_modifier]--;
+		}else if (positions[position].charAt(1) == '1')
 		{
 			positions[position] = EMPTY_SPACE_SYMBOL;
 		}
 		else
 		{
-			decrementCounters(position);
+			decrementCounters(position, team);
 		}
 
 		incrementCounters(move, team);
@@ -373,9 +380,8 @@ public class Board
 	 * @param index
 	 *            This keeps track of the position
 	 */
-	private void decrementCounters(int index)
+	private void decrementCounters(int index, char team)
 	{
-		char team = positions[index].charAt(0);
 		int currentInt = (int) positions[index].charAt(1);
 		currentInt--;
 		char newChar = (char) currentInt;
@@ -397,7 +403,7 @@ public class Board
 	{
 		if (index == -1)
 		{
-			if (team == PLAYER1_SYMBOL.charAt(0))
+			if (team == PLAYER1_SYMBOL)
 
 				off[PLAYER1]++;
 			else
@@ -419,7 +425,7 @@ public class Board
 		{
 			positions[index] = "";
 			positions[index] = positions[index] + team + '1';
-			if (team == PLAYER1_SYMBOL.charAt(0))
+			if (team == PLAYER1_SYMBOL)
 
 				bar[PLAYER1]++;
 			else
