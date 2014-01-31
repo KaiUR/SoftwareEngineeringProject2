@@ -4,7 +4,7 @@ package Assignment1Backgammon;
  * A tester class used to test the Board class
  * 
  * @author Laurence Quinn, Ciarán O'Niell, Kai-Uwe Rathjen
- * @version 0.03, 26 JAN 2014
+ * @version 0.04, 31 JAN 2014
  * @see Assignment1Backgammon
  */
 public class BoardTest
@@ -20,13 +20,11 @@ public class BoardTest
 	{
 
 		Board myBoard = new Board();
-		
-		int[] dice = new int[4];
-		
-		dice = myBoard.diceRoll();
-		myBoard.makeAMove(0, dice[0]);
+		myBoard.makeAMove(1, -1, Board.PLAYER1);
 		myBoard.printBoard();
-		myBoard.makeAMove(0, dice[1]);
+		myBoard.makeAMove(6, 5, Board.PLAYER2);
+		myBoard.printBoard();
+		myBoard.makeAMove(-1, 1, Board.PLAYER1);
 		myBoard.printBoard();
 		
 		System.exit(0);
