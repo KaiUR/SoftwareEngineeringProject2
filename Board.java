@@ -369,7 +369,7 @@ public class Board
 			decrementCounters(position, team);
 		}
 
-		incrementCounters(position + move, team);
+		incrementCounters(position, move, team);
 
 		return;
 	}
@@ -399,9 +399,10 @@ public class Board
 	 * @param team
 	 *            This is the player that is moving
 	 */
-	private void incrementCounters(int index, char team)
+	private void incrementCounters(int position, int move, char team)
 	{
-		if (index == -1)
+		int index = position + move;
+		if (move == -1)
 		{
 			if (team == PLAYER1_SYMBOL)
 
