@@ -1,4 +1,4 @@
-package Assignment1Backgammon;
+package assignment1Backgammon;
 
 import java.util.Random;
 
@@ -6,16 +6,16 @@ import java.util.Random;
  * A class representing a Backgammon Board
  * 
  * @author Laurence Quinn, Ciarán O'Niell, Kai-Uwe Rathjen
- * @version 0.06, 26 JAN 2014
- * @see Assignment1Backgammon
+ * @version 0.06, 31 JAN 2014
+ * @see assignment1Backgammon;
  * 
  */
 public class Board
 {
 	/**
 	 * An array of strings to hold the positions of the different checkers on
-	 * the board, O representing one player and X representing the other. The
-	 * array is initialized to the default starting positions by the
+	 * the board, PLAYER1_SYMBOL representing one player and PLAYER2_SYMBOL representing the other. 
+	 * The array is initialized to the default starting positions by the
 	 * constructor.
 	 */
 	private String[] positions;
@@ -44,19 +44,21 @@ public class Board
 	private final static String bottomOfBoard = "12---++---++---++---++---07   BAR   06---++---++---++---++---01   OFF\n\n";
 
 	/**
-	 * This two element array holds the information for the four dice in the
+	 * This four element array holds the information for the four dice in the
 	 * Backgammon game. The four dice help to represent doubles, if not double
 	 * the last two will be set to zero.
 	 */
 	private int[] dice = new int[4];
 	
 	/**
-	 * This defines the index of player 1
+	 * This defines the index of player 1. This defenition can be used in a different 
+	 * class by using Board.PLAYER1
 	 */
 	public final static int PLAYER1 = 0;
 	
 	/**
-	 * This defines the index of player 2
+	 * This defines the index of player 2. This defenition can be used in a different 
+	 * class by using Board.PLAYER2
 	 */
 	public final static int PLAYER2 = 1;
 	
@@ -71,13 +73,13 @@ public class Board
 	private final static char PLAYER2_SYMBOL = 'X';
 	
 	/**
-	 * This defines the symbol for empty spaces on the board
+	 * This defines the symbol for empty spaces on the board.
 	 * 
 	 */
 	private final static String EMPTY_SPACE_SYMBOL = "||";
 
 	/**
-	 * Constructor method for class Board This method prints out the Board for
+	 * Constructor method for class Board. This method prints out the Board for
 	 * the initial time, The method resetBoard is called.
 	 * 
 	 * @see #resetBoard()
@@ -182,6 +184,7 @@ public class Board
 			System.out.print("\n");
 			break;
 		}
+		return;
 	}
 	
 	/**
@@ -211,6 +214,7 @@ public class Board
 			else System.out.print("      ");
 			break;
 		}
+		return;
 	}
 
 	/**
@@ -256,11 +260,14 @@ public class Board
 			break;
 
 		}
+		return;
 
 	}
 
 	/**
-	 * This method is used to reset the board
+	 * This method is used to reset the board. The Strung positions is initilised using the different
+	 * definitions for the Blank spaces, player symbols and the numbers representing the 
+	 * amount if checkers. The bar and off varibles are set to 0.
 	 * 
 	 */
 	public void resetBoard()
@@ -316,7 +323,7 @@ public class Board
 	/**
 	 * This method prints out the dice values depending on the input. If the
 	 * input is either 0 or 1 or 2 or 3 then the corresponding dice is printed, if the
-	 * input is 4 then both dice are printed
+	 * input is 4 then both dice are printed.
 	 * 
 	 * @param index
 	 *            The variable to control the option, i.e. input
@@ -339,7 +346,10 @@ public class Board
 	 * This method is used to move checkers across the board First a function is
 	 * called (decrementCounters()) to remove the counters from a position, then
 	 * a function is called (incrementCounters()) to place the counters in the
-	 * new position.
+	 * new position. If -1 is passed to the position arrgument then this represents
+	 * the checker to be on the BAR, and if -1 is passed to the move arrgument the checker
+	 * will be moved off the board. If a checker is moved onto a single enemy checker it
+	 * will remove this enemy checker and place it onto the Bar.
 	 * 
 	 * @param position
 	 *            This variable is where the checkers is that is to be moved
@@ -348,8 +358,6 @@ public class Board
 	 *            moved
 	 * @param team_modifier
 	 *            This is the player that is moving
-	 * @param bar_flag 
-	 * 	      Sets move from bar
 	 * @see #decrementCounters(int)
 	 * @see #incrementCounters(int, char)
 	 * 
@@ -357,6 +365,10 @@ public class Board
 	public void makeAMove(int position, int move,  int team_modifier)
 	{
 		position--;
+		/*
+		 * This varible is used to check if a piece is on the bar
+		 * or not.
+		 */
 		int bar_flag = position;
 		char team = ' ';
 		if (team_modifier == PLAYER1)
