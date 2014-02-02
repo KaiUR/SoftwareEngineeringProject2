@@ -51,24 +51,24 @@ public class Board
 	private int[] dice = new int[4];
 	
 	/**
-	 * This defines the index of player 1. This defenition can be used in a different 
+	 * This defines the index of player 1. This definition can be used in a different 
 	 * class by using Board.PLAYER1
 	 */
 	public final static int PLAYER1 = 0;
 	
 	/**
-	 * This defines the index of player 2. This defenition can be used in a different 
+	 * This defines the index of player 2. This definition can be used in a different 
 	 * class by using Board.PLAYER2
 	 */
 	public final static int PLAYER2 = 1;
 	
 	/**
-	 * This defines the symbol of player 1, must be only one letter or didgt
+	 * This defines the symbol of player 1, must be only one letter or digit
 	 */
 	private final static char PLAYER1_SYMBOL = 'O';
 	
 	/**
-	 * This defines the symbol of player 2, must be only one letter or didgt
+	 * This defines the symbol of player 2, must be only one letter or digit
 	 */
 	private final static char PLAYER2_SYMBOL = 'X';
 	
@@ -416,9 +416,8 @@ public class Board
 		int currentInt = (int) positions[index].charAt(1);
 		currentInt--;
 		char newChar = (char) currentInt;
-		positions[index] = "";
-		positions[index] = positions[index] + team;
-		positions[index] = positions[index] + newChar;
+		String newPositionValue = "" + team + newChar;
+		setPosition(index, newPositionValue);
 		return;
 	}
 
@@ -438,7 +437,7 @@ public class Board
 		
 		if(team == PLAYER2_SYMBOL)
 		{
-			index = position + (move * -1);
+			index = position + (move * -1);	//player 2 moves anticlockwise around the board
 		}
 		
 		if (move == -1)
@@ -451,21 +450,21 @@ public class Board
 		}
 		else if (positions[index] == EMPTY_SPACE_SYMBOL)
 		{
-			positions[index] = "";
-			positions[index] = positions[index] + team + '1';
+			String newPositionValue = "" + team + "1";
+			setPosition(index, newPositionValue);
 		}
 		else if (positions[index].charAt(0) == team)
 		{
 			int currentInt = (int) positions[index].charAt(1);
 			currentInt++;
 			char newChar = (char) currentInt;
-			positions[index] = "";
-			positions[index] = positions[index] + team + newChar;
+			String newPositionValue = "" + team + newChar;
+			setPosition(index, newPositionValue);
 		}
 		else if (positions[index].charAt(0) != team && positions[index].charAt(1) == '1')
 		{
-			positions[index] = "";
-			positions[index] = positions[index] + team + '1';
+			String newPositionValue = "" + team + "1";
+			setPosition(index, newPositionValue);
 			if (team == PLAYER1_SYMBOL)
 
 				bar[PLAYER2]++;
