@@ -365,9 +365,10 @@ public class Board
 	public void makeAMove(int position, int move,  int team_modifier)
 	{
 		position--;
-		/*
-		 * This varible is used to check if a piece is on the bar
-		 * or not.
+		/* 
+		 * bar_flag
+		 * 		This varible is used to check if a piece is on the bar
+		 *		or not.
 		 */
 		int bar_flag = position;
 		char team = ' ';
@@ -416,8 +417,7 @@ public class Board
 		int currentInt = (int) positions[index].charAt(1);
 		currentInt--;
 		char newChar = (char) currentInt;
-		String newPositionValue = "" + team + newChar;
-		setPosition(index, newPositionValue);
+		setPosition(index, "" + team + newChar);
 		return;
 	}
 
@@ -437,7 +437,10 @@ public class Board
 		
 		if(team == PLAYER2_SYMBOL)
 		{
-			index = position + (move * -1);	//player 2 moves anticlockwise around the board
+			index = position + (move * -1);	
+			/*
+			 * Player 2 moves anti-clockwise around the board
+			 */
 		}
 		
 		if (move == -1)
@@ -450,21 +453,18 @@ public class Board
 		}
 		else if (positions[index] == EMPTY_SPACE_SYMBOL)
 		{
-			String newPositionValue = "" + team + "1";
-			setPosition(index, newPositionValue);
+			setPosition(index, "" + team + "1");
 		}
 		else if (positions[index].charAt(0) == team)
 		{
 			int currentInt = (int) positions[index].charAt(1);
 			currentInt++;
 			char newChar = (char) currentInt;
-			String newPositionValue = "" + team + newChar;
-			setPosition(index, newPositionValue);
+			setPosition(index, "" + team + newChar);
 		}
 		else if (positions[index].charAt(0) != team && positions[index].charAt(1) == '1')
 		{
-			String newPositionValue = "" + team + "1";
-			setPosition(index, newPositionValue);
+			setPosition(index, "" + team + "1");
 			if (team == PLAYER1_SYMBOL)
 
 				bar[PLAYER2]++;
