@@ -369,7 +369,7 @@ public class Board
 		char team = ' ';
 		if (team_modifier == PLAYER1)
 			team = PLAYER1_SYMBOL;
-		else (team_modifier == PLAYER2)
+		else
 			team = PLAYER2_SYMBOL;
 			
 		if (position == -2)	//moving off the bar
