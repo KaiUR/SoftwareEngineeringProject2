@@ -365,23 +365,15 @@ public class Board
 	public void makeAMove(int position, int move,  int team_modifier)
 	{
 		position--;
-		/* 
-		 * bar_flag
-		 * 		This varible is used to check if a piece is on the bar
-		 *		or not.
-		 */
-		int bar_flag = position;
+		 
 		char team = ' ';
 		if (team_modifier == PLAYER1)
 			team = PLAYER1_SYMBOL;
-		else if (team_modifier == PLAYER2)
+		else (team_modifier == PLAYER2)
 			team = PLAYER2_SYMBOL;
-		if (bar_flag == -2)
+			
+		if (position == -2)	//moving off the bar
 		{
-			if (team_modifier == PLAYER1)
-				position = 0;
-			else
-				position = 23;
 			bar[team_modifier]--;
 			if (team_modifier == PLAYER1)
 			{
@@ -390,10 +382,14 @@ public class Board
 			{
 				position = 24;
 			}
-		} else if (positions[position].charAt(1) == '1')
+		} 
+		
+		else if (positions[position].charAt(1) == '1')
 		{
 			positions[position] = EMPTY_SPACE_SYMBOL;
-		} else
+		} 
+		
+		else
 		{
 			decrementCounters(position, team);
 		}
@@ -443,7 +439,7 @@ public class Board
 			 */
 		}
 		
-		if (move == -1)
+		if (move == -1)	//moving off the board
 		{
 			if (team == PLAYER1_SYMBOL)
 
