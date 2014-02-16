@@ -58,7 +58,7 @@ public class HumanPlayer {
 				toReturn = -1;
 				break;
 			}
-			passedChecks = processMove(moves);
+			passedChecks = processMove(moves, board);
 		
 			if(passedChecks) performMove(moves);
 		}
@@ -76,9 +76,9 @@ public class HumanPlayer {
 	 * @return
 	 * 				A boolean indicating whether the moves failed or passed the checks.
 	 */
-	private boolean processMove(String[] moves) {
+	private boolean processMove(String[] moves, Board board) {
 		
-		if(moves.length > 4) {	//check no more than 4 moves entered.
+		if(moves.length > board.numberOfDice()) {	//check no more than 4 moves entered.
 			System.out.println("Error: Please enter a valid number of moves.");
 			return false;
 		}
