@@ -319,6 +319,21 @@ public class Board
 
 		return dice;
 	}
+	
+	/**
+	 * Method to check if doubles have been rolled or not
+	 * 
+	 * @return
+	 * 			the number of dice in the current play
+	 */
+	
+	public int numberOfDice() {
+		int count = 0;
+		for(int d : dice) {
+			if(d > 0) count++;
+		}
+		return count;
+	}
 
 	/**
 	 * This method prints out the dice values depending on the input. If the
