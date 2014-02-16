@@ -39,34 +39,33 @@ public class HumanPlayer {
 	 * 
 	 */
 	public void makeMove(Board board) {
-		String[] moves = recieveMove();
-		boolean passedChecks = processMove(moves);
+		int toReturn = 0;
+		boolean passedChecks = false;
+		Scanner in = new Scanner(System.in);
 		
-		if(passedChecks) performMove(moves);
-		else {
-			System.out.println("TESTING: WE DID NOT MAKE IT TO PERFORMMOVE FUNCTION");
-			makeMove(board);
+		while(!passedChecks) {
+			System.out.print("Enter a move: ");
+			String move = in.nextLine();
+			String[] moves = move.split("\\s");		//read in move
+			
+			if(move.equalsIgnoreCase("quit")) {
+				//return -2 to quit the game
+				toReturn = -2;
+				break;
+			}
+			if(move.equalsIgnoreCase("pass")) {
+				//return -1 to pass move
+				toReturn = -1;
+				break;
+			}
+			passedChecks = processMove(moves);
+		
+			if(passedChecks) performMove(moves);
 		}
 		
-		return;
-	}
-	
-	/**
-	 * Asks the user to enter their move
-	 * 
-	 * @return
-	 * 			All moves entered by player in a string array			
-	 * 
-	 */
-	private String[] recieveMove() {
-		Scanner in = new Scanner(System.in);
-		String move = "";
-		System.out.println();
-		System.out.print("Enter your move: ");
-		move = in.nextLine();
 		in.close();
-		String[] moves = move.split("\\s");
-		return moves;
+		
+		return toReturn;
 	}
 	
 	/**
