@@ -298,7 +298,7 @@ public class Board
 	 * 
 	 * @return The values of the dice
 	 */
-	public int[] diceRoll()
+	public int[] rollDice()
 	{
 
 		Random generator = new Random();
