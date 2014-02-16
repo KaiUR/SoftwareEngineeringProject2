@@ -43,6 +43,12 @@ public class HumanPlayer {
 		boolean passedChecks = false;
 		Scanner in = new Scanner(System.in);
 		
+		board.rollDice();
+		int numberOfDice = board.numberOfDice();
+		System.out.print("Dice: ");
+		board.printDice(4);
+		System.out.println();
+		
 		while(!passedChecks) {
 			System.out.print("Enter a move: ");
 			String move = in.nextLine();
@@ -60,7 +66,7 @@ public class HumanPlayer {
 			}
 			passedChecks = processMove(moves, board);
 		
-			if(passedChecks) performMove(moves);
+			if(passedChecks) performMove(moves, board, numberOfDice);
 		}
 		
 		in.close();
@@ -96,8 +102,16 @@ public class HumanPlayer {
 	 * @param moves
 	 * 			String array of users moves, these are valid.
 	 */
-	private void performMove(String[] moves) {
-		System.out.println("TESTING: WE MADE IT TO PERFORMMOVE FUNCTION");
+	private void performMove(String[] moves, Board board, int numberOfDice) {
+		int[] positions = new int[numberOfDice + 1];
+		int[] spacesToMove = new int[numberOfDice + 1];
+		
+		for(int i = 0; i < numberOfDice; i++) {
+			int hyphon = moves[i].indexOf("-");
+			positions[i] = Integer.parseInt(moves[i].substring(0, hyphon));
+			spacesToMove[i] = Integer.parseInt(moves[i].substring(hyphon + 1));
+			board.makeAMove(positions[i], spacesToMove[i], playerSymbol);
+		}
 	}
 	
 }
