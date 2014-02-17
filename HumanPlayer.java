@@ -61,14 +61,21 @@ public class HumanPlayer {
 		while(!passedChecks) {
 			System.out.print("Enter a move: ");
 			String move = in.nextLine();
-			String[] moves = move.split("\\s");		//read in move
+			/*
+			 * read in move
+			 */
+			String[] moves = move.split("\\s");		
 			
 			if(move.equalsIgnoreCase("quit")) {
-				//return -2 to quit the game
+				/*
+				 * return -2 to quit the game
+				 */
 				return -2;
 			}
 			if(move.equalsIgnoreCase("pass")) {
-				//return -1 to pass move
+				/* 
+				 * return -1 to pass move
+				 */
 				return -1;
 			}
 			passedChecks = processMove(moves);
@@ -91,11 +98,17 @@ public class HumanPlayer {
 	 */
 	private boolean processMove(String[] moves) {
 		
-		if(moves.length > board.numberOfDice()) {	//check no more than 4 moves entered.
+		/*
+		 * Check no more than 4 moves entered.
+		 */
+		if(moves.length > board.numberOfDice()) {	
 			System.out.println("Error: Please enter a valid number of moves.");
 			return false;
 		}
-		else if((moves.length == 1) && (moves[0].equals(""))) {	//check if no moves entered.
+		/*
+		 * check if no moves entered.
+		 */
+		else if((moves.length == 1) && (moves[0].equals(""))) {	
 			System.out.println("Error: Please enter a valid number of moves.");
 			return false;
 		}else if (moves.length == 1 || moves.length == 3)
@@ -106,6 +119,10 @@ public class HumanPlayer {
 		}
 
 		boolean passedSyntax = checkSyntax(moves);
+		if(!passedSyntax)
+		{
+			System.out.println("Error: Please enter a valid move.\n");
+		}
 
 		return true && passedSyntax;
 	}
