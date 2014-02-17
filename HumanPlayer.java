@@ -15,7 +15,7 @@ public class HumanPlayer {
 	/**
 	 * Field to hold the player symbol, so we know which checkers to move.
 	 */
-	private char playerSymbol;
+	private int playerSymbol;
 	
 	/**
 	 * This saves the current state of the board.
@@ -36,9 +36,9 @@ public class HumanPlayer {
 	 * 				move for this HumanPlayer.
 	 * 		
 	 */
-	public HumanPlayer(int team) {
+	public HumanPlayer(int team, Board playerBoard) {
 		playerSymbol = team;
-		board = PlayerBoard;
+		board = playerBoard;
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class HumanPlayer {
 	 * If processMoves returns false, the whole function makeMove is restarted.
 	 * 
 	 */
-	public void makeMove() {
+	public int makeMove() {
 		boolean passedChecks = false;
 		Scanner in = new Scanner(System.in);
 		
@@ -133,7 +133,7 @@ public class HumanPlayer {
 		int[] spacesToMove = new int[numberOfDice + 1];
 		
 		for(int index = 0; index < moves.length; index++) {
-			int hyphon = moves[i].indexOf("-");
+			int hyphon = moves[index].indexOf("-");
 			if (moves[index].substring(0, 3).equals("bar"))
 			{
 				positions[index] = -1;
