@@ -112,13 +112,47 @@ public class HumanPlayer {
 	}
 	
 	/**
-	 *  Ciaran Do!
+	 *  Method checks if the syntax of the moves arguments is correct and in the format *-* or **-*
+	 *  Where an asterisk represents a number
 	 * 
-	 * @param moves
-	 * @return
+	 * @param moves			Array of strings to check syntax on.
+	 * 				Either 2 or 4 Strings, depending on doubles or not.
+	 * 
+	 * @return			returns true if the syntax is correct.
+	 * 				returns false otherwise.
 	 */
 	private boolean checkSyntax(String[] moves)
 	{
+		String dice_input, location_input;
+		for(int i = 0; i<moves.length; i++)
+		{
+			if(moves[i].charAt(1)=='-')
+			{
+				location_input = moves[i].substring(0, 1);
+				dice_input = moves[i].substring(2, 3);
+			}
+			else if(moves[i].charAt(2)=='-')
+			{
+				location_input = moves[i].substring(0, 2);
+				dice_input = moves[i].substring(3, 4);
+			}
+			else
+			{
+				return false;
+			}
+			try
+			{
+				int location = Integer.parseInt(location_input), dice = Integer.parseInt(dice_input);
+				if((dice<1||dice>6)||(location<1||location>24))
+				{
+					return false;
+				}
+			}
+			catch (NumberFormatException e)
+			{
+				return false;
+			}
+		}
 		return true;
 	}
 	
