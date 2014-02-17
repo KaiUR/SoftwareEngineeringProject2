@@ -152,13 +152,29 @@ public class HumanPlayer {
 				location_input = moves[i].substring(0, 2);
 				dice_input = moves[i].substring(3, 4);
 			}
+			else if(moves[i].charAt(3) == '-')
+			{
+				if(moves[0].substring(0, 3).equals("bar")) {
+					location_input = "bar";
+					dice_input = moves[i].substring(4);
+				}
+			}
 			else
 			{
 				return false;
 			}
 			try
 			{
-				int location = Integer.parseInt(location_input), dice = Integer.parseInt(dice_input);
+				int dice = Integer.parseInt(dice_input);
+				if(location_input.equals("bar"))
+				{
+					if(dice >= 1 && dice <= 6) {
+						break;
+					} 
+					else return false;
+				}
+				
+				int location = Integer.parseInt(location_input);
 				if((dice<1||dice>6)||(location<1||location>24))
 				{
 					return false;
