@@ -132,7 +132,7 @@ public class HumanPlayer {
 		int[] positions = new int[numberOfDice + 1];
 		int[] spacesToMove = new int[numberOfDice + 1];
 		
-		for(int i = 0; i < numberOfDice; i++) {
+		for(int index = 0; index < moves.length; index++) {
 			int hyphon = moves[i].indexOf("-");
 			if (moves[index].substring(0, 3).equals("bar"))
 			{
@@ -142,8 +142,8 @@ public class HumanPlayer {
 				positions[index] = Integer.parseInt(moves[index].substring(0,
 						hyphon));
 			}
-			spacesToMove[i] = Integer.parseInt(moves[i].substring(hyphon + 1));
-			board.makeAMove(positions[i], spacesToMove[i], playerSymbol);
+			spacesToMove[index] = Integer.parseInt(moves[index].substring(hyphon + 1));
+			board.makeAMove(positions[index], spacesToMove[index], playerSymbol);
 		}
 	}
 	
