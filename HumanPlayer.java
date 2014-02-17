@@ -18,6 +18,16 @@ public class HumanPlayer {
 	private char playerSymbol;
 	
 	/**
+	 * This saves the current state of the board.
+	 */
+	private Board	board;
+	
+	/**
+	 * This scanner is for standard input.
+	 */
+	private Scanner	in	= new Scanner(System.in);
+	
+	/**
 	 * This is the constructor
 	 * 
 	 * @param team 
@@ -26,8 +36,9 @@ public class HumanPlayer {
 	 * 				move for this HumanPlayer.
 	 * 		
 	 */
-	public HumanPlayer(char team) {
-		playerSymbol = team;		
+	public HumanPlayer(int team) {
+		playerSymbol = team;
+		board = PlayerBoard;
 	}
 	
 	/**
@@ -38,8 +49,7 @@ public class HumanPlayer {
 	 * If processMoves returns false, the whole function makeMove is restarted.
 	 * 
 	 */
-	public void makeMove(Board board) {
-		int toReturn = 0;
+	public void makeMove() {
 		boolean passedChecks = false;
 		Scanner in = new Scanner(System.in);
 		
@@ -56,22 +66,20 @@ public class HumanPlayer {
 			
 			if(move.equalsIgnoreCase("quit")) {
 				//return -2 to quit the game
-				toReturn = -2;
-				break;
+				return -2;
 			}
 			if(move.equalsIgnoreCase("pass")) {
 				//return -1 to pass move
-				toReturn = -1;
-				break;
+				return -1;
 			}
-			passedChecks = processMove(moves, board);
+			passedChecks = processMove(moves);
 		
-			if(passedChecks) performMove(moves, board, numberOfDice);
+			if(passedChecks) performMove(moves, numberOfDice);
 		}
 		
-		in.close();
+		board.printBoard();
 		
-		return toReturn;
+		return 0;
 	}
 	
 	/**
@@ -82,7 +90,7 @@ public class HumanPlayer {
 	 * @return
 	 * 				A boolean indicating whether the moves failed or passed the checks.
 	 */
-	private boolean processMove(String[] moves, Board board) {
+	private boolean processMove(String[] moves) {
 		
 		if(moves.length > board.numberOfDice()) {	//check no more than 4 moves entered.
 			System.out.println("Error: Please enter a valid number of moves.");
@@ -91,8 +99,26 @@ public class HumanPlayer {
 		else if((moves.length == 1) && (moves[0].equals(""))) {	//check if no moves entered.
 			System.out.println("Error: Please enter a valid number of moves.");
 			return false;
+		}else if (moves.length == 1 || moves.length == 3)
+		{
+			System.out
+					.println("Error: Please enter a valid number of moves.\n");
+			return false;
 		}
-		
+
+		boolean passedSyntax = checkSyntax(moves);
+
+		return true && passedSyntax;
+	}
+	
+	/**
+	 *  Ciaran Do!
+	 * 
+	 * @param moves
+	 * @return
+	 */
+	private boolean checkSyntax(String[] moves)
+	{
 		return true;
 	}
 	
@@ -102,16 +128,28 @@ public class HumanPlayer {
 	 * @param moves
 	 * 			String array of users moves, these are valid.
 	 */
-	private void performMove(String[] moves, Board board, int numberOfDice) {
+	private void performMove(String[] moves, int numberOfDice) {
 		int[] positions = new int[numberOfDice + 1];
 		int[] spacesToMove = new int[numberOfDice + 1];
 		
 		for(int i = 0; i < numberOfDice; i++) {
 			int hyphon = moves[i].indexOf("-");
-			positions[i] = Integer.parseInt(moves[i].substring(0, hyphon));
+			if (moves[index].substring(0, 3).equals("bar"))
+			{
+				positions[index] = -1;
+			} else
+			{
+				positions[index] = Integer.parseInt(moves[index].substring(0,
+						hyphon));
+			}
 			spacesToMove[i] = Integer.parseInt(moves[i].substring(hyphon + 1));
 			board.makeAMove(positions[i], spacesToMove[i], playerSymbol);
 		}
+	}
+	
+	public void closeScanner()
+	{
+		in.close();
 	}
 	
 }
