@@ -51,7 +51,6 @@ public class HumanPlayer {
 	 */
 	public int makeMove() {
 		boolean passedChecks = false;
-		Scanner in = new Scanner(System.in);
 		
 		board.rollDice();
 		int numberOfDice = board.numberOfDice();
