@@ -1,4 +1,4 @@
-package assignment1Backgammon;
+package assignment2Backgammon;
 
 public class HumanPlayerTest {
 	
