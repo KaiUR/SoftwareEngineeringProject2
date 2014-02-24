@@ -9,3 +9,11 @@ Assignment 1
     Board.java
     BoardTest.java
     package-info.java
+    
+    
+Assignment 2
+    
+    Board.java
+    HumanPlayer.java
+    HumanPlayerTest.java
+    package-info.java
