@@ -169,8 +169,8 @@ public class HumanPlayer {
 				if(location_input.equals("bar"))
 				{
 					if(dice >= 1 && dice <= 6) {
-						break;
-					} 
+						continue;
+					}
 					else return false;
 				}
 				
