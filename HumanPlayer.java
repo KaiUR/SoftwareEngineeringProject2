@@ -139,7 +139,7 @@ public class HumanPlayer {
 	 */
 	private boolean checkSyntax(String[] moves)
 	{
-		String dice_input, location_input;
+		String dice_input = "", location_input = "";
 		for(int i = 0; i<moves.length; i++)
 		{
 			if(moves[i].charAt(1)=='-')
