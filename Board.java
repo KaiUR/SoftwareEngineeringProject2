@@ -5,9 +5,9 @@ import java.util.Random;
 /**
  * A class representing a Backgammon Board
  * 
- * @author Laurence Quinn, Ciarán O'Niell, Kai-Uwe Rathjen
+ * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
  * @version 0.06, 31 JAN 2014
- * @see assignment1Backgammon;
+ * @see assignment2Backgammon;
  * 
  */
 public class Board
