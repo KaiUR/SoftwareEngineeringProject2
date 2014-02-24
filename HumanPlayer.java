@@ -5,9 +5,9 @@ import java.util.Scanner;
 /**
  * A class representing a Human Player in Backgammon
  * 
- * @author Laurence Quinn, Ciarán O'Niell, Kai-Uwe Rathjen
+ * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
  * @version 0.01, 14 FEB 2014
- * @see assignment1Backgammon;
+ * @see assignment2Backgammon;
  * 
  */
 public class HumanPlayer {
