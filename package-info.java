@@ -1,8 +1,8 @@
 /**
- * This package contains all of the files required  for Assignment 1
+ * This package contains all of the files required  for Assignment 2
  */
 /**
  * @author Laurence Quinn, Ciarán O'Niell, Kai-Uwe Rathjen
  *
  */
-package assignment1Backgammon;
+package assignment2Backgammon;
