@@ -96,7 +96,15 @@ public class HumanPlayer {
 			
 			passedChecks = processMove(moves);
 		
-			if(passedChecks) performMove(moves, numberOfDice);
+			if(passedChecks) 
+			{
+				passedChecks = performMove(moves, numberOfDice);
+			}
+			if(!passedChecks)
+			{
+				board.printBoard(playerSymbol);
+			}
+			
 		}
 		
 		int checkForWin = board.doPlay(playerSymbol);
@@ -159,11 +167,6 @@ public class HumanPlayer {
 		 */
 		else if((moves.length == 1) && (moves[0].equals(""))) {	
 			System.out.println("Error: Please enter a valid number of moves.");
-			return false;
-		}else if (moves.length == 1 || moves.length == 3)
-		{
-			System.out
-					.println("Error: Please enter a valid number of moves.\n");
 			return false;
 		}
 
@@ -243,7 +246,7 @@ public class HumanPlayer {
 	 * @param moves
 	 * 			String array of users moves, these are valid.
 	 */
-	private void performMove(String[] moves, int numberOfDice) {
+	private boolean performMove(String[] moves, int numberOfDice) {
 		int[] positions = new int[numberOfDice + 1];
 		int[] spacesToMove = new int[numberOfDice + 1];
 		
@@ -260,15 +263,24 @@ public class HumanPlayer {
 			spacesToMove[index] = Integer.parseInt(moves[index].substring(hyphon + 1));
 			if (!errorChecking(positions[index], spacesToMove[index]))
 			{
-				return;
+				return false;
 			}
 			if (bearOff)
 			{
 				spacesToMove[index] = -1;
 				bearOff = false;
 			}
+			for (int index_2 = 0; index_2 < 4; index_2++)
+			{
+				if (spacesToMove[index] == board.dice[index_2])
+				{
+					board.dice[index_2] = 0;
+					break;
+				}
+			}
 			board.makeAMove(positions[index], spacesToMove[index], playerSymbol);
 		}
+		return true;
 	}
 	
 	/**
@@ -327,7 +339,7 @@ public class HumanPlayer {
 		 * checks if move matches a dice
 		 */
 		boolean check = false;
-		for (int index = 0; index < board.numberOfDice(); index++)
+		for (int index = 0; index < 4; index++)
 		{
 			if (board.dice[index] == move)
 			{
