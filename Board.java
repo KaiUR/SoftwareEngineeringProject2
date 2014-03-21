@@ -48,7 +48,7 @@ public class Board
 	 * Backgammon game. The four dice help to represent doubles, if not double
 	 * the last two will be set to zero.
 	 */
-	private int[] dice = new int[4];
+	public int[] dice = new int[4];
 	
 	/**
 	 * This defines the index of player 1. This definition can be used in a different 
