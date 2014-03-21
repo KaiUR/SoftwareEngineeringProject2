@@ -83,7 +83,8 @@ public class HumanPlayer {
 			if(passedChecks) performMove(moves, numberOfDice);
 		}
 		
-		board.printBoard();
+		int a = Board.PLAYER1;
+		board.printBoard(a);
 		
 		return 0;
 	}
