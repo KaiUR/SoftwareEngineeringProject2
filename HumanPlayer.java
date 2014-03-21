@@ -352,9 +352,9 @@ public class HumanPlayer {
 					System.out.println("Error - You can move this checker");
 					return false;
 				}
+				bearOff = true;
 			}
-			move = -1;
-			bearOff = true;
+			
 		}
 		else if (playerSymbol == Board.PLAYER2)
 		{
@@ -365,15 +365,15 @@ public class HumanPlayer {
 					System.out.println("Error - You can move this checker");
 					return false;
 				}
+				bearOff = true;
 			}
-			move = -1;
-			bearOff = true;
+			
 		}
 
 		/*
 		 * Checks if bearing off is allowed
 		 */
-		if (move == -1)
+		if (bearOff)
 		{
 			if (playerSymbol == Board.PLAYER1)
 			{
