@@ -344,6 +344,21 @@ public class Board
 		}
 		return count;
 	}
+	
+	public void doPlay()
+	{
+		int count;
+		for(count = 1; ((positions[count].charAt(0)!=PLAYER1_SYMBOL)&&(count<=24)); count++){}
+		if(count==25)
+		{
+			//PLAYER1 Wins
+		}
+		for(count = 1; ((positions[count].charAt(0)!=PLAYER2_SYMBOL)&&(count<=24)); count++){}
+		if(count==25)
+		{
+			//PLAYER2 Wins
+		}
+	}
 
 	/**
 	 * This method prints out the dice values depending on the input. If the
