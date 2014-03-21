@@ -311,9 +311,10 @@ public class HumanPlayer {
 		 * 
 		 * -1 is returned from playerAtPosition() if a blank space is found
 		 */
-		 if(playerSymbol == Board.PLAYER2)
+		int temp_move = move;
+		if(playerSymbol == Board.PLAYER2)
 		{
-			int temp_move = move * -1;
+			temp_move = move * -1;
 		}
 		if (board.playerAtPosition(position + temp_move) != playerSymbol
 				&& board.playerAtPosition(position + temp_move) != -1)
