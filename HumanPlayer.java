@@ -253,8 +253,137 @@ public class HumanPlayer {
 						hyphon));
 			}
 			spacesToMove[index] = Integer.parseInt(moves[index].substring(hyphon + 1));
+			if (!errorChecking(positions[index], spacesToMove[index]))
+			{
+				return;
+			}
+			if (bearOff)
+			{
+				spacesToMove[index] = -1;
+				bearOff = false;
+			}
 			board.makeAMove(positions[index], spacesToMove[index], playerSymbol);
 		}
+	}
+	
+	/**
+	 * 
+	 * @param position
+	 * @param move
+	 * @return
+	 */
+	private boolean errorChecking(int position, int move)
+	{
+		/* checks if checker is on bar */
+		if (board.bar[playerSymbol] != 0 && position != -1)
+		{
+			System.out.println("Error - You need to move off of the bar first");
+			return false;
+		}
+
+		/* Checks if checker exists */
+		if (playerSymbol == Board.PLAYER1)
+		{
+			if (board.positions[position].charAt(0) != Board.PLAYER1_SYMBOL)
+			{
+				System.out.println("Error - There is no valid checker here");
+				return false;
+			}
+		}
+		else if (playerSymbol == Board.PLAYER2)
+		{
+			if (board.positions[position].charAt(0) != Board.PLAYER2_SYMBOL)
+			{
+				System.out.println("Error - There is no valid checker here");
+				return false;
+			}
+		}
+
+		/*
+		 * checks if ending block is enemy
+		 * 
+		 * -1 is returned from playerAtPosition() if a blank space is found
+		 */
+		if (board.playerAtPosition(position + move) != playerSymbol
+				&& board.playerAtPosition(position + move) != -1)
+		{
+			System.out.println("Error - You can move on to an enemy checker");
+			return false;
+		}
+
+		/*
+		 * checks if move matches a dice
+		 */
+		boolean check = false;
+		for (int index = 0; index < board.numberOfDice(); index++)
+		{
+			if (board.dice[index] == move)
+			{
+				check = true;
+			}
+		}
+		if (!check)
+		{
+			System.out.println("Error - You must use a number of off the dice");
+			return false;
+		}
+
+		/*
+		 * Checks if checker is allowed to be moved off with higher dice roll
+		 */
+		if (playerSymbol == Board.PLAYER1)
+		{
+			if (position + move > 24)
+			{
+				if (board.checkLastOccurence(playerSymbol) < position)
+				{
+					System.out.println("Error - You can move this checker");
+					return false;
+				}
+			}
+			move = -1;
+			bearOff = true;
+		}
+		else if (playerSymbol == Board.PLAYER2)
+		{
+			if (position - move < 0)
+			{
+				if (board.checkLastOccurence(playerSymbol) > position)
+				{
+					System.out.println("Error - You can move this checker");
+					return false;
+				}
+			}
+			move = -1;
+			bearOff = true;
+		}
+
+		/*
+		 * Checks if bearing off is allowed
+		 */
+		if (move == -1)
+		{
+			if (playerSymbol == Board.PLAYER1)
+			{
+				if (board.checkLastOccurence(playerSymbol) <= 6)
+				{
+					System.out
+							.println("Error - You must be in your finishing section with all checkers to bear off");
+					return false;
+				}
+			}
+			else if (playerSymbol == Board.PLAYER2)
+			{
+				if (board.checkLastOccurence(playerSymbol) >= 18)
+				{
+					System.out
+							.println("Error - You must be in your finishing section with all checkers to bear off");
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
 	
 	public void closeScanner()
