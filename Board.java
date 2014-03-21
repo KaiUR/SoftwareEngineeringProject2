@@ -342,19 +342,24 @@ public class Board
 		return count;
 	}
 	
-	public void doPlay()
+	public void doPlay(int playerSymbol)
 	{
 		int count;
-		for(count = 1; ((positions[count].charAt(0)!=PLAYER1_SYMBOL)&&(count<=24)); count++){}
-		if(count==25)
-		{
-			//PLAYER1 Wins
+		if(playerSymbol == 0) {
+			for(count = 1; ((positions[count].charAt(0)!=PLAYER1_SYMBOL)&&(count<=24)); count++){}
+			if(count==25)
+			{
+				//PLAYER1 Wins
+			}	
 		}
-		for(count = 1; ((positions[count].charAt(0)!=PLAYER2_SYMBOL)&&(count<=24)); count++){}
-		if(count==25)
-		{
-			//PLAYER2 Wins
+		else if(playerSymbol == 1) {
+			for(count = 1; ((positions[count].charAt(0)!=PLAYER2_SYMBOL)&&(count<=24)); count++){}
+			if(count==25)
+			{
+				//PLAYER2 Wins
+			}	
 		}
+		else return;
 	}
 
 	/**
