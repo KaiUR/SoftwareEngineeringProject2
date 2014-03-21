@@ -349,17 +349,43 @@ public class Board
 			for(count = 1; ((positions[count].charAt(0)!=PLAYER1_SYMBOL)&&(count<=24)); count++){}
 			if(count==25)
 			{
-				//PLAYER1 Wins
-			}	
+				return locateFurthestPip(playerSymbol);
+			}
+			return -1;
 		}
 		else if(playerSymbol == 1) {
 			for(count = 1; ((positions[count].charAt(0)!=PLAYER2_SYMBOL)&&(count<=24)); count++){}
 			if(count==25)
 			{
-				//PLAYER2 Wins
-			}	
+				return locateFurthestPip(playerSymbol);
+			}
+			return -1;
 		}
-		else return;
+		else return -1;
+	}
+	
+	/**
+	 * Function to locate the position of the specified player's furthest back pip
+	 * This will allow us to check for Single, Gammon or Backgammon
+	 * 
+	 * @return the location of the furthest back pip
+	 */
+	private int locateFurthestPip(int symbol) {
+		if(symbol == 0) {
+			for(int i = 0; i < 24; i++) {
+				if(positions[i].charAt(0) == symbol) {
+					return i;
+				}
+			}
+		}
+		else {
+			for(int i = 23; i >= 0; i--) {
+				if(positions[i].charAt(0) == symbol) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	}
 
 	/**
