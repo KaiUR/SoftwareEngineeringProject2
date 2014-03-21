@@ -23,6 +23,11 @@ public class HumanPlayer {
 	private Board	board;
 	
 	/**
+	 * 
+	 */
+	private boolean	bearOff	= false;
+	
+	/**
 	 * This scanner is for standard input.
 	 */
 	private Scanner	in	= new Scanner(System.in);
