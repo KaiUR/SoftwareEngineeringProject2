@@ -94,7 +94,42 @@ public class HumanPlayer {
 			if(passedChecks) performMove(moves, numberOfDice);
 		}
 		
-		return 0;
+		int checkForWin = board.doPlay(playerSymbol);
+		if(checkForWin == -1) {
+			System.out.println("\n\nNo Win Yet\n\n");
+			return 0;
+		}
+		else return winner(checkForWin);
+	}
+	
+	/**
+	 * Function to print winner message depending on player and type of win
+	 * 
+	 * @param location furthest back pip
+	 * @return -3 to inform game to end
+	 */
+	private int winner(int location) {
+		String winType = "";
+		if(playerSymbol == 0) {
+			if(location < 6) winType = "Backgammon";
+			else if(location >= 6 && location < 18) winType = "Gammmon";
+			else winType = "Single";
+			
+			System.out.println("Congratulations, Player " + toPlayerChar());
+			System.out.println("You have won with a " + winType);
+			
+			return -3;
+		}
+		else {
+			if(location >= 18) winType = "Backgammon";
+			else if(location >= 6 && location < 18) winType = "Gammmon";
+			else winType = "Single";
+			
+			System.out.println("Congratulations, Player " + toPlayerChar());
+			System.out.println("You have won with a " + winType);
+			
+			return -3;
+		}
 	}
 	
 	/**
