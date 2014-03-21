@@ -280,10 +280,7 @@ public class HumanPlayer {
 	private boolean errorChecking(int position, int move)
 	{
 		position --;
-		if(playerSymbol == Board.PLAYER2)
-		{
-			move *= -1;
-		}
+
 		/* checks if checker is on bar */
 		if (board.bar[playerSymbol] != 0 && position != -1)
 		{
@@ -314,8 +311,12 @@ public class HumanPlayer {
 		 * 
 		 * -1 is returned from playerAtPosition() if a blank space is found
 		 */
-		if (board.playerAtPosition(position + move) != playerSymbol
-				&& board.playerAtPosition(position + move) != -1)
+		 if(playerSymbol == Board.PLAYER2)
+		{
+			int temp_move = move * -1;
+		}
+		if (board.playerAtPosition(position + temp_move) != playerSymbol
+				&& board.playerAtPosition(position + temp_move) != -1)
 		{
 			System.out.println("Error - You can move on to an enemy checker");
 			return false;
@@ -327,7 +328,7 @@ public class HumanPlayer {
 		boolean check = false;
 		for (int index = 0; index < board.numberOfDice(); index++)
 		{
-			if (board.dice[index] == Math.abs(move))
+			if (board.dice[index] == move)
 			{
 				check = true;
 			}
