@@ -279,6 +279,11 @@ public class HumanPlayer {
 	 */
 	private boolean errorChecking(int position, int move)
 	{
+		position --;
+		if(playerSymbol == Board.PLAYER2)
+		{
+			move *= -1;
+		}
 		/* checks if checker is on bar */
 		if (board.bar[playerSymbol] != 0 && position != -1)
 		{
@@ -322,7 +327,7 @@ public class HumanPlayer {
 		boolean check = false;
 		for (int index = 0; index < board.numberOfDice(); index++)
 		{
-			if (board.dice[index] == move)
+			if (board.dice[index] == Math.abs(move))
 			{
 				check = true;
 			}
