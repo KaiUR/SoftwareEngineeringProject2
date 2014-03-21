@@ -63,6 +63,7 @@ public class HumanPlayer {
 	public int makeMove() {
 		boolean passedChecks = false;
 		
+		board.printBoard(playerSymbol);
 		System.out.println("Current Player: " + toPlayerChar());
 		board.rollDice();
 		int numberOfDice = board.numberOfDice();
@@ -84,7 +85,6 @@ public class HumanPlayer {
 				}
 				if(m.equalsIgnoreCase("pass")) {
 					System.out.println("You have passed your move.");
-					board.printBoard();
 					return -1;
 				}
 			}
@@ -93,9 +93,6 @@ public class HumanPlayer {
 		
 			if(passedChecks) performMove(moves, numberOfDice);
 		}
-		
-		int a = Board.PLAYER1;
-		board.printBoard(a);
 		
 		return 0;
 	}
