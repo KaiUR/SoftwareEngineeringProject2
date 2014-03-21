@@ -41,7 +41,7 @@ public class Board
 	 * A variable to hold information for the bottom section of the board,
 	 * this is for the headings of the board only.
 	 */
-	private final static String bottomOfBoard = "12---++---++---++---++---07   BAR   06---++---++---++---++---01   OFF\n\n";
+	private final static String bottomOfBoard = "12---++---++---++---++---07   BAR   06---++---++---++---++---01   OFF\n";
 
 	/**
 	 * This four element array holds the information for the four dice in the
@@ -131,29 +131,38 @@ public class Board
 	 * This method is used to print out the game board
 	 * 
 	 */
-	public void printBoard()
+	public void printBoard(int player)
 	{
 
-		System.out.print(topOfBoard);
-
-		printCorner(1);
-
-		printBar(PLAYER2);
-
-		printCorner(2);
-		
-		printOff(PLAYER1);
-
-		printCorner(3);
-
-		printBar(PLAYER1);
-
-		printCorner(4);
-		
-		printOff(PLAYER2);
-
-		System.out.print(bottomOfBoard);
-		
+		if(player==PLAYER1)
+		{
+			System.out.print(topOfBoard);
+			printCorner(1);
+			printBar(PLAYER2);
+			printCorner(2);
+			printOff(PLAYER1);
+			System.out.print('\n');
+			printCorner(3);
+			printBar(PLAYER1);
+			printCorner(4);
+			printOff(PLAYER2);
+			System.out.print(bottomOfBoard+'\n');
+			
+		}
+		else
+		{
+			System.out.print(bottomOfBoard);
+			printCorner(3);
+			printBar(PLAYER1);
+			printCorner(4);
+			printOff(PLAYER2);
+			System.out.print('\n');
+			printCorner(1);
+			printBar(PLAYER2);
+			printCorner(2);
+			printOff(PLAYER1);
+			System.out.print(topOfBoard+'\n');
+		}
 		return;
 	}
 
@@ -173,7 +182,7 @@ public class Board
 			{
 				System.out.print(PLAYER1_SYMBOL  +"-"+off[PLAYER1]);
 			}
-			System.out.print("\n\n");
+			System.out.print("\n");
 			break;
 			
 		case PLAYER2:
@@ -287,7 +296,8 @@ public class Board
 		off[PLAYER1] = 0;
 		off[PLAYER2] = 0;
 
-		printBoard();
+		int a = PLAYER1;
+		printBoard(a);
 
 		return;
 	}
