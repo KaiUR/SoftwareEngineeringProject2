@@ -42,6 +42,17 @@ public class HumanPlayer {
 	}
 	
 	/**
+	 * Function to inform us of this players symbol.
+	 * 
+	 * @return		'O' for player1, 'X' for player2 or ' ' for any other 'invalid' input
+	 */
+	public char toPlayerChar() {
+		if(playerSymbol == 0) return 'O';
+		else if(playerSymbol == 1) return 'X';
+		else return ' ';
+	}
+	
+	/**
 	 * Function called on HumanPlayer to make a move. This function calls three sub
 	 * functions. 
 	 * If processMoves returns true, all checks have been passed and 
@@ -52,11 +63,11 @@ public class HumanPlayer {
 	public int makeMove() {
 		boolean passedChecks = false;
 		
+		System.out.println("Current Player: " + toPlayerChar());
 		board.rollDice();
 		int numberOfDice = board.numberOfDice();
 		System.out.print("Dice: ");
 		board.printDice(4);
-		System.out.println();
 		
 		while(!passedChecks) {
 			System.out.print("Enter a move: ");
@@ -66,18 +77,18 @@ public class HumanPlayer {
 			 */
 			String[] moves = move.split("\\s");		
 			
-			if(move.equalsIgnoreCase("quit")) {
-				/*
-				 * return -2 to quit the game
-				 */
-				return -2;
+			for(String m : moves) {
+				if(m.equalsIgnoreCase("quit")) {
+					System.out.println("You have quit the game.");
+					return -2;
+				}
+				if(m.equalsIgnoreCase("pass")) {
+					System.out.println("You have passed your move.");
+					board.printBoard();
+					return -1;
+				}
 			}
-			if(move.equalsIgnoreCase("pass")) {
-				/* 
-				 * return -1 to pass move
-				 */
-				return -1;
-			}
+			
 			passedChecks = processMove(moves);
 		
 			if(passedChecks) performMove(moves, numberOfDice);
