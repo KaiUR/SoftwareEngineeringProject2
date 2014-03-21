@@ -18,12 +18,12 @@ public class Board
 	 * The array is initialized to the default starting positions by the
 	 * constructor.
 	 */
-	private String[] positions;
+	public String[] positions;
 
 	/**
 	 * This is to keep track if a checker is on the bar or not.
 	 */
-	private int[] bar = new int[2];
+	public int[] bar = new int[2];
 
 	/**
 	 * This variable controls the checkers off the board, 0 index for one player
@@ -65,12 +65,12 @@ public class Board
 	/**
 	 * This defines the symbol of player 1, must be only one letter or digit
 	 */
-	private final static char PLAYER1_SYMBOL = 'O';
+	public final static char PLAYER1_SYMBOL = 'O';
 	
 	/**
 	 * This defines the symbol of player 2, must be only one letter or digit
 	 */
-	private final static char PLAYER2_SYMBOL = 'X';
+	public final static char PLAYER2_SYMBOL = 'X';
 	
 	/**
 	 * This defines the symbol for empty spaces on the board.
@@ -537,5 +537,54 @@ public class Board
 		}
 		return;
 
+	}
+	
+		/**
+	 * 
+	 * @param position
+	 * @return
+	 */
+	public int playerAtPosition(int position)
+	{
+		if (positions[position].charAt(0) == PLAYER1_SYMBOL)
+		{
+			return PLAYER1;
+		}
+		else if (positions[position].charAt(0) == PLAYER2_SYMBOL)
+		{
+			return PLAYER2;
+		}
+		return -1;
+	}
+
+	/**
+	 * 
+	 * @param player
+	 * @return
+	 */
+	public int checkLastOccurence(int player)
+	{
+		int last = 0;
+		if (player == PLAYER1)
+		{
+			for (int index = 0; index < 24; index++)
+			{
+				if (positions[index].charAt(0) == PLAYER1_SYMBOL)
+				{
+					last = index;
+				}
+			}
+		}
+		else
+		{
+			for (int index = 23; index >= 0; index--)
+			{
+				if (positions[index].charAt(0) == PLAYER2_SYMBOL)
+				{
+					last = index;
+				}
+			}
+		}
+		return last + 1;
 	}
 }
