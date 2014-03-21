@@ -342,7 +342,7 @@ public class Board
 		return count;
 	}
 	
-	public void doPlay(int playerSymbol)
+	public int doPlay(int playerSymbol)
 	{
 		int count;
 		if(playerSymbol == 0) {
