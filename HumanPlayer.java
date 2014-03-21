@@ -102,6 +102,13 @@ public class HumanPlayer {
 			}
 			
 			passedChecks = processMove(moves);
+			
+			if (moves.length != board.numberOfDice())
+			{
+				System.out
+						.println("Error - Please enter a valid number of moves");
+				passedChecks = false;
+			}
 		
 			if(passedChecks) 
 			{
