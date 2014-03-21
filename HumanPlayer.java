@@ -345,7 +345,7 @@ public class HumanPlayer {
 		if (board.playerAtPosition(position + temp_move) != playerSymbol
 				&& board.playerAtPosition(position + temp_move) != -1)
 		{
-			System.out.println("Error - You can move on to an enemy checker");
+			System.out.println("Error - You cannot move on to an enemy checker");
 			return false;
 		}
 
@@ -375,7 +375,7 @@ public class HumanPlayer {
 			{
 				if (board.checkLastOccurence(playerSymbol) < position)
 				{
-					System.out.println("Error - You can move this checker");
+					System.out.println("Error - You cannot move this checker");
 					return false;
 				}
 				bearOff = true;
@@ -388,7 +388,7 @@ public class HumanPlayer {
 			{
 				if (board.checkLastOccurence(playerSymbol) > position)
 				{
-					System.out.println("Error - You can move this checker");
+					System.out.println("Error - You cannot move this checker");
 					return false;
 				}
 				bearOff = true;
