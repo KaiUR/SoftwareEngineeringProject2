@@ -51,9 +51,16 @@ public class HumanPlayer {
 	 * 
 	 * @return		'O' for player1, 'X' for player2 or ' ' for any other 'invalid' input
 	 */
-	public char toPlayerChar() {
-		if(playerSymbol == 0) return 'O';
-		else if(playerSymbol == 1) return 'X';
+	public char toPlayerChar() 
+	{
+		if(playerSymbol == 0) 
+		{
+			return Board.PLAYER1_SYMBOL;
+		}
+		else if(playerSymbol == 1)
+		{
+			return Board.PLAYER2_SYMBOL;
+		}
 		else return ' ';
 	}
 	
