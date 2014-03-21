@@ -79,10 +79,10 @@ public class HumanPlayer {
 		System.out.println("Current Player: " + toPlayerChar());
 		board.rollDice();
 		int numberOfDice = board.numberOfDice();
-		System.out.print("Dice: ");
-		board.printDice(4);
 		
 		while(!passedChecks) {
+			System.out.print("Dice: ");
+			board.printDice(4);
 			System.out.print("Enter a move: ");
 			String move = in.nextLine();
 			/*
