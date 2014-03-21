@@ -296,9 +296,6 @@ public class Board
 		off[PLAYER1] = 0;
 		off[PLAYER2] = 0;
 
-		int a = PLAYER1;
-		printBoard(a);
-
 		return;
 	}
 
