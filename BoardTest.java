@@ -19,13 +19,14 @@ public class BoardTest
 	public static void main(String[] args)
 	{
 
+		int a = Board.PLAYER1, b = BOARD.PLAYER2;
 		Board myBoard = new Board();
 		myBoard.makeAMove(1, -1, Board.PLAYER1);
-		myBoard.printBoard();
+		myBoard.printBoard(a);
 		myBoard.makeAMove(6, 5, Board.PLAYER2);
-		myBoard.printBoard();
+		myBoard.printBoard(b);
 		myBoard.makeAMove(-1, 1, Board.PLAYER1);
-		myBoard.printBoard();
+		myBoard.printBoard(a);
 		
 		System.exit(0);
 	}
