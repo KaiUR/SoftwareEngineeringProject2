@@ -408,7 +408,7 @@ public class HumanPlayer {
 		 */
 		if (playerSymbol == Board.PLAYER1)
 		{
-			if (position + move > 24)
+			if (position + move > 23)
 			{
 				if (board.checkLastOccurence(playerSymbol) < position)
 				{
