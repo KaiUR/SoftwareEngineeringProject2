@@ -366,7 +366,7 @@ public class HumanPlayer {
 		{
 			temp_move = move * -1;
 		}
-		if (temp_move + position > -1 && temp_move + position <= 24)
+		if (temp_move + position > -1 && temp_move + position < 24)
 		{
 			if (board.playerAtPosition(position + temp_move) != playerSymbol
 					&& board.playerAtPosition(position + temp_move) != -1
