@@ -343,6 +343,11 @@ public class Board
 		return count;
 	}
 	
+	/**
+	 * 
+	 * @param playerSymbol
+	 * @return
+	 */
 	public int doPlay(int playerSymbol)
 	{
 		int count;
