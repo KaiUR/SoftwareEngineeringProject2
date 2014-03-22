@@ -1,4 +1,4 @@
-package assignment2Backgammon;
+package assignment3Backgammon;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import java.util.Scanner;
  * A class representing a Human Player in Backgammon
  * 
  * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
- * @version 0.01, 14 FEB 2014
+ * @version 1.01, 22 MAR 2014
  * @see assignment2Backgammon;
  * 
  */
@@ -456,6 +456,9 @@ public class HumanPlayer {
 		return true;
 	}
 	
+	/**
+	 * This is used to close the scanner used in this class
+	 */
 	public void closeScanner()
 	{
 		in.close();
