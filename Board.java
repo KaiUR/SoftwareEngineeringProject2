@@ -1,4 +1,4 @@
-package assignment2Backgammon;
+package assignment3Backgammon;
 
 import java.util.Random;
 
@@ -6,8 +6,8 @@ import java.util.Random;
  * A class representing a Backgammon Board
  * 
  * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
- * @version 0.06, 31 JAN 2014
- * @see assignment2Backgammon;
+ * @version 1.01, 22 MAR 2014
+ * @see assignment3Backgammon;
  * 
  */
 public class Board
@@ -446,8 +446,11 @@ public class Board
 			team = PLAYER1_SYMBOL;
 		else
 			team = PLAYER2_SYMBOL;
-			
-		if (position == -2)	//moving off the bar
+		
+		/*
+		 * moving off the bar
+		 */
+		if (position == -2)	
 		{
 			bar[team_modifier]--;
 			if (team_modifier == PLAYER1)
@@ -514,7 +517,10 @@ public class Board
 			 */
 		}
 		
-		if (move == -1)	//moving off the board
+		/*
+		 * moving off the board
+		 */
+		if (move == -1)	
 		{
 			if (team == PLAYER1_SYMBOL)
 
@@ -546,10 +552,13 @@ public class Board
 
 	}
 	
-		/**
+	/**
+	 * This method converts the PLAYER_SYMBOL to a number representing the
+	 * players
 	 * 
 	 * @param position
-	 * @return
+	 *            The position in the positions array
+	 * @return The integer representing the player
 	 */
 	public int playerAtPosition(int position)
 	{
@@ -565,9 +574,12 @@ public class Board
 	}
 
 	/**
+	 * This method is used to check for the last occurrence of a checker
+	 * belonging to a player
 	 * 
 	 * @param player
-	 * @return
+	 *            The player that is to be checked
+	 * @return The index of the last occurrence
 	 */
 	public int checkLastOccurence(int player)
 	{
@@ -596,9 +608,11 @@ public class Board
 	}
 	
 	/**
+	 * This method is used to check if a certain position has a wall or not
 	 * 
 	 * @param position
-	 * @return
+	 *            The index in the positions array
+	 * @return True if wall and false if not
 	 */
 	public boolean checkNotWall(int position)
 	{
