@@ -400,12 +400,18 @@ public class Board
 	public void printDice(int index)
 	{
 		if (index >= 0 && index <= 3)
+		{
 			System.out.print(dice[index]);
+		}
 		else if (index == 4)
 		{
-			System.out.print(dice[0] + "\t" + dice[1]);
-			if(dice[0] == dice[1])
-				System.out.print("\t" + dice[2] + "\t" + dice[3]);
+			for (int index_2 = 0; index_2 < 4; index_2++)
+			{
+				if (dice[index_2] > 0)
+				{
+					System.out.print(dice[index_2] + "\t");
+				}
+			}
 		}
 		System.out.print("\n");
 		return;
@@ -587,5 +593,19 @@ public class Board
 			}
 		}
 		return last + 1;
+	}
+	
+		/**
+	 * 
+	 * @param position
+	 * @return
+	 */
+	public boolean checkNotWall(int position)
+	{
+		if (positions[position].charAt(1) == '1')
+		{
+			return true;
+		}
+		return false;
 	}
 }
