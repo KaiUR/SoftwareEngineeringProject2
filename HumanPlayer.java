@@ -348,17 +348,21 @@ public class HumanPlayer {
 			}
 		}
 		 
-		int temp_move = move;
-		if(playerSymbol == Board.PLAYER2)
+		if (move > -1 && move <= 24)
 		{
-			temp_move = move * -1;
-		}
-		if (board.playerAtPosition(position + temp_move) != playerSymbol
-				&& board.playerAtPosition(position + temp_move) != -1 
-				&& board.checkNotWall(position + temp_move) != true)
-		{
-			System.out.println("Error - You can not move on to an enemy checker");
-			return false;
+			int temp_move = move;
+			if (playerSymbol == Board.PLAYER2)
+			{
+				temp_move = move * -1;
+			}
+			if (board.playerAtPosition(position + temp_move) != playerSymbol
+					&& board.playerAtPosition(position + temp_move) != -1
+					&& board.checkNotWall(position + temp_move) != true)
+			{
+				System.out
+						.println("Error - You can not move on to an enemy checker");
+				return false;
+			}
 		}
 
 		/*
