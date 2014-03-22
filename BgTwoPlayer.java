@@ -2,11 +2,18 @@ package assignment3Backgammon;
 
 public class BgTwoPlayer {
 	
-	//Create initial board and two player objects
+	/*
+	 * Create initial board and two player objects
+	 */ 
 	private static Board board = new Board();
 	private static HumanPlayer player1;
 	private static HumanPlayer player2;
 	
+	/**
+	 * This is the main method that runs the game.
+	 * 
+	 * @param args This is not used in this program
+	 */
 	public static void main(String[] args) {
 		int stateCheck;
 		boolean firstMove = true;
@@ -37,6 +44,9 @@ public class BgTwoPlayer {
 		
 	}
 	
+	/**
+	 *  This method is used to check which player starts the game first
+	 */
 	private static void decideWhoFirst() {
 		do {
 			board.rollDice();
@@ -44,12 +54,15 @@ public class BgTwoPlayer {
 		if(board.dice[0] > board.dice[1]) {
 			player1 = new HumanPlayer(0, board);
 			player2 = new HumanPlayer(1, board);
-			System.out.println("Player O will start first!\n");
+			System.out.println("Player " + Board.PLAYER1_SYMBOL
+					+ " will start first!\n");
 		}
-		else {
+		else 
+		{
 			player1 = new HumanPlayer(1, board);
 			player2 = new HumanPlayer(0, board);
-			System.out.println("Player X will start first!\n");
+			System.out.println("Player " + Board.PLAYER1_SYMBOL
+					+ " will start first!\n");
 		}
 	}
 	
