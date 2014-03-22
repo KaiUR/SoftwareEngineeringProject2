@@ -7,7 +7,7 @@ import java.util.Scanner;
  * 
  * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
  * @version 1.01, 22 MAR 2014
- * @see assignment2Backgammon;
+ * @see assignment3Backgammon;
  * 
  */
 public class HumanPlayer {
