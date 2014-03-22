@@ -207,24 +207,32 @@ public class HumanPlayer {
 		String dice_input = "", location_input = "";
 		for(int i = 0; i<moves.length; i++)
 		{
-			if(moves[i].charAt(1)=='-')
+			try
 			{
-				location_input = moves[i].substring(0, 1);
-				dice_input = moves[i].substring(2, 3);
-			}
-			else if(moves[i].charAt(2)=='-')
-			{
-				location_input = moves[i].substring(0, 2);
-				dice_input = moves[i].substring(3, 4);
-			}
-			else if(moves[i].charAt(3) == '-')
-			{
-				if(moves[0].substring(0, 3).equals("bar")) {
-					location_input = "bar";
-					dice_input = moves[i].substring(4);
+				if (moves[i].charAt(1) == '-')
+				{
+					location_input = moves[i].substring(0, 1);
+					dice_input = moves[i].substring(2, 3);
+				}
+				else if (moves[i].charAt(2) == '-')
+				{
+					location_input = moves[i].substring(0, 2);
+					dice_input = moves[i].substring(3, 4);
+				}
+				else if (moves[i].charAt(3) == '-')
+				{
+					if (moves[0].substring(0, 3).equals("bar"))
+					{
+						location_input = "bar";
+						dice_input = moves[i].substring(4);
+					}
+				}
+				else
+				{
+					return false;
 				}
 			}
-			else
+			catch (StringIndexOutOfBoundsException e)
 			{
 				return false;
 			}
