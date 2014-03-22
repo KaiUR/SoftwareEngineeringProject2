@@ -307,14 +307,14 @@ public class HumanPlayer {
 		position --;
 
 		/* checks if checker is on bar */
-		if (board.bar[playerSymbol] != 0 && position != -1)
+		if (board.bar[playerSymbol] != 0 && position != -2)
 		{
 			System.out.println("Error - You need to move off of the bar first");
 			return false;
 		}
 
 		/* Checks if checker exists */
-		if (playerSymbol == Board.PLAYER1)
+		if (playerSymbol == Board.PLAYER1 && position != -2)
 		{
 			if (board.positions[position].charAt(0) != Board.PLAYER1_SYMBOL)
 			{
@@ -322,7 +322,7 @@ public class HumanPlayer {
 				return false;
 			}
 		}
-		else if (playerSymbol == Board.PLAYER2)
+		else if (playerSymbol == Board.PLAYER2&& position != -2)
 		{
 			if (board.positions[position].charAt(0) != Board.PLAYER2_SYMBOL)
 			{
@@ -336,6 +336,18 @@ public class HumanPlayer {
 		 * 
 		 * -1 is returned from playerAtPosition() if a blank space is found
 		 */
+		if (position == -2)
+		{
+			if (playerSymbol == Board.PLAYER1)
+			{
+				position = -1;
+			}
+			else
+			{
+				position = 24;
+			}
+		}
+		 
 		int temp_move = move;
 		if(playerSymbol == Board.PLAYER2)
 		{
@@ -364,6 +376,14 @@ public class HumanPlayer {
 		{
 			System.out.println("Error - You must use a number from the dice");
 			return false;
+		}
+		
+		/*
+		 * No need to check to move off if moving from the bar
+		 */
+		if (position == -2)
+		{
+			return true;
 		}
 
 		/*
