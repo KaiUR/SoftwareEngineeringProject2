@@ -32,21 +32,33 @@ public class BgTwoPlayer
 			if(firstMove) firstMove = false;
 			else board.rollDice();
 			stateCheck = player1.makeMove();
-			if(stateCheck == -2) {
+			if(stateCheck == -2) 
+			{
 				System.out.println("You have chosen to exit the game. Goodbye.");
-				return;
+				player1.closeScanner();
+				player2.closeScanner();
+				System.exit(0);
 			}
-			else if(stateCheck == -3) {
-				return;
+			else if(stateCheck == -3) 
+			{
+				player1.closeScanner();
+				player2.closeScanner();
+				System.exit(0);
 			}
 			board.rollDice();
 			stateCheck = player2.makeMove();
-			if(stateCheck == -2) {
+			if(stateCheck == -2) 
+			{
 				System.out.println("You have chosen to exit the game. Goodbye.");
-				return;
+				player1.closeScanner();
+				player2.closeScanner();
+				System.exit(0);
 			}
-			else if(stateCheck == -3) {
-				return;
+			else if(stateCheck == -3)
+			{
+				player1.closeScanner();
+				player2.closeScanner();
+				System.exit(0);
 			}
 		}
 		
