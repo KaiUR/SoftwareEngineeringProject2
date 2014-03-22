@@ -77,7 +77,6 @@ public class HumanPlayer {
 		
 		board.printBoard(playerSymbol);
 		System.out.println("Current Player: " + toPlayerChar());
-		board.rollDice();
 		int numberOfDice = board.numberOfDice();
 		
 		while(!passedChecks) {
