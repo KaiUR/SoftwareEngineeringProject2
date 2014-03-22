@@ -137,7 +137,8 @@ public class HumanPlayer {
 	 */
 	private int winner(int location) {
 		String winType = "";
-		if(playerSymbol == 0) {
+		if(playerSymbol == Board.PLAYER1) 
+		{
 			if(location < 6) winType = "Backgammon";
 			else if(location >= 6 && location < 18) winType = "Gammmon";
 			else winType = "Single";
@@ -147,7 +148,8 @@ public class HumanPlayer {
 			
 			return -3;
 		}
-		else {
+		else 
+		{
 			if(location >= 18) winType = "Backgammon";
 			else if(location >= 6 && location < 18) winType = "Gammmon";
 			else winType = "Single";
