@@ -352,7 +352,7 @@ public class Board
 	{
 		int count;
 		if(playerSymbol == 0) {
-			for(count = 1; ((positions[count].charAt(0)!=PLAYER1_SYMBOL)&&(count<=24)); count++){}
+			for(count = 1; ((positions[count].charAt(0)!=PLAYER1_SYMBOL)&&(count<24)); count++){}
 			if(count==25)
 			{
 				return locateFurthestPip(playerSymbol);
@@ -360,7 +360,7 @@ public class Board
 			return -1;
 		}
 		else if(playerSymbol == 1) {
-			for(count = 1; ((positions[count].charAt(0)!=PLAYER2_SYMBOL)&&(count<=24)); count++){}
+			for(count = 1; ((positions[count].charAt(0)!=PLAYER2_SYMBOL)&&(count<24)); count++){}
 			if(count==25)
 			{
 				return locateFurthestPip(playerSymbol);
