@@ -595,7 +595,7 @@ public class Board
 		return last + 1;
 	}
 	
-		/**
+	/**
 	 * 
 	 * @param position
 	 * @return
