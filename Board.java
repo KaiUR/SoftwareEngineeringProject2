@@ -409,7 +409,7 @@ public class Board
 			{
 				if (dice[index_2] > 0)
 				{
-					System.out.print(dice[index_2] + "\t");
+					System.out.print(dice[index_2] + " ");
 				}
 			}
 		}
