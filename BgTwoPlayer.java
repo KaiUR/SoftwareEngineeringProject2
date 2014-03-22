@@ -26,7 +26,7 @@ public class BgTwoPlayer {
 			}
 			board.rollDice();
 			stateCheck = player2.makeMove();
-			if(quit == -2) {
+			if(stateCheck == -2) {
 				System.out.println("You have chosen to exit the game. Goodbye.");
 				return;
 			}
