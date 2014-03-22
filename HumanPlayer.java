@@ -76,10 +76,11 @@ public class HumanPlayer {
 		boolean passedChecks = false;
 		
 		board.printBoard(playerSymbol);
-		System.out.println("Current Player: " + toPlayerChar());
 		int numberOfDice = board.numberOfDice();
 		
-		while(!passedChecks) {
+		while(!passedChecks) 
+		{
+			System.out.println("Current Player: " + toPlayerChar());
 			System.out.print("Dice: ");
 			board.printDice(4);
 			System.out.print("Enter a move: ");
@@ -305,10 +306,12 @@ public class HumanPlayer {
 	}
 	
 	/**
+	 * This method preforms certain checks on the moves to see if they are valid,
+	 * if they are valid then it will return true, otherwise it will return false
 	 * 
-	 * @param position
-	 * @param move
-	 * @return
+	 * @param position The starting positon
+	 * @param move The spaces to move
+	 * @return True is valid, false if not
 	 */
 	private boolean errorChecking(int position, int move)
 	{
