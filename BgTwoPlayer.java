@@ -2,29 +2,55 @@ package assignment3Backgammon;
 
 public class BgTwoPlayer {
 	
+	//Create initial board and two player objects
+	private static Board board = new Board();
+	private static HumanPlayer player1;
+	private static HumanPlayer player2;
+	
 	public static void main(String[] args) {
+		int stateCheck;
+		boolean firstMove = true;
 		
-		//Create initial board and two player objects
-		Board aBoard = new Board();
-		HumanPlayer player1 = new HumanPlayer(0, aBoard);
-		HumanPlayer player2 = new HumanPlayer(1, aBoard);
-		
-		int quit; //checks if player has quit
+		decideWhoFirst();
 		
 		while(true) {
-			quit = 0;
-			
-			quit = player1.makeMove();
-			if(quit == -2) {
+			if(firstMove) firstMove = false;
+			else board.rollDice();
+			stateCheck = player1.makeMove();
+			if(stateCheck == -2) {
+				System.out.println("You have chosen to exit the game. Goodbye.");
 				return;
 			}
-			
-			quit = player2.makeMove();
+			else if(stateCheck == -3) {
+				return;
+			}
+			board.rollDice();
+			stateCheck = player2.makeMove();
 			if(quit == -2) {
+				System.out.println("You have chosen to exit the game. Goodbye.");
+				return;
+			}
+			else if(stateCheck == -3) {
 				return;
 			}
 		}
 		
+	}
+	
+	private static void decideWhoFirst() {
+		do {
+			board.rollDice();
+		}while(board.dice[0] == board.dice[1]);
+		if(board.dice[0] > board.dice[1]) {
+			player1 = new HumanPlayer(0, board);
+			player2 = new HumanPlayer(1, board);
+			System.out.println("Player O will start first!\n");
+		}
+		else {
+			player1 = new HumanPlayer(1, board);
+			player2 = new HumanPlayer(0, board);
+			System.out.println("Player X will start first!\n");
+		}
 	}
 	
 }
