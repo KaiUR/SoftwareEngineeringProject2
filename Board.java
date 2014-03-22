@@ -86,6 +86,7 @@ public class Board
 	 */
 	Board()
 	{
+		System.out.println("Welcome to the world of Backgammon! Good Luck!\n");
 		resetBoard();
 	}
 
