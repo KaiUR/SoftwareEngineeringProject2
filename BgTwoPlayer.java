@@ -60,16 +60,16 @@ public class BgTwoPlayer
 			board.rollDice();
 		}while(board.dice[0] == board.dice[1]);
 		if(board.dice[0] > board.dice[1]) {
-			player1 = new HumanPlayer(0, board);
-			player2 = new HumanPlayer(1, board);
+			player1 = new HumanPlayer(Board.PLAYER1, board);
+			player2 = new HumanPlayer(Board.PLAYER2, board);
 			System.out.println("Player " + Board.PLAYER1_SYMBOL
 					+ " will start first!\n");
 		}
 		else 
 		{
-			player1 = new HumanPlayer(1, board);
-			player2 = new HumanPlayer(0, board);
-			System.out.println("Player " + Board.PLAYER1_SYMBOL
+			player1 = new HumanPlayer(Board.PLAYER2, board);
+			player2 = new HumanPlayer(Board.PLAYER1, board);
+			System.out.println("Player " + Board.PLAYER2_SYMBOL
 					+ " will start first!\n");
 		}
 	}
