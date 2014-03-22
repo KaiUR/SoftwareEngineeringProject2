@@ -53,7 +53,7 @@ public class HumanPlayer {
 	 */
 	public char toPlayerChar() 
 	{
-		if(playerSymbol == 0) 
+		if(playerSymbol == Board.PLAYER1) 
 		{
 			return Board.PLAYER1_SYMBOL;
 		}
