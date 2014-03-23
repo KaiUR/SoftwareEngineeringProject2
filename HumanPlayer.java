@@ -412,33 +412,31 @@ public class HumanPlayer {
 		/*
 		 * Checks if checker is allowed to be moved off with higher dice roll
 		 */
+		@SuppressWarnings("unused")
+		boolean error = false;
 		if (playerSymbol == Board.PLAYER1)
 		{
 			if (position + move > 23)
 			{
-				if (board.checkLastOccurence(playerSymbol) < position
-					&& position + move != 24)
+				if (board.checkLastOccurence(playerSymbol) < position)
 				{
-					System.out.println("Error - You can not move this checker");
-					return false;
+					error = true;
 				}
 				bearOff = true;
 			}
-			
+
 		}
 		else if (playerSymbol == Board.PLAYER2)
 		{
 			if (position - move < 0)
 			{
-				if (board.checkLastOccurence(playerSymbol) > position 
-					&& position + move != -1)
+				if (board.checkLastOccurence(playerSymbol) > position)
 				{
-					System.out.println("Error - You can not move this checker");
-					return false;
+					error = true;
 				}
 				bearOff = true;
 			}
-			
+
 		}
 
 		/*
@@ -448,7 +446,7 @@ public class HumanPlayer {
 		{
 			if (playerSymbol == Board.PLAYER1)
 			{
-				if (board.checkLastOccurence(playerSymbol) <= 6)
+				if (board.checkLastOccurence(playerSymbol) >= 18)
 				{
 					System.out
 							.println("Error - You must be in your finishing section with all checkers to bear off");
@@ -458,13 +456,19 @@ public class HumanPlayer {
 			}
 			else if (playerSymbol == Board.PLAYER2)
 			{
-				if (board.checkLastOccurence(playerSymbol) >= 18)
+				if (board.checkLastOccurence(playerSymbol) <= 7)
 				{
 					System.out
 							.println("Error - You must be in your finishing section with all checkers to bear off");
 					bearOff = false;
 					return false;
 				}
+			}
+			else if (error = true)
+			{
+				System.out.println("Error - You can not move this checker");
+				bearOff = false;
+				return false;
 			}
 		}
 
