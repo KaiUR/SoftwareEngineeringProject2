@@ -29,7 +29,7 @@ public class Board
 	 * This variable controls the checkers off the board, 0 index for one player
 	 * and 1 for other
 	 */
-	private int[] off = new int[2];
+	public int[] off = new int[2];
 
 	/**
 	 * A variable to hold information for the top section of the board,
