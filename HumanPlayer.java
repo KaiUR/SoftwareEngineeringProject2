@@ -136,9 +136,9 @@ public class HumanPlayer {
 		String winType = "";
 		if(playerSymbol == Board.PLAYER1) 
 		{
-			if(location < 6) winType = "Backgammon";
+			if(location < 6) winType = "Single";
 			else if(location >= 6 && location < 18) winType = "Gammmon";
-			else winType = "Single";
+			else winType = "Backgammon";
 			
 			System.out.println("Congratulations, Player " + toPlayerChar());
 			System.out.println("You have won with a " + winType);
@@ -147,9 +147,9 @@ public class HumanPlayer {
 		}
 		else 
 		{
-			if(location >= 18) winType = "Backgammon";
+			if(location >= 18) winType = "Single";
 			else if(location >= 6 && location < 18) winType = "Gammmon";
-			else winType = "Single";
+			else winType = "Backgammon";
 			
 			System.out.println("Congratulations, Player " + toPlayerChar());
 			System.out.println("You have won with a " + winType);
@@ -430,7 +430,7 @@ public class HumanPlayer {
 		{
 			if (position - move < 0)
 			{
-				if (board.checkLastOccurence(playerSymbol) > position && position - move != -1)
+				if (board.checkLastOccurence(playerSymbol) > position && position - move != 0)
 				{
 					error = true;
 				}
