@@ -365,17 +365,16 @@ public class Board
 	 * @return the location of the furthest back pip
 	 */
 	private int locateFurthestPip(int team) {
-		char player_symbol = (team == 0) ? PLAYER1_SYMBOL : PLAYER2_SYMBOL;
-		if(team == 0) {
+		if(team == PLAYER1) {
 			for(int i = 0; i < 24; i++) {
-				if(positions[i].charAt(0) == player_symbol) {
+				if(positions[i].charAt(0) == PLAYER1_SYMBOL) {
 					return i;
 				}
 			}
 		}
 		else {
 			for(int i = 23; i >= 0; i--) {
-				if(positions[i].charAt(0) == player_symbol) {
+				if(positions[i].charAt(0) == PLAYER2_SYMBOL) {
 					return i;
 				}
 			}
