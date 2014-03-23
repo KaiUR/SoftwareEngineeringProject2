@@ -452,6 +452,7 @@ public class HumanPlayer {
 				{
 					System.out
 							.println("Error - You must be in your finishing section with all checkers to bear off");
+					bearOff = false;
 					return false;
 				}
 			}
@@ -461,6 +462,7 @@ public class HumanPlayer {
 				{
 					System.out
 							.println("Error - You must be in your finishing section with all checkers to bear off");
+					bearOff = false;
 					return false;
 				}
 			}
