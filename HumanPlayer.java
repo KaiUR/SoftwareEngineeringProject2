@@ -103,7 +103,8 @@ public class HumanPlayer {
 			
 			passedChecks = processMove(moves);
 			
-			if (moves.length != board.numberOfDice())
+			if (moves.length != board.numberOfDice()
+				&& !checkForBearOffMoves(moves.length))
 			{
 				System.out
 						.println("Error - Please enter a valid number of moves");
@@ -279,7 +280,8 @@ public class HumanPlayer {
 			if (moves[index].substring(0, 3).equals("bar"))
 			{
 				positions[index] = -1;
-			} else
+			} 
+			else
 			{
 				positions[index] = Integer.parseInt(moves[index].substring(0,
 						hyphon));
@@ -456,6 +458,50 @@ public class HumanPlayer {
 					return false;
 				}
 			}
+		}
+
+		return true;
+	}
+	
+	/**
+	 * This method is used to check if there is a number of moves entered less
+	 * than the dice, but there is only that number of checkers left, ie. there
+	 * is only one checker left, this method then skips the error message be
+	 * returning false as that is valid.
+	 * 
+	 * @param movesLength
+	 *            The amount of moves entered by the player
+	 * @return True if it is a valid number of moves
+	 */
+	private boolean checkForBearOffMoves(int movesLength)
+	{
+		int check = -1 * board.off[playerSymbol] - 15;
+
+		switch (check)
+		{
+			case 1:
+				if (movesLength != 1)
+				{
+					return false;
+				}
+				break;
+
+			case 2:
+				if (movesLength != 2)
+				{
+					return false;
+				}
+				break;
+
+			case 3:
+				if (movesLength != 3)
+				{
+					return false;
+				}
+				break;
+
+			default:
+				return true;
 		}
 
 		return true;
