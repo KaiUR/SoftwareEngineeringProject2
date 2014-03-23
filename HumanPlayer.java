@@ -95,10 +95,6 @@ public class HumanPlayer {
 					System.out.println("You have quit the game.");
 					return -2;
 				}
-				if(m.equalsIgnoreCase("pass")) {
-					System.out.println("You have passed your move.");
-					return -1;
-				}
 			}
 			
 			passedChecks = processMove(moves);
@@ -213,7 +209,11 @@ public class HumanPlayer {
 		{
 			try
 			{
-				if (moves[i].charAt(1) == '-')
+				if(moves[i].equalsIgnoreCase("pass"))
+				{
+					return true;
+				}
+				else if (moves[i].charAt(1) == '-')
 				{
 					location_input = moves[i].substring(0, 1);
 					dice_input = moves[i].substring(2, 3);
@@ -276,6 +276,10 @@ public class HumanPlayer {
 		int[] spacesToMove = new int[numberOfDice + 1];
 		
 		for(int index = 0; index < moves.length; index++) {
+			if(moves[index].equalsIgnoreCase("pass"))
+			{
+				return true;
+			}
 			int hyphon = moves[index].indexOf("-");
 			if (moves[index].substring(0, 3).equals("bar"))
 			{
