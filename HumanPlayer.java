@@ -418,7 +418,7 @@ public class HumanPlayer {
 		{
 			if (position + move > 23)
 			{
-				if (board.checkLastOccurence(playerSymbol) < position)
+				if (board.checkLastOccurence(playerSymbol) < position && position + move != 24)
 				{
 					error = true;
 				}
@@ -430,7 +430,7 @@ public class HumanPlayer {
 		{
 			if (position - move < 0)
 			{
-				if (board.checkLastOccurence(playerSymbol) > position)
+				if (board.checkLastOccurence(playerSymbol) > position && position - move != -1)
 				{
 					error = true;
 				}
@@ -446,7 +446,7 @@ public class HumanPlayer {
 		{
 			if (playerSymbol == Board.PLAYER1)
 			{
-				if (board.checkLastOccurence(playerSymbol) >= 18)
+				if (board.checkLastOccurence(playerSymbol) <= 18)
 				{
 					System.out
 							.println("Error - You must be in your finishing section with all checkers to bear off");
@@ -456,7 +456,7 @@ public class HumanPlayer {
 			}
 			else if (playerSymbol == Board.PLAYER2)
 			{
-				if (board.checkLastOccurence(playerSymbol) <= 7)
+				if (board.checkLastOccurence(playerSymbol) >= 7)
 				{
 					System.out
 							.println("Error - You must be in your finishing section with all checkers to bear off");
