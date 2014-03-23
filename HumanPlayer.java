@@ -92,7 +92,6 @@ public class HumanPlayer {
 			
 			for(String m : moves) {
 				if(m.equalsIgnoreCase("quit")) {
-					System.out.println("You have quit the game.");
 					return -2;
 				}
 			}
