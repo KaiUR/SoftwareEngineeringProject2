@@ -350,24 +350,11 @@ public class Board
 	 */
 	public int doPlay(int playerSymbol)
 	{
-		int count;
-		if(playerSymbol == 0) {
-			for(count = 1; ((positions[count].charAt(0)!=PLAYER1_SYMBOL)&&(count<24)); count++){}
-			if(count==25)
-			{
-				return locateFurthestPip(playerSymbol);
-			}
-			return -1;
+		if (off[playerSymbol] == 25)
+		{
+			return locateFurthestPip(playerSymbol);
 		}
-		else if(playerSymbol == 1) {
-			for(count = 1; ((positions[count].charAt(0)!=PLAYER2_SYMBOL)&&(count<24)); count++){}
-			if(count==25)
-			{
-				return locateFurthestPip(playerSymbol);
-			}
-			return -1;
-		}
-		else return -1;
+		return -1;
 	}
 	
 	/**
