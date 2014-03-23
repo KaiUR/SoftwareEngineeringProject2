@@ -350,9 +350,10 @@ public class Board
 	 */
 	public int doPlay(int playerSymbol)
 	{
-		if (off[playerSymbol] == 25)
+		if (off[playerSymbol] == 15)
 		{
-			return locateFurthestPip(playerSymbol);
+			int opponent = (playerSymbol == PLAYER1) ? PLAYER2_SYMBOL : PLAYER1_SYMBOL;
+			return locateFurthestPip(opponent);
 		}
 		return -1;
 	}
@@ -363,17 +364,18 @@ public class Board
 	 * 
 	 * @return the location of the furthest back pip
 	 */
-	private int locateFurthestPip(int symbol) {
-		if(symbol == 0) {
+	private int locateFurthestPip(int team) {
+		char player_symbol = (team == 0) ? PLAYER1_SYMBOL : PLAYER2_SYMBOL;
+		if(team == 0) {
 			for(int i = 0; i < 24; i++) {
-				if(positions[i].charAt(0) == symbol) {
+				if(positions[i].charAt(0) == player_symbol) {
 					return i;
 				}
 			}
 		}
 		else {
 			for(int i = 23; i >= 0; i--) {
-				if(positions[i].charAt(0) == symbol) {
+				if(positions[i].charAt(0) == player_symbol) {
 					return i;
 				}
 			}
