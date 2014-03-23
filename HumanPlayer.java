@@ -416,7 +416,8 @@ public class HumanPlayer {
 		{
 			if (position + move > 23)
 			{
-				if (board.checkLastOccurence(playerSymbol) < position)
+				if (board.checkLastOccurence(playerSymbol) < position
+					&& position + move != 24)
 				{
 					System.out.println("Error - You can not move this checker");
 					return false;
@@ -429,7 +430,8 @@ public class HumanPlayer {
 		{
 			if (position - move < 0)
 			{
-				if (board.checkLastOccurence(playerSymbol) > position)
+				if (board.checkLastOccurence(playerSymbol) > position 
+					&& position + move != -1)
 				{
 					System.out.println("Error - You can not move this checker");
 					return false;
