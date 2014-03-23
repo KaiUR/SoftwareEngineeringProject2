@@ -140,6 +140,7 @@ public class HumanPlayer {
 			else if(location >= 6 && location < 18) winType = "Gammmon";
 			else winType = "Backgammon";
 			
+			board.printBoard(playerSymbol);
 			System.out.println("Congratulations, Player " + toPlayerChar());
 			System.out.println("You have won with a " + winType);
 			
@@ -151,6 +152,7 @@ public class HumanPlayer {
 			else if(location >= 6 && location < 18) winType = "Gammmon";
 			else winType = "Backgammon";
 			
+			board.printBoard(playerSymbol);
 			System.out.println("Congratulations, Player " + toPlayerChar());
 			System.out.println("You have won with a " + winType);
 			
