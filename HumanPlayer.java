@@ -18,6 +18,11 @@ public class HumanPlayer {
 	private int playerSymbol;
 	
 	/**
+	 * Field to hold player character
+	 */
+	private char playerChar;
+	
+	/**
 	 * This saves the current state of the board.
 	 */
 	private Board	board;
@@ -44,24 +49,8 @@ public class HumanPlayer {
 	public HumanPlayer(int team, Board playerBoard) {
 		playerSymbol = team;
 		board = playerBoard;
-	}
-	
-	/**
-	 * Function to inform us of this players symbol.
-	 * 
-	 * @return		'O' for player1, 'X' for player2 or ' ' for any other 'invalid' input
-	 */
-	public char toPlayerChar() 
-	{
-		if(playerSymbol == Board.PLAYER1) 
-		{
-			return Board.PLAYER1_SYMBOL;
-		}
-		else if(playerSymbol == 1)
-		{
-			return Board.PLAYER2_SYMBOL;
-		}
-		else return ' ';
+		playerChar = (playerSymbol == Board.PLAYER1) ? Board.PLAYER1_SYMBOL : Board.PLAYER2_SYMBOL;
+
 	}
 	
 	/**
@@ -75,12 +64,13 @@ public class HumanPlayer {
 	public int makeMove() {
 		boolean passedChecks = false;
 		
+		System.out.println();
 		board.printBoard(playerSymbol);
 		int numberOfDice = board.numberOfDice();
 		
 		while(!passedChecks) 
 		{
-			System.out.println("Current Player: " + toPlayerChar());
+			System.out.println("Current Player: " + playerChar);
 			System.out.print("Dice: ");
 			board.printDice(4);
 			System.out.print("Enter a move: ");
@@ -140,7 +130,7 @@ public class HumanPlayer {
 			
 			System.out.println();
 			board.printBoard(playerSymbol);
-			System.out.println("Congratulations, Player " + toPlayerChar());
+			System.out.println("Congratulations, Player " + playerChar);
 			System.out.println("You have won with a " + winType);
 			
 			return -3;
@@ -153,7 +143,7 @@ public class HumanPlayer {
 			
 			System.out.println();
 			board.printBoard(playerSymbol);
-			System.out.println("Congratulations, Player " + toPlayerChar());
+			System.out.println("Congratulations, Player " + playerChar);
 			System.out.println("You have won with a " + winType);
 			
 			return -3;
