@@ -479,7 +479,7 @@ public class HumanPlayer {
 	 */
 	private boolean checkForBearOffMoves(int movesLength)
 	{
-		int check = -1 * board.off[playerSymbol] - 15;
+		int check = -1 * board.returnOff(playerSymbol) - 15;
 
 		switch (check)
 		{
