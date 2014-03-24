@@ -294,9 +294,9 @@ public class HumanPlayer {
 			}
 			for (int index_2 = 0; index_2 < 4; index_2++)
 			{
-				if (spacesToMove[index] == board.dice[index_2])
+				if (spacesToMove[index] == board.returnDice(index_2))
 				{
-					board.dice[index_2] = 0;
+					board.editDice(0, index_2);
 					break;
 				}
 			}
