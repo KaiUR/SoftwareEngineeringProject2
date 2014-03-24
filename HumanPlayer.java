@@ -205,17 +205,17 @@ public class HumanPlayer {
 				{
 					return true;
 				}
-				else if ((moves[i].charAt(1) == '-')&&(moves[i].strlen==3))
+				else if ((moves[i].charAt(1) == '-')&&(moves[i].length()==3))
 				{
 					location_input = moves[i].substring(0, 1);
 					dice_input = moves[i].substring(2, 3);
 				}
-				else if ((moves[i].charAt(2) == '-')&&(moves[i].strlen==4))
+				else if ((moves[i].charAt(2) == '-')&&(moves[i].length()==4))
 				{
 					location_input = moves[i].substring(0, 2);
 					dice_input = moves[i].substring(3, 4);
 				}
-				else if ((moves[i].charAt(3) == '-')&&(moves[i].strlen==5)&&(moves[0].substring(0, 3).equals("bar")))
+				else if ((moves[i].charAt(3) == '-')&&(moves[i].length()==5)&&(moves[0].substring(0, 3).equals("bar")))
 				{
 					location_input = "bar";
 					dice_input = moves[i].substring(4, 5);
