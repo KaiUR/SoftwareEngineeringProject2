@@ -23,7 +23,7 @@ public class Board
 	/**
 	 * This is to keep track if a checker is on the bar or not.
 	 */
-	public int[] bar = new int[2];
+	private int[] bar = new int[2];
 
 	/**
 	 * This variable controls the checkers off the board, 0 index for one player
@@ -652,5 +652,17 @@ public class Board
 	{
 		dice[index] = input;
 		return;
+	}
+	
+	/**
+	 * This method is used to return the value ont he bar for a player
+	 * 
+	 * @param playerSymbol
+	 *            This is the current player
+	 * @return The value on the bar for that player
+	 */
+	public int returnBar(int playerSymbol)
+	{
+		return bar[playerSymbol];
 	}
 }
