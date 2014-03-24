@@ -352,7 +352,7 @@ public class Board
 	{
 		if (off[playerSymbol] == 15)
 		{
-			int opponent = (playerSymbol == PLAYER1) ? PLAYER2_SYMBOL : PLAYER1_SYMBOL;
+			int opponent = (playerSymbol == PLAYER1) ? PLAYER2 : PLAYER1;
 			return locateFurthestPip(opponent);
 		}
 		return -1;
