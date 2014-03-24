@@ -18,7 +18,7 @@ public class Board
 	 * The array is initialized to the default starting positions by the
 	 * constructor.
 	 */
-	public String[] positions;
+	private String[] positions;
 
 	/**
 	 * This is to keep track if a checker is on the bar or not.
