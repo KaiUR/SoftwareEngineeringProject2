@@ -32,34 +32,10 @@ public class BgTwoPlayer
 			if(firstMove) firstMove = false;
 			else board.rollDice();
 			stateCheck = player1.makeMove();
-			if(stateCheck == -2) 
-			{
-				System.out.println("You have chosen to exit the game. Goodbye.");
-				player1.closeScanner();
-				player2.closeScanner();
-				System.exit(0);
-			}
-			else if(stateCheck == -3) 
-			{
-				player1.closeScanner();
-				player2.closeScanner();
-				System.exit(0);
-			}
+			analyseState(stateCheck);
 			board.rollDice();
 			stateCheck = player2.makeMove();
-			if(stateCheck == -2) 
-			{
-				System.out.println("You have chosen to exit the game. Goodbye.");
-				player1.closeScanner();
-				player2.closeScanner();
-				System.exit(0);
-			}
-			else if(stateCheck == -3)
-			{
-				player1.closeScanner();
-				player2.closeScanner();
-				System.exit(0);
-			}
+			analyseState(stateCheck);
 		}
 		
 	}
@@ -80,6 +56,18 @@ public class BgTwoPlayer
 		System.out.println((board.dice[0] > board.dice[1]) ? "\nPlayer " + Board.PLAYER1_SYMBOL
 					+ " will start first!\n" : "\nPlayer " + Board.PLAYER2_SYMBOL
 					+ " will start first!\n");
+	}
+	
+	private static void analyseState(int state) {
+		if(state != -2 && state != -3) {
+			return;
+		}
+		else if(state == -2) {
+			System.out.println("\nYou have chosen to exit the game. Goodbye.");
+		}
+		player1.closeScanner();
+		player2.closeScanner();
+		System.exit(0);
 	}
 	
 }
