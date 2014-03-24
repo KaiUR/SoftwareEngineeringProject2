@@ -89,7 +89,7 @@ public class HumanPlayer {
 			passedChecks = processMove(moves);
 			
 			if (moves.length != board.numberOfDice()
-				&& !checkForBearOffMoves(moves.length))
+				&& checkForBearOffMoves(moves))
 			{
 				System.out
 						.println("Error - Please enter a valid number of moves");
@@ -476,34 +476,13 @@ public class HumanPlayer {
 	 */
 	private boolean checkForBearOffMoves(int movesLength)
 	{
-		int check = -1 * board.returnOff(playerSymbol) - 15;
+		int check = -1 * (board.returnOff(playerSymbol) - 15);
 
-		switch (check)
-		{
-			case 1:
-				if (movesLength != 1)
-				{
-					return false;
-				}
-				break;
-
-			case 2:
-				if (movesLength != 2)
-				{
-					return false;
-				}
-				break;
-
-			case 3:
-				if (movesLength != 3)
-				{
-					return false;
-				}
-				break;
-
-			default:
-				return true;
-		}
+		for(String m : moves) if(m.equalsIgnoreCase("pass")) return false;
+		
+		if(check == 1 && moves.length == 1) return false;
+		if(check == 2 && moves.length == 2) return false;
+		else if(check == 3 && moves.length == 3) return false;
 
 		return true;
 	}
