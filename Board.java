@@ -639,4 +639,18 @@ public class Board
 	{
 		return dice[playerSymbol];
 	}
+	
+	/**
+	 * This method allows you to edit a dice
+	 * 
+	 * @param input
+	 *            The new value for the dice
+	 * @param index
+	 *            The index of the dice
+	 */
+	public void editDice(int input, int index)
+	{
+		dice[index] = input;
+		return;
+	}
 }
