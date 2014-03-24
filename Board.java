@@ -29,7 +29,7 @@ public class Board
 	 * This variable controls the checkers off the board, 0 index for one player
 	 * and 1 for other
 	 */
-	public int[] off = new int[2];
+	private int[] off = new int[2];
 
 	/**
 	 * A variable to hold information for the top section of the board,
@@ -614,5 +614,17 @@ public class Board
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * This function return the value in off
+	 * 
+	 * @param playerSymbol
+	 *            The current player
+	 * @return The value of the off
+	 */
+	public int returnOff(int playerSymbol)
+	{
+		return off[playerSymbol];
 	}
 }
