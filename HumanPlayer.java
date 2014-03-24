@@ -474,7 +474,7 @@ public class HumanPlayer {
 	 *            The amount of moves entered by the player
 	 * @return True if it is a valid number of moves
 	 */
-	private boolean checkForBearOffMoves(int movesLength)
+	private boolean checkForBearOffMoves(String[] moves)
 	{
 		int check = -1 * (board.returnOff(playerSymbol) - 15);
 
