@@ -315,7 +315,7 @@ public class HumanPlayer {
 		position --;
 
 		/* checks if checker is on bar */
-		if (board.bar[playerSymbol] != 0 && position != -2)
+		if (board.returnBar(playerSymbol)  != 0 && position != -2)
 		{
 			System.out.println("Error - You need to move off of the bar first");
 			return false;
@@ -324,7 +324,7 @@ public class HumanPlayer {
 		/* Checks if checker exists */
 		if (playerSymbol == Board.PLAYER1 && position != -2)
 		{
-			if (board.positions[position].charAt(0) != Board.PLAYER1_SYMBOL)
+			if (board.getValueatPossition(position).charAt(0) != Board.PLAYER1_SYMBOL)
 			{
 				System.out.println("Error - There is no valid checker here");
 				return false;
@@ -332,7 +332,7 @@ public class HumanPlayer {
 		}
 		else if (playerSymbol == Board.PLAYER2&& position != -2)
 		{
-			if (board.positions[position].charAt(0) != Board.PLAYER2_SYMBOL)
+			if (board.getValueatPossition(position).charAt(0) != Board.PLAYER2_SYMBOL)
 			{
 				System.out.println("Error - There is no valid checker here");
 				return false;
