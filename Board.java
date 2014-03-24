@@ -353,34 +353,11 @@ public class Board
 		if (off[playerSymbol] == 15)
 		{
 			int opponent = (playerSymbol == PLAYER1) ? PLAYER2 : PLAYER1;
-			return locateFurthestPip(opponent);
+			return checkLastOccurence(opponent) - 1;
 		}
 		return -1;
 	}
-	
-	/**
-	 * Function to locate the position of the specified player's furthest back pip
-	 * This will allow us to check for Single, Gammon or Backgammon
-	 * 
-	 * @return the location of the furthest back pip
-	 */
-	private int locateFurthestPip(int team) {
-		if(team == PLAYER1) {
-			for(int i = 0; i < 24; i++) {
-				if(positions[i].charAt(0) == PLAYER1_SYMBOL) {
-					return i;
-				}
-			}
-		}
-		else {
-			for(int i = 23; i >= 0; i--) {
-				if(positions[i].charAt(0) == PLAYER2_SYMBOL) {
-					return i;
-				}
-			}
-		}
-		return -1;
-	}
+
 
 	/**
 	 * This method prints out the dice values depending on the input. If the
@@ -568,7 +545,8 @@ public class Board
 
 	/**
 	 * This method is used to check for the last occurrence of a checker
-	 * belonging to a player
+	 * belonging to a player. This will allow us to check for Single, Gammon or
+	 * Backgammon
 	 * 
 	 * @param player
 	 *            The player that is to be checked
@@ -576,14 +554,13 @@ public class Board
 	 */
 	public int checkLastOccurence(int player)
 	{
-		int last = 0;
 		if (player == PLAYER1)
 		{
 			for (int index = 0; index < 24; index++)
 			{
 				if (positions[index].charAt(0) == PLAYER1_SYMBOL)
 				{
-					last = index;
+					return index + 1;
 				}
 			}
 		}
@@ -593,11 +570,11 @@ public class Board
 			{
 				if (positions[index].charAt(0) == PLAYER2_SYMBOL)
 				{
-					last = index;
+					return index + 1;
 				}
 			}
 		}
-		return last + 1;
+		return 0;
 	}
 	
 	/**
