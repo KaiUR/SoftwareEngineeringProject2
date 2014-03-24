@@ -401,13 +401,12 @@ public class HumanPlayer {
 		/*
 		 * Checks if checker is allowed to be moved off with higher dice roll
 		 */
-		@SuppressWarnings("unused")
 		boolean error = false;
 		if (playerSymbol == Board.PLAYER1)
 		{
 			if (position + move > 23)
 			{
-				if (board.checkLastOccurence(playerSymbol) < position && position + move != 24)
+				if ((board.checkLastOccurence(playerSymbol) -1) < position && position + move != 24)
 				{
 					error = true;
 				}
@@ -419,7 +418,7 @@ public class HumanPlayer {
 		{
 			if (position - move < 0)
 			{
-				if (board.checkLastOccurence(playerSymbol) > position && position - move != 0)
+				if ((board.checkLastOccurence(playerSymbol) -1) > position && position - move != 0)
 				{
 					error = true;
 				}
@@ -453,7 +452,7 @@ public class HumanPlayer {
 					return false;
 				}
 			}
-			else if (error = true)
+			if (error == true)
 			{
 				System.out.println("Error - You can not move this checker");
 				bearOff = false;
