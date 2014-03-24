@@ -43,19 +43,26 @@ public class BgTwoPlayer
 	/**
 	 *  This method is used to check which player starts the game first
 	 */
-	private static void decideWhoFirst() {
+	private static void decideWhoFirst() 
+	{
 		do {
 			board.rollDice();
-		}while(board.dice[0] == board.dice[1]);
-		System.out.println("Player " + Board.PLAYER1_SYMBOL + " rolled a " + board.dice[0]);
-		System.out.println("Player " + Board.PLAYER2_SYMBOL + " rolled a " + board.dice[1]);
-		
-		player1 = (board.dice[0] > board.dice[1]) ? new HumanPlayer(Board.PLAYER1, board) : new HumanPlayer(Board.PLAYER2, board);
-		player2 = (board.dice[0] > board.dice[1]) ? new HumanPlayer(Board.PLAYER2, board) : new HumanPlayer(Board.PLAYER1, board);
-		
-		System.out.println((board.dice[0] > board.dice[1]) ? "\nPlayer " + Board.PLAYER1_SYMBOL
-					+ " will start first!\n" : "\nPlayer " + Board.PLAYER2_SYMBOL
-					+ " will start first!\n");
+		}while (board.returnDice(0) == board.returnDice(1));
+		System.out.println("Player " + Board.PLAYER1_SYMBOL + " rolled a "
+				+ board.returnDice(0));
+		System.out.println("Player " + Board.PLAYER2_SYMBOL + " rolled a "
+				+ board.returnDice(1));
+
+		player1 = (board.returnDice(0) > board.returnDice(1)) ? new HumanPlayer(
+				Board.PLAYER1, board) : new HumanPlayer(Board.PLAYER2, board);
+		player2 = (board.returnDice(0) > board.returnDice(1)) ? new HumanPlayer(
+				Board.PLAYER2, board) : new HumanPlayer(Board.PLAYER1, board);
+
+		System.out
+				.println((board.returnDice(0) > board.returnDice(1)) ? "\nPlayer "
+						+ Board.PLAYER1_SYMBOL + " will start first!\n"
+						: "\nPlayer " + Board.PLAYER2_SYMBOL
+								+ " will start first!\n");
 	}
 	
 	private static void analyseState(int state) {
