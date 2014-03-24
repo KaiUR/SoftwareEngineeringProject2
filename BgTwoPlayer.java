@@ -73,19 +73,13 @@ public class BgTwoPlayer
 		}while(board.dice[0] == board.dice[1]);
 		System.out.println("Player " + Board.PLAYER1_SYMBOL + " rolled a " + board.dice[0]);
 		System.out.println("Player " + Board.PLAYER2_SYMBOL + " rolled a " + board.dice[1]);
-		if(board.dice[0] > board.dice[1]) {
-			player1 = new HumanPlayer(Board.PLAYER1, board);
-			player2 = new HumanPlayer(Board.PLAYER2, board);
-			System.out.println("\nPlayer " + Board.PLAYER1_SYMBOL
+		
+		player1 = (board.dice[0] > board.dice[1]) ? new HumanPlayer(Board.PLAYER1, board) : new HumanPlayer(Board.PLAYER2, board);
+		player2 = (board.dice[0] > board.dice[1]) ? new HumanPlayer(Board.PLAYER2, board) : new HumanPlayer(Board.PLAYER1, board);
+		
+		System.out.println((board.dice[0] > board.dice[1]) ? "\nPlayer " + Board.PLAYER1_SYMBOL
+					+ " will start first!\n" : "\nPlayer " + Board.PLAYER2_SYMBOL
 					+ " will start first!\n");
-		}
-		else 
-		{
-			player1 = new HumanPlayer(Board.PLAYER2, board);
-			player2 = new HumanPlayer(Board.PLAYER1, board);
-			System.out.println("\nPlayer " + Board.PLAYER2_SYMBOL
-					+ " will start first!\n");
-		}
 	}
 	
 }
