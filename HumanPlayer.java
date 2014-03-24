@@ -382,7 +382,7 @@ public class HumanPlayer {
 		boolean check = false;
 		for (int index = 0; index < 4; index++)
 		{
-			if (board.dice[index] == move)
+			if (board.returnDice(index) == move)
 			{
 				check = true;
 			}
