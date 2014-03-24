@@ -218,7 +218,7 @@ public class HumanPlayer {
 				else if ((moves[i].charAt(3) == '-')&&(moves[i].strlen==5)&&(moves[0].substring(0, 3).equals("bar")))
 				{
 					location_input = "bar";
-					dice_input = moves[i].substring(3, 4);
+					dice_input = moves[i].substring(4, 5);
 				}
 				else
 				{
