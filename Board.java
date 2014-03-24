@@ -48,7 +48,7 @@ public class Board
 	 * Backgammon game. The four dice help to represent doubles, if not double
 	 * the last two will be set to zero.
 	 */
-	public int[] dice = new int[4];
+	private int[] dice = new int[4];
 	
 	/**
 	 * This defines the index of player 1. This definition can be used in a different 
@@ -626,5 +626,17 @@ public class Board
 	public int returnOff(int playerSymbol)
 	{
 		return off[playerSymbol];
+	}
+	
+	/**
+	 * This method is used to return a specific dice
+	 * 
+	 * @param playerSymbol
+	 *            This is the current player
+	 * @return The value on the dice
+	 */
+	public int returnDice(int playerSymbol)
+	{
+		return dice[playerSymbol];
 	}
 }
