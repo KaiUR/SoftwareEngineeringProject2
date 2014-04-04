@@ -1,4 +1,4 @@
-package assignment3Backgammon;
+package assignment4Backgammon;
 
 import java.util.Random;
 
@@ -6,8 +6,8 @@ import java.util.Random;
  * A class representing a Backgammon Board
  * 
  * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
- * @version 1.01, 22 MAR 2014
- * @see assignment3Backgammon;
+ * @version 1.01, 4 APR 2014
+ * @see assignment4Backgammon;
  * 
  */
 public class Board
@@ -98,7 +98,7 @@ public class Board
 	 *            index, the exact position in the positions array
 	 * @return The value at the position that was requested
 	 */
-	public String getValueatPossition(int index)
+	public String getValueAtPosition(int index)
 	{
 		return positions[index];
 	}
