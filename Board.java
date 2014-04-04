@@ -656,7 +656,7 @@ public class Board
 	{
 		char playerSymbol = (player == PLAYER1) ? PLAYER1_SYMBOL : PLAYER2_SYMBOL;
 		
-		String[] possiblePlays = new String[100];
+		String[] possibleSinglePlays = new String[20];
 		int possiblePlayCount = 0;
 		
 		/** Ensures we move opposite way for player 2 */
@@ -678,7 +678,7 @@ public class Board
 				{
 					if(positions[location + dice[i]].equals(EMPTY_SPACE_SYMBOL) || positions[location + dice[i]].charAt(1) == '1' || positions[location + dice[i]].charAt(0) == playerSymbol)
 					{
-						possiblePlays[possiblePlayCount] = location + "-" + Math.abs(dice[i]);
+						possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(dice[i]);
 						possiblePlayCount++;
 					}
 				}
@@ -687,11 +687,23 @@ public class Board
 					/** This allows a bearing off move. It must be checked later
 					 *  that bearing off is allowed or these moves must be removed.
 					 */
-					possiblePlays[possiblePlayCount] = location + "-" + Math.abs(dice[i]);
+					possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(dice[i]);
 					possiblePlayCount++;
 				}
 			}
 		}
+		
+		searchForPlays(dice);
+		
+		if(numberOfDice() != 4)
+		{
+			int[] otherDiceOrder = new int[2];
+			otherDiceOrder[0] = dice[1];
+			otherDiceOrder[1] = dice[0];
+			searchForPlays(otherDiceOrder);
+		}
+		
+		
 	}
 	
 	/**
@@ -739,5 +751,10 @@ public class Board
 		}
 		
 		return updatedLocations;
+	}
+	
+	private void searchForPlays(int[] diceOrder)
+	{
+		
 	}
 }
