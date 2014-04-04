@@ -68,6 +68,12 @@ public class HumanPlayer {
 		board.printBoard(playerSymbol);
 		int numberOfDice = board.numberOfDice();
 		
+		String[] allMoves = board.allPossiblePlays(getPlayerSymbol());
+		for(String move : allMoves)
+		{
+			System.out.println(move);
+		}
+		
 		while(!passedChecks) 
 		{
 			System.out.println("Current Player: " + playerChar);
