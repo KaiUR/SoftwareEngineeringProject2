@@ -701,17 +701,6 @@ public class Board
 			}
 		}
 		
-		searchForPlays(dice);
-		
-		if(numberOfDice() != 4)
-		{
-			int[] otherDiceOrder = new int[2];
-			otherDiceOrder[0] = dice[1];
-			otherDiceOrder[1] = dice[0];
-			searchForPlays(otherDiceOrder);
-		}
-		
-		
 	}
 	
 	/**
@@ -759,10 +748,5 @@ public class Board
 		}
 		
 		return updatedLocations;
-	}
-	
-	private void searchForPlays(int[] diceOrder)
-	{
-		
 	}
 }
