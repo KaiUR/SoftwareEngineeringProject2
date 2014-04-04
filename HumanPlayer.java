@@ -71,6 +71,7 @@ public class HumanPlayer {
 		String[] allMoves = board.allPossiblePlays(getPlayerSymbol());
 		for(String move : allMoves)
 		{
+			if(move == null) break;
 			System.out.println(move);
 		}
 		
