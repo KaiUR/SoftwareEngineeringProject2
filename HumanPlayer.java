@@ -6,8 +6,8 @@ import java.util.Scanner;
  * A class representing a Human Player in Backgammon
  * 
  * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
- * @version 1.01, 22 MAR 2014
- * @see assignment3Backgammon;
+ * @version 1.01, APR 4 2014
+ * @see assignment4Backgammon;
  * 
  */
 public class HumanPlayer {
@@ -324,7 +324,7 @@ public class HumanPlayer {
 		/* Checks if checker exists */
 		if (playerSymbol == Board.PLAYER1 && position != -2)
 		{
-			if (board.getValueatPossition(position).charAt(0) != Board.PLAYER1_SYMBOL)
+			if (board.getValueAtPosition(position).charAt(0) != Board.PLAYER1_SYMBOL)
 			{
 				System.out.println("Error - There is no valid checker here");
 				return false;
@@ -332,7 +332,7 @@ public class HumanPlayer {
 		}
 		else if (playerSymbol == Board.PLAYER2&& position != -2)
 		{
-			if (board.getValueatPossition(position).charAt(0) != Board.PLAYER2_SYMBOL)
+			if (board.getValueAtPosition(position).charAt(0) != Board.PLAYER2_SYMBOL)
 			{
 				System.out.println("Error - There is no valid checker here");
 				return false;
