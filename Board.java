@@ -609,12 +609,12 @@ public class Board
 	 * This method is used to return a specific dice
 	 * 
 	 * @param playerSymbol
-	 *            This is the current player
+	 *            This is the specified dice
 	 * @return The value on the dice
 	 */
-	public int returnDice(int playerSymbol)
+	public int returnDice(int diceNumber)
 	{
-		return dice[playerSymbol];
+		return dice[diceNumber];
 	}
 	
 	/**
