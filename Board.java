@@ -659,12 +659,18 @@ public class Board
 		String[] possibleSinglePlays = new String[20];
 		int possiblePlayCount = 0;
 		
+		int[] localDice = new int[4];
+		for(int i = 0; i < localDice.length; i++)
+		{
+			localDice[i] = returnDice(i);
+		}
+		
 		/** Ensures we move opposite way for player 2 */
 		if(player == PLAYER2)
 		{
 			for(int i= 0; i < 4; i++)
 			{
-				dice[i] *= -1;
+				localDice[i] *= -1;
 			}
 		}
 		
@@ -684,9 +690,9 @@ public class Board
 				}
 				else if(location + dice[i] >= 0 && location + dice[i] < 24)
 				{
-					if(positions[location + dice[i]].equals(EMPTY_SPACE_SYMBOL) || positions[location + dice[i]].charAt(1) == '1' || positions[location + dice[i]].charAt(0) == playerSymbol)
+					if(positions[location + localDice[i]].equals(EMPTY_SPACE_SYMBOL) || positions[location + localDice[i]].charAt(1) == '1' || positions[location + localDice[i]].charAt(0) == playerSymbol)
 					{
-						possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(dice[i]);
+						possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(localDice[i]);
 						possiblePlayCount++;
 					}
 				}
@@ -695,7 +701,7 @@ public class Board
 					/** This allows a bearing off move. It must be checked later
 					 *  that bearing off is allowed or these moves must be removed.
 					 */
-					possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(dice[i]);
+					possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(localDice[i]);
 					possiblePlayCount++;
 				}
 			}
@@ -718,6 +724,8 @@ public class Board
 		int i;
 		int[] locations = new int[25];
 		locations[0] = (bar[player] == 0) ? -2 : -1;
+		else locations[0] = (bar[PLAYER2] == 0) ? -2 : 24;
+		
 		for(i = 1; i < locations.length; i++) 
 		{
 			if(positions[i - 1].charAt(0) == playerSymbol) 
