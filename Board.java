@@ -674,7 +674,15 @@ public class Board
 		{
 			for(int i = 0; i < numberOfDice(); i++)
 			{
-				if(location + dice[i] >= 0 && location + dice[i] < 24)
+				if(location == -1 || location == 24)
+				{
+					if(positions[location + localDice[i]].equals(EMPTY_SPACE_SYMBOL) || positions[location + localDice[i]].charAt(1) == '1' || positions[location + localDice[i]].charAt(0) == playerSymbol)
+					{
+						possibleSinglePlays[possiblePlayCount] = "bar-" + Math.abs(localDice[i]);
+						possiblePlayCount++;
+					}
+				}
+				else if(location + dice[i] >= 0 && location + dice[i] < 24)
 				{
 					if(positions[location + dice[i]].equals(EMPTY_SPACE_SYMBOL) || positions[location + dice[i]].charAt(1) == '1' || positions[location + dice[i]].charAt(0) == playerSymbol)
 					{
