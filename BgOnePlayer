@@ -1,0 +1,13 @@
+package assignment4Backgammon;
+
+/**
+ * A class for playing a Backgammon game, human versus the computer
+ * 
+ * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
+ * @version 1.01, 4 APR 2014
+ * @see assignment4Backgammon;
+ * 
+ */
+public class BgOnePlayer {
+
+}
