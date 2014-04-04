@@ -338,7 +338,8 @@ public class Board
 	public int numberOfDice() {
 		int count = 0;
 		for(int d : dice) {
-			if(d > 0) count++;
+			if(d == 0) {}
+			else count++;
 		}
 		return count;
 	}
@@ -641,5 +642,102 @@ public class Board
 	public int returnBar(int playerSymbol)
 	{
 		return bar[playerSymbol];
+	}
+	
+	/**
+	 * A method to return all possible plays for a player
+	 * 
+	 * @param player
+	 * 				Player to return all plays for
+	 * @param dice
+	 * 				Dice roll available this turn
+	 */
+	public void allPossiblePlays(int player, int[] dice) 
+	{
+		char playerSymbol = (player == PLAYER1) ? PLAYER1_SYMBOL : PLAYER2_SYMBOL;
+		
+		String[] possiblePlays = new String[100];
+		int possiblePlayCount = 0;
+		
+		/** Ensures we move opposite way for player 2 */
+		if(player == PLAYER2)
+		{
+			for(int i= 0; i < 4; i++)
+			{
+				dice[i] *= -1;
+			}
+		}
+		
+		int[] checkerLocations = getLocations(player, playerSymbol);
+		
+		for(int location : checkerLocations)
+		{
+			for(int i = 0; i < numberOfDice(); i++)
+			{
+				if(location + dice[i] >= 0 && location + dice[i] < 24)
+				{
+					if(positions[location + dice[i]].equals(EMPTY_SPACE_SYMBOL) || positions[location + dice[i]].charAt(1) == '1' || positions[location + dice[i]].charAt(0) == playerSymbol)
+					{
+						possiblePlays[possiblePlayCount] = location + "-" + Math.abs(dice[i]);
+						possiblePlayCount++;
+					}
+				}
+				else
+				{
+					/** This allows a bearing off move. It must be checked later
+					 *  that bearing off is allowed or these moves must be removed.
+					 */
+					possiblePlays[possiblePlayCount] = location + "-" + Math.abs(dice[i]);
+					possiblePlayCount++;
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Returns an int array of the indexes that contain pips belonging to player
+	 * If the returned array contains -1, this player has a pip on the bar
+	 * 
+	 * @param player
+	 * 			Player whose pips we are checking
+	 * @return
+	 * 			Array of indexes with this players pips.
+	 */
+	private int[] getLocations(int player, char playerSymbol)
+	{
+		/** -2 means no checker at this index. Index 0 for bar */
+		int i;
+		int[] locations = new int[25];
+		locations[0] = (bar[player] == 0) ? -2 : -1;
+		for(i = 1; i < locations.length; i++) 
+		{
+			if(positions[i - 1].charAt(0) == playerSymbol) 
+			{
+				locations[i] = i - 1;
+			}
+			else
+			{
+				locations[i] = -2;
+			}
+		}
+		
+		/** Remove locations with no checkers */
+		int size = 0;
+		for(int location : locations) 
+		{
+			if(location != -2) size++;
+		}
+		
+		int j = 0;
+		int[] updatedLocations = new int[size];
+		for(i = 0; i < updatedLocations.length; i++)
+		{
+			while(locations[j] == -2) j++;
+			updatedLocations[i] = locations[j];
+			j++;
+			
+		}
+		
+		return updatedLocations;
 	}
 }
