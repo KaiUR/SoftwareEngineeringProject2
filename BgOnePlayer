@@ -10,4 +10,77 @@ package assignment4Backgammon;
  */
 public class BgOnePlayer {
 
+	private static Board board = new Board();
+	private static HumanPlayer human;
+	private static RandomPlayer random;
+	
+	public static void main(String[] args) {
+		int stateCheck;
+		boolean firstMove = true;
+		
+		decideWhoFirst();
+		
+		while(true)
+		{
+			if(board.returnDice(0) > board.returnDice(1))
+			{
+				if(firstMove) firstMove = false;
+				else board.rollDice();
+				stateCheck = human.makeMove();
+				analyseState(stateCheck);
+				board.rollDice();
+				stateCheck = random.makeMove();
+				analyseState(stateCheck);
+			}
+			else
+			{
+				if(firstMove) firstMove = false;
+				else board.rollDice();
+				stateCheck = human.makeMove();
+				analyseState(stateCheck);
+				board.rollDice();
+				stateCheck = random.makeMove();
+				analyseState(stateCheck);
+			}
+		}
+		
+	}
+	
+	/**
+	 *  This method is used to check which player starts the game first
+	 */
+	private static void decideWhoFirst()
+	{
+		do {
+			board.rollDice();
+		}while (board.returnDice(0) == board.returnDice(1));
+		System.out.println("Player " + Board.PLAYER1_SYMBOL + " rolled a "
+				+ board.returnDice(0));
+		System.out.println("Player " + Board.PLAYER2_SYMBOL + " rolled a "
+				+ board.returnDice(1));
+
+		human = (board.returnDice(0) > board.returnDice(1)) ? new HumanPlayer(
+				Board.PLAYER1, board) : new HumanPlayer(Board.PLAYER2, board);
+		random = (board.returnDice(0) > board.returnDice(1)) ? new RandomPlayer(
+				Board.PLAYER2, board) : new RandomPlayer(Board.PLAYER1, board);
+
+		System.out
+				.println((board.returnDice(0) > board.returnDice(1)) ? "\nPlayer "
+						+ Board.PLAYER1_SYMBOL + " will start first!\n"
+						: "\nPlayer " + Board.PLAYER2_SYMBOL
+								+ " will start first!\n");
+	}
+	
+	private static void analyseState(int state) {
+		if(state != -2 && state != -3) {
+			return;
+		}
+		else if(state == -2) {
+			System.out.println("\nYou have chosen to exit the game. Goodbye.");
+		}
+		human.closeScanner();
+		System.exit(0);
+	}
+	
+	
 }
