@@ -757,4 +757,37 @@ public class Board
 		
 		return updatedLocations;
 	}
+
+	public int winner(int location, int playerSymbol) {
+		String winType = "";
+		
+		char playerChar = (playerSymbol == PLAYER1) ? PLAYER1_SYMBOL : PLAYER2_SYMBOL;
+		
+		if(playerSymbol == Board.PLAYER1) 
+		{
+			if(location < 6) winType = "Single";
+			else if(location >= 6 && location < 18) winType = "Gammmon";
+			else winType = "Backgammon";
+			
+			System.out.println();
+			this.printBoard(playerSymbol);
+			System.out.println("Congratulations, Player " + playerChar);
+			System.out.println("You have won with a " + winType);
+			
+			return -3;
+		}
+		else 
+		{
+			if(location >= 18) winType = "Single";
+			else if(location >= 6 && location < 18) winType = "Gammmon";
+			else winType = "Backgammon";
+			
+			System.out.println();
+			this.printBoard(playerSymbol);
+			System.out.println("Congratulations, Player " + playerChar);
+			System.out.println("You have won with a " + winType);
+			
+			return -3;
+		}
+	}
 }
