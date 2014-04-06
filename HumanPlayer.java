@@ -118,7 +118,7 @@ public class HumanPlayer {
 		if(checkForWin == -1) {
 			return 0;
 		}
-		else return winner(checkForWin);
+		else return board.winner(checkForWin, playerSymbol);
 	}
 	
 	/**
