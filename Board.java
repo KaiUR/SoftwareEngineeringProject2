@@ -645,85 +645,308 @@ public class Board
 	}
 	
 	/**
-	 * A method to return all possible plays for a player
+	 * Main handler for finding all possible moves
 	 * 
 	 * @param player
-	 * 				Player to return all plays for
-	 * @param dice
-	 * 				Dice roll available this turn
+	 * 			Current player
+	 * @return
+	 * 			String array of all moves
 	 */
-	public void allPossiblePlays(int player, int[] dice) 
+	public String[] findAllPlays(int player)
+	{
+		int[] diceCombo1 = new int[numberOfDice()];
+		int[] diceCombo2 = new int[2];
+		diceCombo1[0] = dice[0];
+		diceCombo1[1] = dice[1];
+		if(diceCombo1.length == 4)
+		{
+			diceCombo1[2] = dice[2];
+			diceCombo1[3] = dice[3];
+		}
+		if(numberOfDice() == 2)
+		{
+			diceCombo2[0] = dice[1];
+			diceCombo2[1] = dice[0];
+		}
+		
+		if(player == PLAYER2)
+		{
+			diceCombo1 = minusDice(diceCombo1);
+			diceCombo2 = minusDice(diceCombo2);
+		}
+		
+		String[] locations = getLocations(player);
+		
+		String[] moves1 = movesForDice(player, diceCombo1, locations);
+		String[] moves2 = new String[moves1.length + 10];
+		if(numberOfDice() == 2)
+		{
+			moves2 = movesForDice(player, diceCombo2, locations);
+		}
+		
+		String[] moves = removeNulls(mergeArrays(moves1, moves2));
+		
+		/** PRINTING ALL POSSIBLE MOVES
+		for(int z = 0; z < moves.length; z++)
+		{
+			System.out.println(moves[z]);
+		} */
+		
+		/**
+		 * STILL NEED TO IMPLEMENT:
+		 * 
+		 * 1.	If you can only move one checker, make sure only higher dice is used
+		 * 		if possible.
+		 * 2. 	If player has a piece on the bar, make sure to remove all
+		 * 		from possible moves that do not move off the bar before other moves.
+		 * 
+		 */
+		
+		return moves;
+	}
+	
+	/**
+	 * Recursive function to find all moves.
+	 * 
+	 * @param player
+	 * 			Current player
+	 * @param diceCombo
+	 * 			Dice this time
+	 * @param locations
+	 * 			Locations of players pieces
+	 * @return
+	 * 			Array of string moves
+	 */
+	private String[] movesForDice(int player, int[] diceCombo, String[] locations)
+	{		
+		String[] array1 = getSingleMoves(player, diceCombo, locations);
+		
+		String[] moves = new String[10];
+		
+		if(diceCombo.length == 1)
+		{
+			return array1;
+		}
+		else
+		{
+			for(String move : array1)
+			{
+				String[] updatedLocations = updateLocations(player, locations, move);
+				String[] tempArray1 = movesForDice(player, cdr(diceCombo), updatedLocations);
+				String[] tempArray2 = new String[tempArray1.length];
+				
+				for(int i = 0; i < tempArray2.length; i++)
+				{
+					tempArray2[i] = move;
+					tempArray2[i] += " " + tempArray1[i];
+				}
+				
+				moves = mergeArrays(tempArray2, moves);
+			}
+			
+			return removeNulls(moves);
+		}
+	}
+	
+	/**
+	 * Uses the first dice in dice roll to get all possible moves with that dice
+	 * from the players current locations
+	 * 
+	 * @param player
+	 * 			Current Player
+	 * @param localDice
+	 * 			Dice available, only the first is used here
+	 * @param stringLocations
+	 * 			Locations of players checkers in string form.
+	 * @return
+	 * 			String array of the possible moves
+	 */
+	private String[] getSingleMoves(int player, int[] localDice, String[] stringLocations)
 	{
 		char playerSymbol = (player == PLAYER1) ? PLAYER1_SYMBOL : PLAYER2_SYMBOL;
 		
 		String[] possibleSinglePlays = new String[20];
 		int possiblePlayCount = 0;
 		
-		int[] localDice = new int[4];
-		for(int i = 0; i < localDice.length; i++)
+		int[] checkerLocations = new int[stringLocations.length];	
+		for(int i = 0; i < stringLocations.length; i++)
 		{
-			localDice[i] = returnDice(i);
-		}
-		
-		/** Ensures we move opposite way for player 2 */
-		if(player == PLAYER2)
-		{
-			for(int i= 0; i < 4; i++)
+			int spaceIndex = stringLocations[i].indexOf(" ");
+			if(stringLocations[i].substring(0, spaceIndex).equals("bar"))
 			{
-				localDice[i] *= -1;
+				checkerLocations[i] = (player == PLAYER1) ? -1 : 24;
+			}
+			else{
+				checkerLocations[i] = Integer.parseInt(stringLocations[i].substring(0, spaceIndex));
 			}
 		}
 		
-		int[] checkerLocations = getLocations(player, playerSymbol);
-		
 		for(int location : checkerLocations)
 		{
-			for(int i = 0; i < numberOfDice(); i++)
+			if(location == -1 || location == 24)
 			{
-				if(location == -1 || location == 24)
+				if(positions[location + localDice[0]].equals(EMPTY_SPACE_SYMBOL) || positions[location + localDice[0]].charAt(1) == '1' || positions[location + localDice[0]].charAt(0) == playerSymbol)
 				{
-					if(positions[location + localDice[i]].equals(EMPTY_SPACE_SYMBOL) || positions[location + localDice[i]].charAt(1) == '1' || positions[location + localDice[i]].charAt(0) == playerSymbol)
+					possibleSinglePlays[possiblePlayCount] = "bar-" + Math.abs(localDice[0]);
+					possiblePlayCount++;
+				}
+			}
+			else if(location + localDice[0] >= 0 && location + localDice[0] < 24)
+			{
+				if(positions[location + localDice[0]].equals(EMPTY_SPACE_SYMBOL) || positions[location + localDice[0]].charAt(1) == '1' || positions[location + localDice[0]].charAt(0) == playerSymbol)
+				{
+					if(possiblePlayCount > 0 && possibleSinglePlays[possiblePlayCount - 1].equals(location + "-" + Math.abs(localDice[0]))) continue; /** This makes sure we don't duplicate moves */
+					possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(localDice[0]);
+					possiblePlayCount++;
+				}
+			}
+			else
+			{
+				boolean bearOff = true;
+				
+				for(int i = 0; i < stringLocations.length; i++)
+				{
+					int space = stringLocations[i].indexOf(" ");
+					if(stringLocations[i].substring(0, space).equals("bar"))
 					{
-						possibleSinglePlays[possiblePlayCount] = "bar-" + Math.abs(localDice[i]);
-						possiblePlayCount++;
+						bearOff = false;
+						break;
+					}
+					else if(player == PLAYER1 && Integer.parseInt(stringLocations[i].substring(0, space)) < 18)
+					{
+						bearOff = false;
+						break;
+					}
+					else if(player == PLAYER2 && Integer.parseInt(stringLocations[i].substring(0, space)) > 5)
+					{
+						bearOff = false;
+						break;
 					}
 				}
-				else if(location + dice[i] >= 0 && location + dice[i] < 24)
+				
+				if(bearOff)
 				{
-					if(positions[location + localDice[i]].equals(EMPTY_SPACE_SYMBOL) || positions[location + localDice[i]].charAt(1) == '1' || positions[location + localDice[i]].charAt(0) == playerSymbol)
-					{
-						possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(localDice[i]);
-						possiblePlayCount++;
-					}
-				}
-				else
-				{
-					/** This allows a bearing off move. It must be checked later
-					 *  that bearing off is allowed or these moves must be removed.
-					 */
-					possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(localDice[i]);
+					possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(localDice[0]);
 					possiblePlayCount++;
 				}
 			}
 		}
 		
+		return removeNulls(possibleSinglePlays);
+	}
+	
+	/**
+	 * Removes all null entries from end of string array
+	 * 
+	 * @param array
+	 * 			Array to remove nulls from
+	 * @return
+	 * 			Array without nulls
+	 */
+	private String[] removeNulls(String[] array)
+	{
+		int i = 0;
+		while(array[i] != null)
+		{
+			i++;
+			if(i == array.length) return array;
+		}
+		
+		String[] noNullArray = new String[i];
+		for(i = 0; i < noNullArray.length; i++)
+		{
+			noNullArray[i] = array[i];
+		}
+		
+		return noNullArray;
+	}
+	
+	/**
+	 * Like in Scheme, returns all elements of array but the first.
+	 * This is used for the recursion, the first dice is used every time
+	 * so we don't include the first dice on the next recursion.
+	 * 
+	 * @param array
+	 * 			Dice array
+	 * @return
+	 * 			Array without first element
+	 */
+	private int[] cdr(int[] array)
+	{
+		int[] cdrArray = new int[array.length - 1];
+		for(int i = 0; i < cdrArray.length; i++)
+		{
+			cdrArray[i] = array[i + 1];
+		}
+		return cdrArray;
+	}
+	
+	/**
+	 * Merges arrays from different dice combinations in calling of movesForDice method
+	 * 
+	 * @param array
+	 * 		First array
+	 * @param array2
+	 * 		Second array
+	 * @return
+	 * 		Merged array
+	 */
+	private String[] mergeArrays(String[] array, String[] array2)
+	{
+		if(array2.length == 0) return array;
+		int i = 0;
+		while(array2[i] != null)
+		{
+			i++;
+			if(i == array2.length) array2 = expandArray(array2);
+		}
+		for(int j = 0; j < array.length; j++)
+		{
+			if(i == array2.length) array2 = expandArray(array2);
+			array2[i] = array[j];
+			i++;
+		}
+		return array2;
+	}
+	
+	/**
+	 * If an array is full, it is copied into a new array with a bigger size
+	 * 
+	 * @param array
+	 * 		Array to be expanded
+	 * @return
+	 * 		Expanded array
+	 */
+	private String[] expandArray(String[] array)
+	{
+		String[] largerArray = new String[array.length * 2];
+		for(int i = 0; i < array.length; i++)
+		{
+			largerArray[i] = array[i];
+		}
+		return largerArray;
 	}
 	
 	/**
 	 * Returns an int array of the indexes that contain pips belonging to player
 	 * If the returned array contains -1, this player has a pip on the bar
 	 * 
+	 * Locations are in string form so that the first number is a location occupied,
+	 * then a space and then the second number is the number of checkers in "fake"
+	 * gameplay
+	 * 
 	 * @param player
 	 * 			Player whose pips we are checking
 	 * @return
 	 * 			Array of indexes with this players pips.
 	 */
-	private int[] getLocations(int player, char playerSymbol)
+	private String[] getLocations(int player)
 	{
 		/** -2 means no checker at this index. Index 0 for bar */
+		char playerSymbol = (player == PLAYER1) ? PLAYER1_SYMBOL : PLAYER2_SYMBOL;
 		int i;
 		int[] locations = new int[25];
-		locations[0] = (bar[player] == 0) ? -2 : -1;
+		if(player == PLAYER1) locations[0] = (bar[PLAYER1] == 0) ? -2 : -1;
 		else locations[0] = (bar[PLAYER2] == 0) ? -2 : 24;
 		
 		for(i = 1; i < locations.length; i++) 
@@ -746,16 +969,251 @@ public class Board
 		}
 		
 		int j = 0;
-		int[] updatedLocations = new int[size];
-		for(i = 0; i < updatedLocations.length; i++)
+		int[] occupiedLocations = new int[size];
+		for(i = 0; i < occupiedLocations.length; i++)
 		{
 			while(locations[j] == -2) j++;
-			updatedLocations[i] = locations[j];
+			occupiedLocations[i] = locations[j];
 			j++;
-			
 		}
 		
-		return updatedLocations;
+		String[] stringifiedLocations = new String[occupiedLocations.length];
+		for(i = 0; i < stringifiedLocations.length; i++)
+		{
+			if(occupiedLocations[i] < 0 || occupiedLocations[i] > 23) 
+			{
+				stringifiedLocations[i] = "bar " + bar[player];
+				continue;
+			}
+			stringifiedLocations[i] = String.valueOf(occupiedLocations[i]);
+			stringifiedLocations[i] += " " + positions[occupiedLocations[i]].charAt(1);
+		}
+		
+		return stringifiedLocations;
+	}
+	
+	/**
+	 * Updates "fake" locations after hypothetical move so we know that if the first
+	 * move was from a space with one checker left, the second move can't be from
+	 * the same space
+	 * 
+	 * @param player
+	 * 			Current player
+	 * @param previousLocations
+	 * 			Previous locations, these are manipulated and then returned
+	 * @param move
+	 * 			Move we are examining, our changes are due to the contents
+	 * 			of the move
+	 * @return
+	 * 			Updated locations after "hypothetical" move
+	 */
+	private String[] updateLocations(int player, String[] previousLocations, String move)
+	{
+		int spaceBefore = move.lastIndexOf(" ");
+		if(spaceBefore == -1) spaceBefore = 0;
+		int hyphonIndex = move.lastIndexOf("-");
+		
+		if(move.substring(spaceBefore, hyphonIndex).equals("bar"))
+		{
+			previousLocations = handleBar(player, previousLocations, move);
+			return previousLocations;
+		}
+		
+		int fromPosition = Integer.parseInt(move.substring(spaceBefore, hyphonIndex));
+		
+		int spacesToMove = (player == PLAYER1) ? Integer.parseInt(move.substring(hyphonIndex + 1)) : Integer.parseInt(move.substring(hyphonIndex + 1)) * -1;
+		if(!contains(previousLocations, fromPosition + spacesToMove))
+		{
+			previousLocations = add(previousLocations, fromPosition + spacesToMove);
+		}
+		else
+		{
+			for(int i = 0; i < previousLocations.length; i++)
+			{
+				int spaceIndex2 = previousLocations[i].indexOf(" ");
+				if(previousLocations[i].substring(spaceIndex2).equals(String.valueOf(fromPosition + spacesToMove)));
+				{
+					int checkers = Integer.parseInt(previousLocations[i].substring(spaceIndex2 + 1));
+					previousLocations[i] = (fromPosition + spacesToMove) + " " + (checkers + 1);
+				}
+			}
+		}
+		for(int i = 0; i < previousLocations.length; i++)
+		{
+			int spaceIndex3 = previousLocations[i].indexOf(" ");
+			
+			if((previousLocations[i].substring(0, spaceIndex3)).equals("bar")) continue; 
+			else if(Integer.parseInt(previousLocations[i].substring(0, spaceIndex3)) == fromPosition)
+			{
+				String maintain = previousLocations[i].substring(0, spaceIndex3 + 1);
+				int checkers = Integer.parseInt(previousLocations[i].substring(0, spaceIndex3));
+				
+				if(checkers == 1)
+				{
+					previousLocations = remove(previousLocations, i);
+				}
+				else
+				{
+					previousLocations[i] = maintain + (checkers - 1);
+				}
+			}
+		}
+		
+		for(int i = 0; i < previousLocations.length; i++)
+		{
+			int spaceIndex4 = previousLocations[i].indexOf(" ");
+			int newPosition = Integer.parseInt(previousLocations[i].substring(0, spaceIndex4));
+			
+			if(newPosition < 0 || newPosition > 23)
+			{
+				previousLocations = remove(previousLocations, i);
+			}
+		}
+		
+		return previousLocations;
+	}
+	
+	/**
+	 * Checks if a certain index is already in our locations array
+	 * 
+	 * @param locations
+	 * 		Locations that our player is in
+	 * @param movingTo
+	 * 		Location that we want to see if is in locations already
+	 * @return
+	 */
+	public boolean contains(String[] locations, int movingTo)
+	{
+		for(String location : locations)
+		{
+			int spaceIndex = location.indexOf(" ");
+			if(location.substring(0, spaceIndex).equals("bar")) continue;
+			if(movingTo == Integer.parseInt(location.substring(0, spaceIndex)))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Adds an element to the array
+	 * 
+	 * @param array
+	 * 		Array
+	 * @param elem
+	 * 		Elem to be added
+	 * @return
+	 * 		New array with element added
+	 */
+	public String[] add(String[] array, int elem)
+	{
+		int i = 0;
+		String[] newArray = new String[array.length + 1];
+		
+		while(i < array.length)
+		{
+			newArray[i] = array[i];
+			i++;
+		}
+		
+		newArray[i] = elem + " 1";
+		return newArray;
+	}
+	
+	/**
+	 * Remove an element from array
+	 * 
+	 * @param array
+	 * 		Array
+	 * @param index
+	 * 		Index to remove
+	 * @return
+	 * 		New array without element
+	 */
+	public String[] remove(String[] array, int index)
+	{
+		for(int i = index; i < array.length - 1; i++)
+		{
+			array[i] = array[i + 1];
+		}
+		String[] newArray = new String[array.length - 1];
+		for(int i = 0; i < newArray.length; i++)
+		{
+			newArray[i] = array[i];
+		}
+		
+		return newArray;
+	}
+	
+	/**
+	 * For updating locations, this manages the bar entry in our locations monitor array
+	 * 
+	 * @param player
+	 * 			Current player to deal with
+	 * @param locations
+	 * 			Locations this player occupies under certain "fake" move conditions
+	 * @param move
+	 * 			Move we are dealing with
+	 * @return
+	 * 			Locations array that has been updated
+	 */
+	private String[] handleBar(int player, String[] locations, String move)
+	{
+		for(int i = 0; i < locations.length; i++)
+		{
+			int hyphon = move.indexOf("-");
+			if(locations[i].substring(0, hyphon).equals("bar"))
+			{
+				int spacesToMove = Integer.parseInt(move.substring(hyphon + 1));
+				int space = locations[i].indexOf(" ");
+				int checkers = Integer.parseInt(locations[i].substring(space + 1));
+				
+				if(checkers == 1) locations = remove(locations, i);
+				else 
+				{
+					locations[i] = "bar " + (checkers - 1);
+				}
+				
+				if(contains(locations, spacesToMove))
+				{
+					for(int j = 0; j < locations.length; j++)
+					{
+						int space2 = locations[j].indexOf(" ");
+						if((Integer.parseInt(locations[j].substring(0, space2))) == spacesToMove)
+						{
+							int checkers2 = Integer.parseInt(locations[j].substring(space2 + 1));
+							locations[j] = spacesToMove + " " + (checkers2 + 1);
+							return locations;
+						}
+					}
+				}
+				else
+				{
+					locations = add(locations, spacesToMove);
+					return locations;
+				}
+			}
+		}
+		return locations;
+	}
+	
+	/**
+	 * Makes the dice negative, for player2. Used when generating all moves.
+	 * 
+	 * @param diceCombo
+	 * 			Dice
+	 * @return
+	 * 			All dice values but negative
+	 */
+	private int[] minusDice(int[] diceCombo)
+	{
+		int[] newDice = new int[diceCombo.length];
+		for(int i = 0; i < newDice.length; i++)
+		{
+			newDice[i] = diceCombo[i] * -1;
+		}
+		return newDice;
 	}
 
 	public int winner(int location, int playerSymbol) {
