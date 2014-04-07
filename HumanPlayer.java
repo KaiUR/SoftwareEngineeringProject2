@@ -84,9 +84,12 @@ public class HumanPlayer {
 		}
 		for (String play : allPlays)
 		{
+			String temp_count = play;
+			int count = temp_count.length()
+					- temp_count.replace("-", "").length();
 			String temp = "";
 			int hyphon = play.indexOf("-", 0), temp_int;
-			for (int i = 1; i <= numberOfDice; i++)
+			for (int i = 1; i <= count; i++)
 			{
 				if (play.substring(hyphon - 1, hyphon).equals("r"))
 				{
@@ -105,7 +108,7 @@ public class HumanPlayer {
 						temp += temp_int + play.substring(hyphon, hyphon + 2);
 					}
 				}
-				if (i < numberOfDice)
+				if (i < count)
 				{
 					temp += " ";
 					hyphon = play.indexOf("-", hyphon + 1);
