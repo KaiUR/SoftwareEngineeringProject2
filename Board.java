@@ -848,17 +848,27 @@ public class Board
 	 */
 	private String[] removeNulls(String[] array)
 	{
-		int i = 0;
-		while(i < array.length && array[i] != null)
+		int i = 0, j = 0;
+		while(i < array.length)
 		{
+			if(array[i]!=null)
+			{
+				j++;
+			}
 			i++;
-			if(i == array.length) return array;
 		}
 		
-		String[] noNullArray = new String[i];
-		for(i = 0; i < noNullArray.length; i++)
+		String[] noNullArray = new String[j];
+		i = 0;
+		j = 0;
+		while(i < array.length)
 		{
-			noNullArray[i] = array[i];
+			if(array[i]!=null)
+			{
+				noNullArray[j] = array[i];
+				j++;
+			}
+			i++;
 		}
 		
 		return noNullArray;
