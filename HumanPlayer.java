@@ -78,7 +78,19 @@ public class HumanPlayer {
 		
 		for(String play : board.findAllPlays(getPlayerSymbol()))
 		{
-			System.out.print(play + ", ");
+			String temp = play;
+			int hyphon = play.indexOf("-");
+			if (!(play.substring(0, hyphon).equals("bar")))
+			{
+				int temp_int = Integer.parseInt(play.substring(0, hyphon)) + 1;
+				temp = temp_int + play.substring(hyphon, hyphon + 2);
+				hyphon = play.lastIndexOf("-");
+				temp_int = Integer.parseInt(play.substring(play.indexOf(" ") + 1, hyphon)) + 1;
+				temp = temp + " " + temp_int + play.substring(hyphon, hyphon + 2);
+
+			}
+
+			System.out.print(temp + ", ");
 		}
 		System.out.println("\n");
 		
