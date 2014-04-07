@@ -101,13 +101,13 @@ public class HumanPlayer {
 					{
 						temp_int = Integer.parseInt(play.substring(0, hyphon)) + 1;
 						temp += temp_int + play.substring(hyphon, hyphon + 2);
-						temp.replace("-1", "Off");
+						temp.replace("--1", "-Off");
 					}
 					else
 					{
 						temp_int = Integer.parseInt(play.substring(play.indexOf(" ", hyphon - 3) + 1, hyphon)) + 1;
 						temp += temp_int + play.substring(hyphon, hyphon + 2);
-						temp.replace("-1", "Off");
+						temp.replace("--1", "-Off");
 					}
 				}
 				if (i < count)
