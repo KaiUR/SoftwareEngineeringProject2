@@ -1297,4 +1297,34 @@ public class Board
 			return -3;
 		}
 	}
+	
+	/**
+	 * 
+	 * @param numberMoves
+	 * @param allPlays
+	 * @return
+	 */
+	public boolean check_possible(int numberMoves, String[] allPlays)
+	{
+		int highest = 0;
+		int lowest = 0;
+		for (String temp : allPlays)
+		{
+			int count = temp.length() - temp.replace(".", "").length();
+			if (count < lowest)
+			{
+				lowest = count;
+			}
+			if (count > highest)
+			{
+				highest = count;
+			}
+		}
+
+		if (numberMoves >= lowest && numberMoves <= highest)
+		{
+			return false;
+		}
+		return true;
+	}
 }
