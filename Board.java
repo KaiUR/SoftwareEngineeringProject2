@@ -411,6 +411,11 @@ public class Board
 	public void makeAMove(int position, int move,  int team_modifier)
 	{
 		position--;
+		
+		if(positions[position].equals(EMPTY_SPACE_SYMBOL)) //Do not perform move in this case!
+		{
+			return;
+		}
 		 
 		char team = ' ';
 		if (team_modifier == PLAYER1)
@@ -487,6 +492,8 @@ public class Board
 			 * Player 2 moves anti-clockwise around the board
 			 */
 		}
+		
+		if(index < 0 || index > 23) move = -1;	//to increment off
 		
 		/*
 		 * moving off the board
