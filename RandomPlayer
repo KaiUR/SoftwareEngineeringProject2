@@ -26,6 +26,11 @@ public class RandomPlayer
 	public int makeMove()
 	{
 		String[] possiblePlays = board.findAllPlays(player);
+		if (possiblePlays.length == 0)
+		{
+			System.out.print("\nThe random player has no possible moves");
+			return 0;
+		}
 		String selection = possiblePlays[Math.abs(generator.nextInt() % possiblePlays.length)];
 		String[] moves = selection.split("\\s");
 		
