@@ -1311,7 +1311,7 @@ public class Board
 		int lowest = 0;
 		for (String temp : allPlays)
 		{
-			int count = temp.length() - temp.replace(".", "").length();
+			int count = temp.length() - temp.replace("-", "").length();
 			if (count < lowest)
 			{
 				lowest = count;
