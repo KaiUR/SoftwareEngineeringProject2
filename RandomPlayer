@@ -14,14 +14,12 @@ public class RandomPlayer
 {
 	private Board board;
 	private int player;
-	private char playerSymbol;
 	private Random generator;
 	
 	public RandomPlayer(int player, Board board)
 	{
 		this.player = player;
 		this.board = board;
-		playerSymbol = (this.player == Board.PLAYER1) ? Board.PLAYER1_SYMBOL : Board.PLAYER2_SYMBOL;
 		generator = new Random();
 	}
 	
@@ -55,7 +53,7 @@ public class RandomPlayer
 		
 		System.out.println();
 		
-		int checkForWin = board.doPlay(playerSymbol);
+		int checkForWin = board.doPlay(player);
 		if(checkForWin == -1) {
 			return 0;
 		}
