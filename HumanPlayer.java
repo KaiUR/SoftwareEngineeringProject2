@@ -136,6 +136,7 @@ public class HumanPlayer {
 			passedChecks = processMove(moves);
 			
 			if (moves.length != board.numberOfDice()
+				&& board.check_possible(moves.length, allPlays)
 				&& checkForBearOffMoves(moves))
 			{
 				System.out
