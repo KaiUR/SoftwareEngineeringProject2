@@ -685,6 +685,7 @@ public class Board
 		}
 		
 		String[] moves = removeNulls(mergeArrays(moves1, moves2));
+		moves = removeNulls(allowForBar(moves, player));
 		
 		/**
 		 * STILL NEED TO IMPLEMENT:
@@ -1221,6 +1222,47 @@ public class Board
 		return newDice;
 	}
 	
+	/**
+	 * This method checks if player is on bar and removes all options that do
+	 * not move the player off of the bar
+	 * 
+	 * @param moves
+	 *            The array of possible moves
+	 * @param player
+	 *            The current player
+	 * @return
+	 */
+	String[] allowForBar(String[] moves, int player)
+	{
+		int count = 0;
+		for (String temp : moves)
+		{
+			int bar = this.bar[player];
+			for (int index = 0; index < numberOfDice(); index++)
+			{
+				if (bar > 0)
+				{
+					if (!("bar".equals(temp.substring(0, temp.indexOf('-')))))
+					{
+						moves[count] = null;
+						break;
+					}
+				}
+				temp = temp.substring(temp.indexOf(" ") + 2);
+				bar--;
+			}
+			count++;
+		}
+
+		return moves;
+	}
+	
+	/**
+	 * 
+	 * @param location
+	 * @param playerSymbol
+	 * @return
+	 */
 	public int winner(int location, int playerSymbol) {
 		String winType = "";
 		
