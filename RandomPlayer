@@ -28,7 +28,7 @@ public class RandomPlayer
 		String[] possiblePlays = board.findAllPlays(player);
 		if (possiblePlays.length == 0)
 		{
-			System.out.print("\nThe random player has no possible moves");
+			System.out.print("\nThe random player has no possible moves.\n");
 			return 0;
 		}
 		String selection = possiblePlays[Math.abs(generator.nextInt() % possiblePlays.length)];
