@@ -144,6 +144,9 @@ public class HumanPlayer {
 				passedChecks = false;
 			}
 		
+			passedChecks = singleMoveHighestCheck(allPlays, passedChecks, moves);
+		
+		
 			if(passedChecks) 
 			{
 				passedChecks = performMove(moves, numberOfDice);
@@ -497,6 +500,51 @@ public class HumanPlayer {
 		else if(check == 3 && moves.length == 3) return false;
 
 		return true;
+	}
+	
+	/**
+	 * 
+	 * @param allPlays
+	 * @param passedChecks
+	 * @param moves
+	 * @return
+	 */
+	private boolean singleMoveHighestCheck(String[] allPlays,
+			boolean passedChecks, String[] moves)
+	{
+		int lowest = 0;
+		for (String temp : allPlays)
+		{
+			String temp_count = temp;
+			int count = temp_count.length()
+					- temp_count.replace("-", "").length();
+			if (lowest > count)
+			{
+				lowest = count;
+			}
+		}
+
+		if (lowest == 1)
+		{
+			if (moves.length > 1)
+			{
+				System.out.println("You only have one possible dice to move");
+			}
+
+			for (String temp : allPlays)
+			{
+				for (String temp_temp : moves)
+				{
+					if (temp.equals(temp_temp))
+					{
+						return passedChecks;
+					}
+				}
+				return false;
+			}
+		}
+
+		return passedChecks;
 	}
 	
 	/**
