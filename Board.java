@@ -1184,6 +1184,7 @@ public class Board
 					for(int j = 0; j < locations.length; j++)
 					{
 						int space2 = locations[j].indexOf(" ");
+						if(locations[j].substring(0, space2).equals("bar")) continue;
 						if((Integer.parseInt(locations[j].substring(0, space2))) == spacesToMove)
 						{
 							int checkers2 = Integer.parseInt(locations[j].substring(space2 + 1));
