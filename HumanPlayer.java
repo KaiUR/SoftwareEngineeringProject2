@@ -1,4 +1,4 @@
-package assignment3Backgammon;
+package assignment4Backgammon;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import java.util.Scanner;
  * A class representing a Human Player in Backgammon
  * 
  * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
- * @version 1.01, APR 4 2014
+ * @version 1.01, 4 APR 2014
  * @see assignment4Backgammon;
  * 
  */
@@ -36,6 +36,14 @@ public class HumanPlayer {
 	 * This scanner is for standard input.
 	 */
 	private Scanner	in	= new Scanner(System.in);
+	
+	/**
+	 * 
+	 */
+	public int getPlayerSymbol()
+	{
+		return playerSymbol;
+	}
 	
 	/**
 	 * This is the constructor
@@ -68,14 +76,13 @@ public class HumanPlayer {
 		board.printBoard(playerSymbol);
 		int numberOfDice = board.numberOfDice();
 		
-		String[] allMoves = board.allPossiblePlays(getPlayerSymbol());
-		for(String move : allMoves)
+		for(String play : board.findAllPlays(getPlayerSymbol()))
 		{
-			if(move == null) break;
-			System.out.println(move);
+			System.out.print(play + ", ");
 		}
+		System.out.println("\n");
 		
-		while(!passedChecks) 
+		while(!passedChecks)
 		{
 			System.out.println("Current Player: " + playerChar);
 			System.out.print("Dice: ");
@@ -119,42 +126,6 @@ public class HumanPlayer {
 			return 0;
 		}
 		else return board.winner(checkForWin, playerSymbol);
-	}
-	
-	/**
-	 * Function to print winner message depending on player and type of win
-	 * 
-	 * @param location furthest back pip
-	 * @return -3 to inform game to end
-	 */
-	private int winner(int location) {
-		String winType = "";
-		if(playerSymbol == Board.PLAYER1) 
-		{
-			if(location < 6) winType = "Single";
-			else if(location >= 6 && location < 18) winType = "Gammmon";
-			else winType = "Backgammon";
-			
-			System.out.println();
-			board.printBoard(playerSymbol);
-			System.out.println("Congratulations, Player " + playerChar);
-			System.out.println("You have won with a " + winType);
-			
-			return -3;
-		}
-		else 
-		{
-			if(location >= 18) winType = "Single";
-			else if(location >= 6 && location < 18) winType = "Gammmon";
-			else winType = "Backgammon";
-			
-			System.out.println();
-			board.printBoard(playerSymbol);
-			System.out.println("Congratulations, Player " + playerChar);
-			System.out.println("You have won with a " + winType);
-			
-			return -3;
-		}
 	}
 	
 	/**
@@ -408,12 +379,13 @@ public class HumanPlayer {
 		/*
 		 * Checks if checker is allowed to be moved off with higher dice roll
 		 */
+		@SuppressWarnings("unused")
 		boolean error = false;
 		if (playerSymbol == Board.PLAYER1)
 		{
 			if (position + move > 23)
 			{
-				if ((board.checkLastOccurence(playerSymbol) -1) < position && position + move != 24)
+				if (board.checkLastOccurence(playerSymbol) < position && position + move != 24)
 				{
 					error = true;
 				}
@@ -425,7 +397,7 @@ public class HumanPlayer {
 		{
 			if (position - move < 0)
 			{
-				if ((board.checkLastOccurence(playerSymbol) -1) > position && position - move != 0)
+				if (board.checkLastOccurence(playerSymbol) > position && position - move != 0)
 				{
 					error = true;
 				}
@@ -459,7 +431,7 @@ public class HumanPlayer {
 					return false;
 				}
 			}
-			if (error == true)
+			else if (error = true)
 			{
 				System.out.println("Error - You can not move this checker");
 				bearOff = false;
@@ -482,7 +454,7 @@ public class HumanPlayer {
 	 */
 	private boolean checkForBearOffMoves(String[] moves)
 	{
-		int check = -1 * (board.returnOff(playerSymbol) - 15);
+		int check = -1 * (board.returnOff(playerSymbol) - 15); //number of checkers left
 
 		for(String m : moves) if(m.equalsIgnoreCase("pass")) return false;
 		
