@@ -1246,6 +1246,10 @@ public class Board
 						break;
 					}
 				}
+				if (!temp.contains(" "))
+				{
+					break;
+				}
 				temp = temp.substring(temp.indexOf(" ") + 2);
 				bar--;
 			}
