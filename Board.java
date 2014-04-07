@@ -378,7 +378,7 @@ public class Board
 		{
 			for (int index_2 = 0; index_2 < 4; index_2++)
 			{
-				if (dice[index_2] > 0)
+				if (dice[index_2] != 0)
 				{
 					System.out.print(dice[index_2] + " ");
 				}
@@ -609,7 +609,7 @@ public class Board
 	/**
 	 * This method is used to return a specific dice
 	 * 
-	 * @param playerSymbol
+	 * @param diceNumber
 	 *            This is the specified dice
 	 * @return The value on the dice
 	 */
@@ -686,12 +686,6 @@ public class Board
 		
 		String[] moves = removeNulls(mergeArrays(moves1, moves2));
 		
-		/** PRINTING ALL POSSIBLE MOVES
-		for(int z = 0; z < moves.length; z++)
-		{
-			System.out.println(moves[z]);
-		} */
-		
 		/**
 		 * STILL NEED TO IMPLEMENT:
 		 * 
@@ -737,8 +731,16 @@ public class Board
 				
 				for(int i = 0; i < tempArray2.length; i++)
 				{
-					tempArray2[i] = move;
-					tempArray2[i] += " " + tempArray1[i];
+					if(i == 0)
+					{
+						tempArray2[i] = move;
+						tempArray2[i] += " " + tempArray1[i];
+					}
+					else if(i > 0 && !tempArray1[i].equals(tempArray1[i - 1]))
+					{
+						tempArray2[i] = move;
+						tempArray2[i] += " " + tempArray1[i];
+					}
 				}
 				
 				moves = mergeArrays(tempArray2, moves);
@@ -800,7 +802,7 @@ public class Board
 					possiblePlayCount++;
 				}
 			}
-			else
+			else if(location + localDice[0] < 0 && location + localDice[0] >= 24)
 			{
 				boolean bearOff = true;
 				
@@ -826,6 +828,7 @@ public class Board
 				
 				if(bearOff)
 				{
+					if(possiblePlayCount > 0 && possibleSinglePlays[possiblePlayCount - 1].equals(location + "-" + Math.abs(localDice[0]))) continue; /** This makes sure we don't duplicate moves */
 					possibleSinglePlays[possiblePlayCount] = location + "-" + Math.abs(localDice[0]);
 					possiblePlayCount++;
 				}
@@ -846,7 +849,7 @@ public class Board
 	private String[] removeNulls(String[] array)
 	{
 		int i = 0;
-		while(array[i] != null)
+		while(i < array.length && array[i] != null)
 		{
 			i++;
 			if(i == array.length) return array;
@@ -942,54 +945,42 @@ public class Board
 	 */
 	private String[] getLocations(int player)
 	{
-		/** -2 means no checker at this index. Index 0 for bar */
+		/** null means no checker at this index. Index 0 for bar */
 		char playerSymbol = (player == PLAYER1) ? PLAYER1_SYMBOL : PLAYER2_SYMBOL;
-		int i;
-		int[] locations = new int[25];
-		if(player == PLAYER1) locations[0] = (bar[PLAYER1] == 0) ? -2 : -1;
-		else locations[0] = (bar[PLAYER2] == 0) ? -2 : 24;
-		
-		for(i = 1; i < locations.length; i++) 
+		String[] locations = new String[25];
+			
+		for(int i = 0; i < positions.length; i++) 
 		{
-			if(positions[i - 1].charAt(0) == playerSymbol) 
+			if(positions[i].charAt(0) == playerSymbol) 
 			{
-				locations[i] = i - 1;
-			}
-			else
-			{
-				locations[i] = -2;
+				locations[i] = i + " " + positions[i].charAt(1);
 			}
 		}
 		
 		/** Remove locations with no checkers */
 		int size = 0;
-		for(int location : locations) 
+		for(String location : locations) 
 		{
-			if(location != -2) size++;
+			if(location != null) size++;
 		}
 		
+		if(bar[player] != 0) size++;
+		
 		int j = 0;
-		int[] occupiedLocations = new int[size];
-		for(i = 0; i < occupiedLocations.length; i++)
+		String[] occupiedLocations = new String[size];
+		for(int i = 0; i < occupiedLocations.length; i++)
 		{
-			while(locations[j] == -2) j++;
+			while(j < locations.length && locations[j] == null) j++;
+			if(j == locations.length) break;
 			occupiedLocations[i] = locations[j];
 			j++;
 		}
-		
-		String[] stringifiedLocations = new String[occupiedLocations.length];
-		for(i = 0; i < stringifiedLocations.length; i++)
+		if(bar[player] != 0)
 		{
-			if(occupiedLocations[i] < 0 || occupiedLocations[i] > 23) 
-			{
-				stringifiedLocations[i] = "bar " + bar[player];
-				continue;
-			}
-			stringifiedLocations[i] = String.valueOf(occupiedLocations[i]);
-			stringifiedLocations[i] += " " + positions[occupiedLocations[i]].charAt(1);
+			occupiedLocations[size - 1] = "bar " + bar[player];
 		}
 		
-		return stringifiedLocations;
+		return occupiedLocations;
 	}
 	
 	/**
@@ -1010,7 +1001,7 @@ public class Board
 	private String[] updateLocations(int player, String[] previousLocations, String move)
 	{
 		int spaceBefore = move.lastIndexOf(" ");
-		if(spaceBefore == -1) spaceBefore = 0;
+		spaceBefore++;
 		int hyphonIndex = move.lastIndexOf("-");
 		
 		if(move.substring(spaceBefore, hyphonIndex).equals("bar"))
@@ -1031,7 +1022,7 @@ public class Board
 			for(int i = 0; i < previousLocations.length; i++)
 			{
 				int spaceIndex2 = previousLocations[i].indexOf(" ");
-				if(previousLocations[i].substring(spaceIndex2).equals(String.valueOf(fromPosition + spacesToMove)));
+				if(previousLocations[i].substring(0, spaceIndex2).equals(String.valueOf(fromPosition + spacesToMove)));
 				{
 					int checkers = Integer.parseInt(previousLocations[i].substring(spaceIndex2 + 1));
 					previousLocations[i] = (fromPosition + spacesToMove) + " " + (checkers + 1);
@@ -1046,7 +1037,7 @@ public class Board
 			else if(Integer.parseInt(previousLocations[i].substring(0, spaceIndex3)) == fromPosition)
 			{
 				String maintain = previousLocations[i].substring(0, spaceIndex3 + 1);
-				int checkers = Integer.parseInt(previousLocations[i].substring(0, spaceIndex3));
+				int checkers = Integer.parseInt(previousLocations[i].substring(spaceIndex3 + 1));
 				
 				if(checkers == 1)
 				{
@@ -1062,6 +1053,7 @@ public class Board
 		for(int i = 0; i < previousLocations.length; i++)
 		{
 			int spaceIndex4 = previousLocations[i].indexOf(" ");
+			if((previousLocations[i].substring(0, spaceIndex4)).equals("bar")) continue; 
 			int newPosition = Integer.parseInt(previousLocations[i].substring(0, spaceIndex4));
 			
 			if(newPosition < 0 || newPosition > 23)
@@ -1117,7 +1109,7 @@ public class Board
 			i++;
 		}
 		
-		newArray[i] = elem + " 1";
+		newArray[i] = elem + " " + "1";
 		return newArray;
 	}
 	
@@ -1165,11 +1157,14 @@ public class Board
 			int hyphon = move.indexOf("-");
 			if(locations[i].substring(0, hyphon).equals("bar"))
 			{
-				int spacesToMove = Integer.parseInt(move.substring(hyphon + 1));
+				int spacesToMove = (player == PLAYER1) ? Integer.parseInt(move.substring(hyphon + 1)) : 24 - (Integer.parseInt(move.substring(hyphon + 1)) * -1);
 				int space = locations[i].indexOf(" ");
 				int checkers = Integer.parseInt(locations[i].substring(space + 1));
 				
-				if(checkers == 1) locations = remove(locations, i);
+				if(checkers == 1) 
+				{
+					locations = remove(locations, i);
+				}
 				else 
 				{
 					locations[i] = "bar " + (checkers - 1);
@@ -1215,7 +1210,7 @@ public class Board
 		}
 		return newDice;
 	}
-
+	
 	public int winner(int location, int playerSymbol) {
 		String winType = "";
 		
