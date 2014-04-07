@@ -412,7 +412,7 @@ public class Board
 	{
 		position--;
 		
-		if(positions[position].equals(EMPTY_SPACE_SYMBOL)) //Do not perform move in this case!
+		if((position >= 0 && position < 24) && positions[position].equals(EMPTY_SPACE_SYMBOL)) //Do not perform move in this case!
 		{
 			return;
 		}
@@ -801,7 +801,7 @@ public class Board
 					possiblePlayCount++;
 				}
 			}
-			else if(location + localDice[0] < 0 && location + localDice[0] >= 24)
+			else if(location + localDice[0] < 0 || location + localDice[0] >= 24)
 			{
 				boolean bearOff = true;
 				
@@ -1009,17 +1009,15 @@ public class Board
 	 */
 	private String[] updateLocations(int player, String[] previousLocations, String move)
 	{
-		int spaceBefore = move.lastIndexOf(" ");
-		spaceBefore++;
 		int hyphonIndex = move.lastIndexOf("-");
 		
-		if(move.substring(spaceBefore, hyphonIndex).equals("bar"))
+		if(move.substring(0, hyphonIndex).equals("bar"))
 		{
 			previousLocations = handleBar(player, previousLocations, move);
 			return previousLocations;
 		}
 		
-		int fromPosition = Integer.parseInt(move.substring(spaceBefore, hyphonIndex));
+		int fromPosition = Integer.parseInt(move.substring(0, hyphonIndex));
 		
 		int spacesToMove = (player == PLAYER1) ? Integer.parseInt(move.substring(hyphonIndex + 1)) : Integer.parseInt(move.substring(hyphonIndex + 1)) * -1;
 		if(!contains(previousLocations, fromPosition + spacesToMove))
@@ -1031,7 +1029,7 @@ public class Board
 			for(int i = 0; i < previousLocations.length; i++)
 			{
 				int spaceIndex2 = previousLocations[i].indexOf(" ");
-				if(previousLocations[i].substring(0, spaceIndex2).equals(String.valueOf(fromPosition + spacesToMove)));
+				if(Integer.parseInt(previousLocations[i].substring(0, spaceIndex2)) == fromPosition + spacesToMove)
 				{
 					int checkers = Integer.parseInt(previousLocations[i].substring(spaceIndex2 + 1));
 					previousLocations[i] = (fromPosition + spacesToMove) + " " + (checkers + 1);
