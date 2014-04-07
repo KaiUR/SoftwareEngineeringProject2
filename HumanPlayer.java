@@ -76,8 +76,13 @@ public class HumanPlayer {
 		board.printBoard(playerSymbol);
 		int numberOfDice = board.numberOfDice();
 		
-		for(String play : board.findAllPlays(getPlayerSymbol()))
+		String[] allPlays = board.findAllPlays(getPlayerSymbol());
+		if (allPlays.length == 0)
 		{
+			System.out.print("\nSorry you have no possible moves");
+			return 0;
+		}
+		for (String play : allPlays)
 			String temp = play;
 			int hyphon = play.indexOf("-");
 			if (!(play.substring(0, hyphon).equals("bar")))
