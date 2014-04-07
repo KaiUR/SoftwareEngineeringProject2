@@ -686,15 +686,8 @@ public class Board
 		
 		String[] moves = removeNulls(mergeArrays(moves1, moves2));
 		moves = removeNulls(allowForBar(moves, player));
-		
-		/**
-		 * STILL NEED TO IMPLEMENT:
-		 * 
-		 * 1.	If you can only move one checker, make sure only higher dice is used
-		 * 		if possible.
-		 * 
-		 */
-		
+		moves = removeNulls(checkOnlyOneMove(moves));
+	
 		return moves;
 	}
 	
@@ -1297,6 +1290,50 @@ public class Board
 			
 			return -3;
 		}
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @param moves
+	 * @return
+	 */
+	private String[] checkOnlyOneMove(String[] moves)
+	{
+		int highest_move = 0;
+
+		for (String temp : moves)
+		{
+			String temp_count = temp;
+			int count = temp_count.length()
+					- temp_count.replace("-", "").length();
+			if (count > 1)
+			{
+				return moves;
+			}
+
+			int hyphon = temp.indexOf('-');
+			int temp_int = Integer.parseInt(temp.substring(hyphon + 1));
+
+			if (temp_int > highest_move)
+			{
+				highest_move = temp_int;
+			}
+		}
+
+		int index = 0;
+		for (String temp : moves)
+		{
+			int hyphon = temp.indexOf('-');
+			int temp_int = Integer.parseInt(temp.substring(hyphon + 1));
+			if (temp_int != highest_move)
+			{
+				moves[index] = null;
+			}
+			index++;
+		}
+
+		return moves;
 	}
 	
 	/**
