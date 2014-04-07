@@ -83,18 +83,34 @@ public class HumanPlayer {
 			return 0;
 		}
 		for (String play : allPlays)
-			String temp = play;
-			int hyphon = play.indexOf("-");
-			if (!(play.substring(0, hyphon).equals("bar")))
+		{
+			String temp = "";
+			int hyphon = play.indexOf("-", 0), temp_int;
+			for (int i = 1; i <= numberOfDice; i++)
 			{
-				int temp_int = Integer.parseInt(play.substring(0, hyphon)) + 1;
-				temp = temp_int + play.substring(hyphon, hyphon + 2);
-				hyphon = play.lastIndexOf("-");
-				temp_int = Integer.parseInt(play.substring(play.indexOf(" ") + 1, hyphon)) + 1;
-				temp = temp + " " + temp_int + play.substring(hyphon, hyphon + 2);
-
+				if (play.substring(hyphon - 1, hyphon).equals("r"))
+				{
+					temp += play.substring(hyphon - 3, hyphon + 2);
+				}
+				else
+				{
+					if (i == 1)
+					{
+						temp_int = Integer.parseInt(play.substring(0, hyphon)) + 1;
+						temp += temp_int + play.substring(hyphon, hyphon + 2);
+					}
+					else
+					{
+						temp_int = Integer.parseInt(play.substring(play.indexOf(" ", hyphon - 3) + 1, hyphon)) + 1;
+						temp += temp_int + play.substring(hyphon, hyphon + 2);
+					}
+				}
+				if (i < numberOfDice)
+				{
+					temp += " ";
+					hyphon = play.indexOf("-", hyphon + 1);
+				}
 			}
-
 			System.out.print(temp + ", ");
 		}
 		System.out.println("\n");
