@@ -692,8 +692,6 @@ public class Board
 		 * 
 		 * 1.	If you can only move one checker, make sure only higher dice is used
 		 * 		if possible.
-		 * 2. 	If player has a piece on the bar, make sure to remove all
-		 * 		from possible moves that do not move off the bar before other moves.
 		 * 
 		 */
 		
