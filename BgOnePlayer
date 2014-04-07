@@ -12,9 +12,9 @@ public class BgOnePlayer {
 		
 		decideWhoFirst();
 		
-		while(true)
+		if(board.returnDice(0) > board.returnDice(1))
 		{
-			if(board.returnDice(0) > board.returnDice(1))
+			while(true)
 			{
 				if(firstMove) firstMove = false;
 				else board.rollDice();
@@ -24,7 +24,10 @@ public class BgOnePlayer {
 				stateCheck = random.makeMove();
 				analyseState(stateCheck);
 			}
-			else
+		}
+		else
+		{
+			while(true)
 			{
 				if(firstMove) firstMove = false;
 				else board.rollDice();
