@@ -1033,6 +1033,7 @@ public class Board
 			for(int i = 0; i < previousLocations.length; i++)
 			{
 				int spaceIndex2 = previousLocations[i].indexOf(" ");
+				if((previousLocations[i].substring(0, spaceIndex2)).equals("bar")) continue;
 				if(Integer.parseInt(previousLocations[i].substring(0, spaceIndex2)) == fromPosition + spacesToMove)
 				{
 					int checkers = Integer.parseInt(previousLocations[i].substring(spaceIndex2 + 1));
