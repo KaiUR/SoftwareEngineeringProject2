@@ -345,9 +345,10 @@ public class Board
 	}
 	
 	/**
+	 * This method checks if a player has won or not
 	 * 
 	 * @param playerSymbol
-	 * @return
+	 * @return -1 if the player has not won
 	 */
 	public int doPlay(int playerSymbol)
 	{
@@ -1227,7 +1228,7 @@ public class Board
 	 *            The array of possible moves
 	 * @param player
 	 *            The current player
-	 * @return
+	 * @return The list of possible moves
 	 */
 	String[] allowForBar(String[] moves, int player)
 	{
