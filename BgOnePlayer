@@ -1,5 +1,14 @@
 package assignment4Backgammon;
 
+/**
+ * A class representing a one player game of back gammon against a random player
+ * 
+ * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen
+ *         12343046
+ * @version 1.01, 8 APR 2014
+ * @see assignment4Backgammon;
+ * 
+ */
 public class BgOnePlayer {
 
 	private static Board board = new Board();
