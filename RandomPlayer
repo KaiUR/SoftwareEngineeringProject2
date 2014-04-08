@@ -16,6 +16,10 @@ public class RandomPlayer
 	private int player;
 	private Random generator;
 	
+	/**
+	 * This is the constructor
+	 *
+	 */
 	public RandomPlayer(int player, Board board)
 	{
 		this.player = player;
@@ -23,6 +27,13 @@ public class RandomPlayer
 		generator = new Random();
 	}
 	
+	/**
+	 * This method makes a move for the random player
+	 * It makes a move randomly from the list of all possible moves
+	 *
+	 *
+	 * @return The state value
+	 */
 	public int makeMove()
 	{
 		String[] possiblePlays = board.findAllPlays(player);
