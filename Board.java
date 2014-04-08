@@ -1079,7 +1079,7 @@ public class Board
 	 * 		Locations that our player is in
 	 * @param movingTo
 	 * 		Location that we want to see if is in locations already
-	 * @return
+	 * @return True if the index exists
 	 */
 	public boolean contains(String[] locations, int movingTo)
 	{
