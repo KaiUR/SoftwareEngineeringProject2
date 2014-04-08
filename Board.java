@@ -405,8 +405,8 @@ public class Board
 	 *            moved
 	 * @param team_modifier
 	 *            This is the player that is moving
-	 * @see #decrementCounters(int)
-	 * @see #incrementCounters(int, char)
+	 * @see #decrementCounters(int, char)
+	 * @see #incrementCounters(int, int, char)
 	 * 
 	 */
 	public void makeAMove(int position, int move,  int team_modifier)
