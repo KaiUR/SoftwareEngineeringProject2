@@ -82,8 +82,15 @@ public class HumanPlayer {
 			System.out.print("\nSorry you have no possible moves");
 			return 0;
 		}
+		System.out.println("Possible moves are:\n");
+		int count_newline = 0;
 		for (String play : allPlays)
 		{
+			if (count_newline > 6)
+			{
+				System.out.print("\n");
+				count_newline = 0;
+			}
 			String temp_count = play;
 			int count = temp_count.length()
 					- temp_count.replace("-", "").length();
@@ -116,6 +123,7 @@ public class HumanPlayer {
 					hyphon = play.indexOf("-", hyphon + 1);
 				}
 			}
+			count_newline++;
 			System.out.print(temp + ", ");
 		}
 		System.out.println("\n");
