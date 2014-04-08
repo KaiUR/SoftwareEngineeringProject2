@@ -15,6 +15,12 @@ public class BgOnePlayer {
 	private static HumanPlayer human;
 	private static RandomPlayer random;	
 	
+	/**
+	 * The main method of the game
+	 * 
+	 * @param args
+	 *            unused
+	 */
 	public static void main(String[] args) {
 		int stateCheck;
 		boolean firstMove = true;
