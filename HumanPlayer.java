@@ -28,7 +28,7 @@ public class HumanPlayer {
 	private Board	board;
 	
 	/**
-	 * 
+	 * This varible holds true if the player is allowed to bare off
 	 */
 	private boolean	bearOff	= false;
 	
@@ -38,7 +38,9 @@ public class HumanPlayer {
 	private Scanner	in	= new Scanner(System.in);
 	
 	/**
+	 * This method is used to convert the integer representing the player to the simbol
 	 * 
+	 * @return The symbol for a player
 	 */
 	public int getPlayerSymbol()
 	{
