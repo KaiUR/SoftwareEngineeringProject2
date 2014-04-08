@@ -500,8 +500,8 @@ public class HumanPlayer {
 	 * is only one checker left, this method then skips the error message be
 	 * returning false as that is valid.
 	 * 
-	 * @param movesLength
-	 *            The amount of moves entered by the player
+	 * @param moves
+	 *            The moves entered by the player
 	 * @return True if it is a valid number of moves
 	 */
 	private boolean checkForBearOffMoves(String[] moves)
@@ -518,11 +518,16 @@ public class HumanPlayer {
 	}
 	
 	/**
+	 * This method checks that a player plays the highest dice possible if there
+	 * is only one valid move
 	 * 
 	 * @param allPlays
+	 *            The list of all plays
 	 * @param passedChecks
+	 *            The boolean value if previous checks were passed
 	 * @param moves
-	 * @return
+	 *            The moves the player entered
+	 * @return True if the player entered a valid move
 	 */
 	private boolean singleMoveHighestCheck(String[] allPlays,
 			boolean passedChecks, String[] moves)
