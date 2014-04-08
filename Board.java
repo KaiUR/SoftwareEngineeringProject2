@@ -1259,10 +1259,13 @@ public class Board
 	}
 	
 	/**
+	 * This method calculates the winning type
 	 * 
 	 * @param location
+	 *            The last occurrence of the enemy
 	 * @param playerSymbol
-	 * @return
+	 *            The player
+	 * @return The type of win in a string
 	 */
 	public int winner(int location, int playerSymbol) {
 		String winType = "";
@@ -1298,10 +1301,10 @@ public class Board
 	}
 	
 	/**
+	 * This method checks that only the highest moe is allowed
 	 * 
-	 * 
-	 * @param moves
-	 * @return
+	 * @param moves The list of all possible moves
+	 * @return The list without moves that are against the rules
 	 */
 	private String[] checkOnlyOneMove(String[] moves)
 	{
@@ -1342,10 +1345,14 @@ public class Board
 	}
 	
 	/**
+	 * This method checks if the number of moves entered by the user is not more
+	 * than the possible moves
 	 * 
 	 * @param numberMoves
+	 *            The number of moves entered by the player
 	 * @param allPlays
-	 * @return
+	 *            The list of all possible plays
+	 * @return False if the playerr entered an incorrect number of moves
 	 */
 	public boolean check_possible(int numberMoves, String[] allPlays)
 	{
