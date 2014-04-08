@@ -72,6 +72,11 @@ public class BgOnePlayer {
 				.println("\nPlayer " + Board.PLAYER1_SYMBOL + " will start first!\n");
 	}
 	
+	/**
+	 * This method checks if the program should end or continue
+	 *
+	 * @param state This is the current state of the program
+	 */
 	private static void analyseState(int state) {
 		if(state != -2 && state != -3) {
 			return;
