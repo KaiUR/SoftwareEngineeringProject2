@@ -413,7 +413,10 @@ public class Board
 	{
 		position--;
 		
-		if((position >= 0 && position < 24) && positions[position].equals(EMPTY_SPACE_SYMBOL)) //Do not perform move in this case!
+		/*
+		 * Do not perform move in this case!
+		 */
+		if((position >= 0 && position < 24) && positions[position].equals(EMPTY_SPACE_SYMBOL))
 		{
 			return;
 		}
