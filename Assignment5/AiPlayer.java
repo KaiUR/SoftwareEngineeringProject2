@@ -165,7 +165,6 @@ public class AiPlayer {
 	 * @return The index of the best move
 	 */
 	private int goingFirst(ArrayList<Board> allBoardsList)
-		private int goingFirst(ArrayList<Board> allBoardsList)
 	{
 		int[] intTwo_One =
 		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
