@@ -153,6 +153,13 @@ public class AiPlayer {
 	 * 
 	 * This method applys the bearing off strategy
 	 * 
+	 * Suggestion:
+	 * 
+	 * Read :
+	 * 
+	 * http://www.play65.com/bearing-off-in-backgammon.html
+	 * http://www.backgammonlion.com/bear-off-strategies-and.html
+	 * 
 	 * @param allBoardsList
 	 *            The list of all plays
 	 * @return The index of the best move
