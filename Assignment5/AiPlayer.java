@@ -150,7 +150,7 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNFINISHED: Code makes it possible to have doubles so need to implement that too here
+	 * UNFINISHED: KAI :Code makes it possible to have doubles so need to implement that too here
 	 * 
 	 * This method is used to make the first move if the player is going first
 	 * 
