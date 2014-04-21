@@ -79,6 +79,12 @@ public class AiPlayer {
 	 * 
 	 * This method is used to make the first move if the player is going first
 	 * 
+	 * 
+	 * Suggestion: Apply the opening moves according to:
+	 * 
+	 * http://www.bkgm.com/openings.html
+	 * 
+	 * 
 	 * @param allBoardsList
 	 *            The list of all plays
 	 * @return The index of the best move
