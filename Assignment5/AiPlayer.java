@@ -99,6 +99,13 @@ public class AiPlayer {
 	 * 
 	 * This method is used to make the first move if the player is going second
 	 * 
+	 * Suggestion: Apply the opening response according to:
+	 * 
+	 * http://www.bkgm.com/openings/replies.html
+	 * 
+	 * There is a chart at the bottom of the site, click on the moves to see
+	 * more information
+	 * 
 	 * @param allBoardsList
 	 *            The list of all plays
 	 * @return The index of the best move
