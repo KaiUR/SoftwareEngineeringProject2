@@ -150,7 +150,7 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNIMPLEMENTED
+	 * UNFINISHED: Code makes it possible to have doubles so need to implement that too here
 	 * 
 	 * This method is used to make the first move if the player is going first
 	 * 
@@ -165,8 +165,167 @@ public class AiPlayer {
 	 * @return The index of the best move
 	 */
 	private int goingFirst(ArrayList<Board> allBoardsList)
+		private int goingFirst(ArrayList<Board> allBoardsList)
 	{
+		int[] intTwo_One =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				1, 1, 0 };
+		Board two_One = copyCheckers(intTwo_One);
+
+		int[] intThree_One =
+		{ 0, 0, 0, 0, 0, 2, 4, 0, 2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 2, 0 };
+		Board three_One = copyCheckers(intThree_One);
+
+		int[] intFour_One =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				1, 1, 0 };
+		Board four_One = copyCheckers(intFour_One);
+
+		int[] intFive_One =
+		{ 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 2, 0 };
+		Board five_One = copyCheckers(intFive_One);
+
+		int[] intSix_One =
+		{ 0, 0, 0, 0, 0, 0, 5, 2, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 2, 0 };
+		Board six_One = copyCheckers(intSix_One);
+
+		int[] intThree_Two =
+		{ 0, 0, 0, 0, 2, 0, 4, 0, 3, 0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+				0, 1, 0 };
+		Board three_Two = copyCheckers(intThree_Two);
+
+		int[] intFour_Two =
+		{ 0, 0, 0, 0, 2, 0, 4, 0, 2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 2, 0 };
+		Board four_Two = copyCheckers(intFour_Two);
+
+		int[] intFive_Two =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 2, 0 };
+		Board five_Two = copyCheckers(intFive_Two);
+
+		int[] intSix_Two =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+				0, 1, 0 };
+		Board six_Two = copyCheckers(intSix_Two);
+
+		int[] intFour_Three =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+				0, 0, 0 };
+		Board four_Three = copyCheckers(intFour_Three);
+
+		int[] intFive_Three =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 2, 0 };
+		Board five_Three = copyCheckers(intFive_Three);
+
+		int[] intSix_Three =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+				0, 1, 0 };
+		Board six_Three = copyCheckers(intSix_Three);
+
+		int[] intFive_Four =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+				0, 1, 0 };
+		Board five_Four = copyCheckers(intFive_Four);
+
+		int[] intSix_Four =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 1, 0 };
+		Board six_Four = copyCheckers(intSix_Four);
+
+		int[] intSix_Five =
+		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 1, 0 };
+		Board six_Five = new Board(copyCheckers(intSix_Five));
+
+		for (int index = 0; index < allBoardsList.size(); index++)
+		{
+			if (compareBoards(two_One, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(three_One, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(four_One, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(five_One, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(six_One, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(three_Two, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(four_Two, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(five_Two, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(six_Two, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(four_Three, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(five_Three, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(six_Three, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(five_Four, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(six_Four, allBoardsList.get(index)))
+			{
+				return index;
+			}
+			if (compareBoards(six_Five, allBoardsList.get(index)))
+			{
+				return index;
+			}
+		}
+
 		return 0;
+	}
+
+	/**
+	 * This sets certain positions on the board
+	 * 
+	 * @param inputSequence
+	 *            The initialiser
+	 * @return The new Board
+	 */
+	private Board copyCheckers(int[] inputSequence)
+	{
+		Board temp = new Board();
+
+		for (int index = 0; index < Board.NUM_PIPS; index++)
+		{
+			temp.checkers[playerId][index] = inputSequence[index];
+		}
+
+		return temp;
 	}
 
 	/**
