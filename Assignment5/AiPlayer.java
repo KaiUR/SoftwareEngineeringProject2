@@ -11,12 +11,14 @@ public class AiPlayer {
 	private int playerId;
 	private Board gameBoard;
 	private Dice gameDice;
+	private boolean	FirstMove;
 	
 	
 	AiPlayer (int setPlayerId, Board setBoard, Dice setDice) {
 		playerId = setPlayerId;
 		gameBoard = setBoard;
 		gameDice = setDice;
+		FirstMove = true;
 	    return;
 	}
 	
