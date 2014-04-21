@@ -50,6 +50,10 @@ public class AiPlayer {
 				bestBoard = goingSecond(allBoardsList);
 			}
 		}
+		else if (checkBearOff())
+		{
+			bestBoard = bearOffMove(allBoardsList);
+		}
 		else
 		{
 			bestBoard = normalMove(allBoardsList);
@@ -70,6 +74,21 @@ public class AiPlayer {
 	 * @return True if the player is going first
 	 */
 	private boolean checkGoingFirst()
+	{
+		return true;
+	}
+	
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * This method is used to check if the player is bearing off
+	 * 
+	 * Suggestion: Check if gameBoard.checkers[playerId][] has all his checkers
+	 * in the finishing section
+	 * 
+	 * @return True if the player is going first
+	 */
+	private boolean checkBearOff()
 	{
 		return true;
 	}
@@ -129,6 +148,19 @@ public class AiPlayer {
 		return 0;
 	}
 
+	/**
+	 * UNIMPLEMENTED
+	 * 
+	 * This method applys the bearing off strategy
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index of the best move
+	 */
+	private int bearOffMove(ArrayList<Board> allBoardsList)
+	{
+		return 0;
+	}
 	
 	
 	public Play getPlay () {
