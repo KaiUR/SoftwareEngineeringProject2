@@ -139,6 +139,13 @@ public class AiPlayer {
 	 * 
 	 * This method applys the strategy after the players first move
 	 * 
+	 * Suggestions:
+	 * 
+	 * http://www.bkgm.com/articles/Simborg/CheckerPlayForIdiots/
+	 * http://www.bkgm.com/articles/Simborg/RuleOfThumb/
+	 * 
+	 * http://www.bkgm.com/articles/GOL/Jul99/rome.htm
+	 * 
 	 * @param allBoardsList
 	 *            The list of all plays
 	 * @return The index of the best move
