@@ -40,16 +40,10 @@ public class AiPlayer {
 	 */
 	private int getEnemyId()
 	{
-		int enemyId;
-		if (playerId == Board.X_PLAYER_ID)
-		{
-			enemyId = Board.O_PLAYER_ID;
-		}
-		else
-		{
-			enemyId = Board.X_PLAYER_ID;
-		}
-		return enemyId;
+	
+		return (playerId == Board.X_PLAYER_ID) ? Board.O_PLAYER_ID : Board.X_PLAYER_ID;
+
+	
 	}
 	
 	
