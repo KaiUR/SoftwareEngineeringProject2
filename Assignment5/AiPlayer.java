@@ -92,7 +92,7 @@ public class AiPlayer {
 	{
 		for (int index = 0; index < allBoardsList.size(); index++)
 		{
-			if (compareBoards(allBoardsList.get(index), toFind))
+			if (compareBoards(allBoardsList.get(index), toFind, playerId))
 			{
 				return index;
 			}
@@ -110,7 +110,7 @@ public class AiPlayer {
 	 *            The second board
 	 * @return True if the boards have the same moves as the player
 	 */
-	private boolean compareBoards(Board board1, Board board2)
+	private boolean compareBoards(Board board1, Board board2, , int playerId)
 	{
 		for (int index = 0; index < board1.checkers[playerId].length; index++)
 		{
@@ -132,7 +132,7 @@ public class AiPlayer {
 	 */
 	private boolean checkGoingFirst()
 	{
-		return compareBoards(gameBoard, new Board());
+		return compareBoards(gameBoard, new Board(), playerId);
 	}
 	
 	/**
@@ -169,63 +169,63 @@ public class AiPlayer {
 		FirstMoves moves = new FirstMoves();
 		for (int index = 0; index < allBoardsList.size(); index++)
 		{
-			if (compareBoards(moves.two_One, allBoardsList.get(index)))
+			if (compareBoards(moves.two_One, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.three_One, allBoardsList.get(index)))
+			if (compareBoards(moves.three_One, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.four_One, allBoardsList.get(index)))
+			if (compareBoards(moves.four_One, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.five_One, allBoardsList.get(index)))
+			if (compareBoards(moves.five_One, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.six_One, allBoardsList.get(index)))
+			if (compareBoards(moves.six_One, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.three_Two, allBoardsList.get(index)))
+			if (compareBoards(moves.three_Two, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.four_Two, allBoardsList.get(index)))
+			if (compareBoards(moves.four_Two, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.five_Two, allBoardsList.get(index)))
+			if (compareBoards(moves.five_Two, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.six_Two, allBoardsList.get(index)))
+			if (compareBoards(moves.six_Two, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.four_Three, allBoardsList.get(index)))
+			if (compareBoards(moves.four_Three, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.five_Three, allBoardsList.get(index)))
+			if (compareBoards(moves.five_Three, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.six_Three, allBoardsList.get(index)))
+			if (compareBoards(moves.six_Three, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.five_Four, allBoardsList.get(index)))
+			if (compareBoards(moves.five_Four, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.six_Four, allBoardsList.get(index)))
+			if (compareBoards(moves.six_Four, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
-			if (compareBoards(moves.six_Five, allBoardsList.get(index)))
+			if (compareBoards(moves.six_Five, allBoardsList.get(index), playerId))
 			{
 				return index;
 			}
