@@ -601,15 +601,19 @@ public class AiPlayer {
 	{
 		
 		int bestOff = allBoardsList.get(0).checkers[playerId][Board.BAR];
-		int bestOffPosition = 0;
-		for(int i = 1; i < allBoardsList.size(); i++){
-			if(bestOff < allBoardsList.get(i).checkers[playerId][Board.BAR]){
-				bestOff = allBoardsList.get(i).checkers[playerId][Board.BAR];
-				bestOffPosition = i;
+		int bestOffIndex = 0;
+		for(int index = 1; index < allBoardsList.size(); index++){
+			if(allBoardsList.get(index).checkers[playerId][Board.BAR] > bestOff){
+				bestOff = allBoardsList.get(index).checkers[playerId][Board.BAR];
+				bestOffIndex = index;
 			}
 		}
 		
-		return bestOffPosition;
+		if(gameDice.getDiceList().size() == bestOff - gameBoard.checkers[playerId][Board.BAR]){
+			return bestOffIndex;
+		}
+		
+		return 0;
 		
 	}
 	
