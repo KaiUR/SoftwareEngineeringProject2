@@ -33,6 +33,25 @@ public class AiPlayer {
 		return playerId;
 	}
 	
+	/**
+	 * This method returns the enemy ID
+	 * 
+	 * @return The enemy Id
+	 */
+	private int getEnemyId()
+	{
+		int enemyId;
+		if (playerId == Board.X_PLAYER_ID)
+		{
+			enemyId = Board.O_PLAYER_ID;
+		}
+		else
+		{
+			enemyId = Board.X_PLAYER_ID;
+		}
+		return enemyId;
+	}
+	
 	
 	/**
 	 * This method will select the best move possible
