@@ -130,17 +130,18 @@ public class AiPlayer {
 	}
 	
 	/**
-	 * LAURENCE TO IMPLEMENT
-	 * 
 	 * This method is used to check if the player is bearing off
 	 * 
-	 * Suggestion: Check if gameBoard.checkers[playerId][] has all his checkers
-	 * in the finishing section
-	 * 
-	 * @return True if the player is going first
+	 * @return True if the player is bearing off
 	 */
 	private boolean checkBearOff()
 	{
+		for(int i = 0; i < gameBoard.checkers[playerId].length; i++){
+			
+			if(gameBoard.checkers[playerId][i] > 0 && i < 19) return false;
+			
+		}
+		
 		return true;
 	}
 
