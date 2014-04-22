@@ -270,8 +270,8 @@ public class AiPlayer {
 		int sixPrimeIndex = sixPrime(allBoardsList);
 		int raceIndex = findRaceIndex(allBoardsList);
 		int preparePrimeIndex = preparePrime(allBoardsList);
-		int make5Point;
-		int make20Point;
+		int make5Point = make5PointIndex(allBoardsList);
+		int make20Point = make20PointIndex(allBoardsList);
 
 		if (preparePrimeIndex != -1)
 		{
@@ -333,6 +333,34 @@ public class AiPlayer {
 		{
 			return raceIndex;
 		}
+	}
+	
+	/**
+	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
+	 * 
+	 * This method checks if you can make your own 5 point
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index of the prime moves, or -1 if not
+	 */
+	private int make5PointIndex(ArrayList<Board> allBoardsList)
+	{
+		return -1;
+	}
+
+	/**
+	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
+	 * 
+	 * This method checks if you can make the enemy's 5 point
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index of the prime moves, or -1 if not
+	 */
+	private int make20PointIndex(ArrayList<Board> allBoardsList)
+	{
+		return -1;
 	}
 	
 	/**
