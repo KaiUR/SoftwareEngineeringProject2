@@ -119,19 +119,14 @@ public class AiPlayer {
 
 
 	/**
-	 * LAURENCE TO IMPLEMENT
-	 * 
 	 * This method is used to check if the player is opening first or if the
 	 * player is going second
-	 * 
-	 * Suggestion: Check if gameBoard.checkers[playerId][0 to 26] matches the
-	 * starting board, if yes that player is going first.
-	 * 
+	 *
 	 * @return True if the player is going first
 	 */
 	private boolean checkGoingFirst()
 	{
-		return true;
+		return compareBoards(gameBoard, new Board());
 	}
 	
 	/**
