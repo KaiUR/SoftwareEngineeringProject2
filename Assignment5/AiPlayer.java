@@ -5,6 +5,8 @@
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class AiPlayer {
 
@@ -360,8 +362,161 @@ public class AiPlayer {
 	 */
 	private int normalMove(ArrayList<Board> allBoardsList)
 	{
+		int hitIndex = -1; // Inclomplete
+		int makePointIndex = -1; // Inclomplete
+		int fivePrimeIndex = -1; // Inclomplete
+		int sixPrimeIndex = -1; // Inclomplete
+		int raceIndex = findRaceIndex(allBoardsList);
+		int preparePrimeIndex = -1; // Inclomplete
+
+		if (preparePrimeIndex != -1)
+		{
+			return preparePrimeIndex;
+		}
+		/**
+		 * Try for a six prime first
+		 */
+		else if (sixPrimeIndex != -1)
+		{
+			return sixPrimeIndex;
+		}
+		/**
+		 * Try for a five prime second
+		 */
+		else if (fivePrimeIndex != -1)
+		{
+			return fivePrimeIndex;
+		}
+		/**
+		 * Try to make a point or wall up
+		 */
+		else if (makePointIndex != -1)
+		{
+			return makePointIndex;
+		}
+		/**
+		 * Try to hit
+		 */
+		else if (hitIndex != -1)
+		{
+			return hitIndex;
+		}
+		/**
+		 * If none of the above, just race
+		 */
+		else
+		{
+			return raceIndex;
+		}
+	}
+
+	/**
+	 * This method finds the best move to race with
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index of the best move
+	 */
+	private int findRaceIndex(ArrayList<Board> allBoardsList)
+	{
+		class StoreIndex
+		{
+			private int	index;
+			private int	numberOfBlots;
+			private int	lastChecker;
+
+			StoreIndex(int index, int numberOfBlots, int lastChecker)
+			{
+				this.index = index;
+				this.numberOfBlots = numberOfBlots;
+				this.lastChecker = lastChecker;
+			}
+
+			public int returnIndex()
+			{
+				return index;
+			}
+
+			public int returnBlots()
+			{
+				return numberOfBlots;
+			}
+
+			public int returnLast()
+			{
+				return lastChecker;
+			}
+		}
+		ArrayList<StoreIndex> RaceList = new ArrayList<StoreIndex>();
+
+		for (int index = 0; index < allBoardsList.size(); index++)
+		{
+			StoreIndex temp = new StoreIndex(index,
+					numberOfBlots(allBoardsList.get(index)),
+					lastOcuurence(allBoardsList.get(index)));
+			RaceList.add(temp);
+		}
+
+		Collections.sort(RaceList, new Comparator<StoreIndex>()
+		{
+			public int compare(StoreIndex firstObject, StoreIndex secondObject)
+			{
+				int check = firstObject.returnLast()
+						- secondObject.returnLast();
+
+				if (check == 0)
+				{
+					return firstObject.returnBlots()
+							- secondObject.returnBlots();
+				}
+
+				return check;
+			}
+
+		});
+
+		return RaceList.get(0).returnIndex();
+	}
+
+	/**
+	 * This function returns the last occurrence of the players checker
+	 * 
+	 * @param board
+	 *            The current board
+	 * @return The index of last occurrence
+	 */
+	private int lastOcuurence(Board board)
+	{
+		for (int index = 0; index < board.checkers[playerId].length; index++)
+		{
+			if (board.checkers[playerId][index] != 0)
+			{
+				return index;
+			}
+		}
 		return 0;
 	}
+
+	/**
+	 * This method finds the number of blots
+	 * 
+	 * @param board
+	 *            The current board
+	 * @return The number of blots
+	 */
+	private int numberOfBlots(Board board)
+	{
+		int count = 0;
+		for (int index = 0; index < board.checkers[playerId].length; index++)
+		{
+			if (board.checkers[playerId][index] == 1)
+			{
+				count++;
+			}
+		}
+		return count;
+	}
+
 
 	/**
 	 * LAURENCE TO IMPLEMENT
