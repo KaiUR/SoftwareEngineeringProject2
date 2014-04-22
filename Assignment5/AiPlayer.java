@@ -601,16 +601,7 @@ public class AiPlayer {
 
 
 	/**
-	 * LAURENCE TO IMPLEMENT
-	 * 
 	 * This method applys the bearing off strategy
-	 * 
-	 * Suggestion:
-	 * 
-	 * Read :
-	 * 
-	 * http://www.play65.com/bearing-off-in-backgammon.html
-	 * http://www.backgammonlion.com/bear-off-strategies-and.html
 	 * 
 	 * @param allBoardsList
 	 *            The list of all plays
@@ -618,7 +609,18 @@ public class AiPlayer {
 	 */
 	private int bearOffMove(ArrayList<Board> allBoardsList)
 	{
-		return 0;
+		
+		int bestOff = allBoardsList.get(0).checkers[playerId][Board.BAR];
+		int bestOffPosition = 0;
+		for(int i = 1; i < allBoardsList.size(); i++){
+			if(bestOff < allBoardsList.get(i).checkers[playerId][Board.BAR]){
+				bestOff = allBoardsList.get(i).checkers[playerId][Board.BAR];
+				bestOffPosition = i;
+			}
+		}
+		
+		return bestOffPosition;
+		
 	}
 	
 	
