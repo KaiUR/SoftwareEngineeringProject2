@@ -349,16 +349,8 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNIMPLEMENTED: Kai
 	 * 
 	 * This method applys the strategy after the players first move
-	 * 
-	 * Suggestions:
-	 * 
-	 * http://www.bkgm.com/articles/Simborg/CheckerPlayForIdiots/
-	 * http://www.bkgm.com/articles/Simborg/RuleOfThumb/
-	 * 
-	 * http://www.bkgm.com/articles/GOL/Jul99/rome.htm
 	 * 
 	 * @param allBoardsList
 	 *            The list of all plays
