@@ -146,8 +146,6 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNFINISHED: KAI :Code makes it possible to have doubles so need to implement that too here
-	 * 
 	 * This method is used to make the first move if the player is going first
 	 * 
 	 * 
@@ -345,7 +343,7 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNIMPLEMENTED
+	 * UNIMPLEMENTED: Kai
 	 * 
 	 * This method applys the strategy after the players first move
 	 * 
