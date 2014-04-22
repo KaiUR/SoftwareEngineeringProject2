@@ -440,8 +440,6 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
-	 * 
 	 * This method looks for hits based on the following rules:
 	 * 
 	 * 1- When not in home board- Can you hit? Then, which leaves less blots.
