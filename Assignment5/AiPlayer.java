@@ -166,140 +166,66 @@ public class AiPlayer {
 	 */
 	private int goingFirst(ArrayList<Board> allBoardsList)
 	{
-		int[] intTwo_One =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				1, 1, 0 };
-		Board two_One = copyCheckers(intTwo_One);
-
-		int[] intThree_One =
-		{ 0, 0, 0, 0, 0, 2, 4, 0, 2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 2, 0 };
-		Board three_One = copyCheckers(intThree_One);
-
-		int[] intFour_One =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				1, 1, 0 };
-		Board four_One = copyCheckers(intFour_One);
-
-		int[] intFive_One =
-		{ 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 2, 0 };
-		Board five_One = copyCheckers(intFive_One);
-
-		int[] intSix_One =
-		{ 0, 0, 0, 0, 0, 0, 5, 2, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 2, 0 };
-		Board six_One = copyCheckers(intSix_One);
-
-		int[] intThree_Two =
-		{ 0, 0, 0, 0, 2, 0, 4, 0, 3, 0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0,
-				0, 1, 0 };
-		Board three_Two = copyCheckers(intThree_Two);
-
-		int[] intFour_Two =
-		{ 0, 0, 0, 0, 2, 0, 4, 0, 2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 2, 0 };
-		Board four_Two = copyCheckers(intFour_Two);
-
-		int[] intFive_Two =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 2, 0 };
-		Board five_Two = copyCheckers(intFive_Two);
-
-		int[] intSix_Two =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-				0, 1, 0 };
-		Board six_Two = copyCheckers(intSix_Two);
-
-		int[] intFour_Three =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 1, 1, 0,
-				0, 0, 0 };
-		Board four_Three = copyCheckers(intFour_Three);
-
-		int[] intFive_Three =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 2, 0 };
-		Board five_Three = copyCheckers(intFive_Three);
-
-		int[] intSix_Three =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-				0, 1, 0 };
-		Board six_Three = copyCheckers(intSix_Three);
-
-		int[] intFive_Four =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-				0, 1, 0 };
-		Board five_Four = copyCheckers(intFive_Four);
-
-		int[] intSix_Four =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 1, 0 };
-		Board six_Four = copyCheckers(intSix_Four);
-
-		int[] intSix_Five =
-		{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 1, 0 };
-		Board six_Five = new Board(copyCheckers(intSix_Five));
-
+		FirstMoves moves = new FirstMoves();
 		for (int index = 0; index < allBoardsList.size(); index++)
 		{
-			if (compareBoards(two_One, allBoardsList.get(index)))
+			if (compareBoards(moves.two_One, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(three_One, allBoardsList.get(index)))
+			if (compareBoards(moves.three_One, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(four_One, allBoardsList.get(index)))
+			if (compareBoards(moves.four_One, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(five_One, allBoardsList.get(index)))
+			if (compareBoards(moves.five_One, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(six_One, allBoardsList.get(index)))
+			if (compareBoards(moves.six_One, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(three_Two, allBoardsList.get(index)))
+			if (compareBoards(moves.three_Two, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(four_Two, allBoardsList.get(index)))
+			if (compareBoards(moves.four_Two, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(five_Two, allBoardsList.get(index)))
+			if (compareBoards(moves.five_Two, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(six_Two, allBoardsList.get(index)))
+			if (compareBoards(moves.six_Two, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(four_Three, allBoardsList.get(index)))
+			if (compareBoards(moves.four_Three, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(five_Three, allBoardsList.get(index)))
+			if (compareBoards(moves.five_Three, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(six_Three, allBoardsList.get(index)))
+			if (compareBoards(moves.six_Three, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(five_Four, allBoardsList.get(index)))
+			if (compareBoards(moves.five_Four, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(six_Four, allBoardsList.get(index)))
+			if (compareBoards(moves.six_Four, allBoardsList.get(index)))
 			{
 				return index;
 			}
-			if (compareBoards(six_Five, allBoardsList.get(index)))
+			if (compareBoards(moves.six_Five, allBoardsList.get(index)))
 			{
 				return index;
 			}
@@ -704,6 +630,86 @@ public class AiPlayer {
 		
 		return chosenPlay;
 	}
-		
 	
+	/**
+	 * This class just has all 15 starting moves saved in it
+	 * 
+	 */
+	class FirstMoves
+	{
+		int[]	intTwo_One		=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 1, 0, 4, 0,
+										0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 };
+		Board	two_One			= copyCheckers(intTwo_One);
+
+		int[]	intThree_One	=
+								{ 0, 0, 0, 0, 0, 2, 4, 0, 2, 0, 0, 0, 0, 5, 0,
+										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board	three_One		= copyCheckers(intThree_One);
+
+		int[]	intFour_One		=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 1, 0, 0, 0, 4, 0,
+										0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 };
+		Board	four_One		= copyCheckers(intFour_One);
+
+		int[]	intFive_One		=
+								{ 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 0, 0, 0, 4, 0,
+										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board	five_One		= copyCheckers(intFive_One);
+
+		int[]	intSix_One		=
+								{ 0, 0, 0, 0, 0, 0, 5, 2, 2, 0, 0, 0, 0, 4, 0,
+										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board	six_One			= copyCheckers(intSix_One);
+
+		int[]	intThree_Two	=
+								{ 0, 0, 0, 0, 2, 0, 4, 0, 3, 0, 0, 1, 0, 4, 0,
+										0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0 };
+		Board	three_Two		= copyCheckers(intThree_Two);
+
+		int[]	intFour_Two		=
+								{ 0, 0, 0, 0, 2, 0, 4, 0, 2, 0, 0, 0, 0, 5, 0,
+										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board	four_Two		= copyCheckers(intFour_Two);
+
+		int[]	intFive_Two		=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 1, 0, 3, 0,
+										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board	five_Two		= copyCheckers(intFive_Two);
+
+		int[]	intSix_Two		=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0,
+										0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
+		Board	six_Two			= copyCheckers(intSix_Two);
+
+		int[]	intFour_Three	=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0,
+										0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 };
+		Board	four_Three		= copyCheckers(intFour_Three);
+
+		int[]	intFive_Three	=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 1, 0, 0, 3, 0,
+										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board	five_Three		= copyCheckers(intFive_Three);
+
+		int[]	intSix_Three	=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0,
+										1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
+		Board	six_Three		= copyCheckers(intSix_Three);
+
+		int[]	intFive_Four	=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0,
+										1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
+		Board	five_Four		= copyCheckers(intFive_Four);
+
+		int[]	intSix_Four		=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 1,
+										0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
+		Board	six_Four		= copyCheckers(intSix_Four);
+
+		int[]	intSix_Five		=
+								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 6, 0,
+										0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
+		Board	six_Five		= new Board(copyCheckers(intSix_Five));
+	}
 }
