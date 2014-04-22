@@ -677,11 +677,37 @@ public class AiPlayer {
 		}
 		
 		if(gameDice.getDiceList().size() == bestOff - gameBoard.checkers[playerId][Board.BAR]){
-			return bestOffIndex;
+			return bestOffIndexes.get(0);
 		}
 		
-		return 0;
+		int leastEmpties = emptySpaces(allBoardsList.get(bestOffIndexes.get(0)));
+		int leastEmptiesIndex = bestOffIndexes.get(0);
+		for(int index = 1; index < bestOffIndexes.size(); index++){
+			if(emptySpaces(allBoardsList.get(bestOffIndexes.get(index))) < leastEmpties){
+				leastEmptiesIndex = bestOffIndexes.get(index);
+			}
+		}
 		
+		return leastEmptiesIndex;
+		
+	}
+	
+	/**
+	 * Determines the number of empty spaces on the board
+	 * 
+	 * @param board
+	 * 		The board in question
+	 * @return
+	 * 		The number of empty spaces for the player
+	 */
+	private int emptySpaces(Board board){
+		int count = 0;
+		for(int index = 1; index < board.checkers[playerId][Board.BAR]; index++){
+			if(board.checkers[playerId][index] == 0){
+				count++;
+			}
+		}
+		return count;
 	}
 	
 	
