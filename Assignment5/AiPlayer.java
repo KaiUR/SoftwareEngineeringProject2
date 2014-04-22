@@ -124,13 +124,10 @@ public class AiPlayer {
 	 */
 	private boolean checkBearOff()
 	{
-		for(int i = 0; i < gameBoard.checkers[playerId].length; i++){
-			
-			if(gameBoard.checkers[playerId][i] > 0 && i < 19) return false;
-			
-		}
 		
-		return true;
+		if(this.lastOccurence(gameBoard) < 19) return false;
+		else return true;
+		
 	}
 
 	/**
@@ -457,7 +454,33 @@ public class AiPlayer {
 	 */
 	private int findHitIndex(ArrayList<Board> allBoardsList)
 	{
-		return -1;
+		
+		int currentEnemyOff = gameBoard.checkers[this.getEnemyId()][Board.BAR];
+		int mostHits = 0, index = 0;
+		for(index = 0; index < allBoardsList.size(); index++){
+			if(allBoardsList.get(index).checkers[this.getEnemyId()][Board.BAR] > currentEnemyOff){
+				mostHits = allBoardsList.get(index).checkers[this.getEnemyId()][Board.BAR];
+			}
+		}
+		
+		ArrayList<Board> mostHitBoards = new ArrayList<Board>();
+		for(index = 0; index < allBoardsList.size(); index++){
+			if(allBoardsList.get(index).checkers[this.getEnemyId()][Board.BAR] == mostHits){
+				mostHitBoards.add(allBoardsList.get(index));
+			}
+		}
+		
+		int leastBlots = this.numberOfBlots(mostHitBoards.get(0));
+		int leastBlotsIndex = 0;
+		for(index = 1; index < mostHitBoards.size(); index++){
+			if(leastBlots > this.numberOfBlots(mostHitBoards.get(index))){
+				leastBlots = this.numberOfBlots(mostHitBoards.get(index));
+				leastBlotsIndex = index;
+			}
+		}
+		
+		return allBoardsList.indexOf(mostHitBoards.get(leastBlotsIndex));
+		
 	}
 
 
