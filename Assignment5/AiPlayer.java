@@ -265,6 +265,7 @@ public class AiPlayer {
 	{
 		int hitIndex = findHitIndex(allBoardsList);
 		int makePointIndex = findMakePointIndex(allBoardsList);
+		int fourPrimeIndex = fourPrime(allBoardsList);
 		int fivePrimeIndex = fivePrime(allBoardsList);
 		int sixPrimeIndex = sixPrime(allBoardsList);
 		int raceIndex = findRaceIndex(allBoardsList);
@@ -351,6 +352,21 @@ public class AiPlayer {
 	 * @return The index of the prime moves, or -1 if not
 	 */
 	private int fivePrime(ArrayList<Board> allBoardsList)
+	{
+		return -1;
+	}
+	
+	/**
+	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
+	 * 
+	 * This method checks if you can make a four prime, and makes all the moves
+	 * after the four prime is made
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index of the prime moves, or -1 if not
+	 */
+	private int fourPrime(ArrayList<Board> allBoardsList)
 	{
 		return -1;
 	}
