@@ -82,37 +82,6 @@ public class AiPlayer {
 
 		return bestBoard;
 	}
-	
-	/**
-	 * 
-	 * NOTE: This might be handy for the other methods. To apply a startegy you
-	 * will have to find a move in the list of boards. To do this you need to
-	 * make a temp board and the apply that move on the temp board. Then you can
-	 * check if that resulting board is in the list of all boards, if it is then
-	 * you have your move. This is what this method is for.
-	 * 
-	 * 
-	 * 
-	 * This method finds the index of a board.
-	 * 
-	 * @param allBoardsList
-	 *            The list of all boards
-	 * @param toFind
-	 *            The board to find
-	 * @return The index of the board, or -1 if it is not found
-	 */
-	private int findIndex(ArrayList<Board> allBoardsList, Board toFind)
-	{
-		for (int index = 0; index < allBoardsList.size(); index++)
-		{
-			if (compareBoards(allBoardsList.get(index), toFind, playerId))
-			{
-				return index;
-			}
-		}
-
-		return -1;
-	}
 
 	/**
 	 * Checks if two boards have the same positions for the current player
