@@ -451,8 +451,6 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
-	 * 
 	 * This method sees if you can make a point, i.e. wall up
 	 * 
 	 * @param allBoardsList
@@ -461,7 +459,79 @@ public class AiPlayer {
 	 */
 	private int findMakePointIndex(ArrayList<Board> allBoardsList)
 	{
-		return -1;
+		class StoreIndex
+		{
+			private int	index;
+			private int	numberOfPoints;
+
+			StoreIndex(int index, int numberOfPoints)
+			{
+				this.index = index;
+				this.numberOfPoints = numberOfPoints;
+			}
+
+			public int returnIndex()
+			{
+				return index;
+			}
+
+			public int retrunNumberPoints()
+			{
+				return numberOfPoints;
+			}
+		}
+		ArrayList<StoreIndex> PointList = new ArrayList<StoreIndex>();
+
+		for (int index = 0; index < allBoardsList.size(); index++)
+		{
+			int numberPoints = numberOfWalls(gameBoard)
+					- numberOfWalls(allBoardsList.get(index));
+			if (numberPoints > 0)
+			{
+				StoreIndex temp = new StoreIndex(index, numberPoints);
+				PointList.add(temp);
+			}
+		}
+
+		if (PointList.size() == 0)
+		{
+			return -1;
+		}
+		else
+		{
+			Collections.sort(PointList, new Comparator<StoreIndex>()
+			{
+				public int compare(StoreIndex firstObject,
+						StoreIndex secondObject)
+				{
+					return firstObject.retrunNumberPoints()
+							- secondObject.retrunNumberPoints();
+				}
+
+			});
+
+			return PointList.get(0).returnIndex();
+		}
+	}
+
+	/**
+	 * This method returns the number of walls
+	 * 
+	 * @param board
+	 *            The current board
+	 * @return The number of walls
+	 */
+	private int numberOfWalls(Board board)
+	{
+		int count = 0;
+		for (int index = 0; index < board.checkers[playerId].length; index++)
+		{
+			if (board.checkers[playerId][index] > 1)
+			{
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/**
