@@ -110,7 +110,7 @@ public class AiPlayer {
 	 *            The second board
 	 * @return True if the boards have the same moves as the player
 	 */
-	private boolean compareBoards(Board board1, Board board2, , int playerId)
+	private boolean compareBoards(Board board1, Board board2, int playerId)
 	{
 		for (int index = 0; index < board1.checkers[playerId].length; index++)
 		{
