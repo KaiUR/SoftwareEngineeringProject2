@@ -119,7 +119,7 @@ public class AiPlayer {
 
 
 	/**
-	 * UNIMPLEMENTED
+	 * LAURENCE TO IMPLEMENT
 	 * 
 	 * This method is used to check if the player is opening first or if the
 	 * player is going second
@@ -135,7 +135,7 @@ public class AiPlayer {
 	}
 	
 	/**
-	 * UNIMPLEMENTED
+	 * LAURENCE TO IMPLEMENT
 	 * 
 	 * This method is used to check if the player is bearing off
 	 * 
@@ -370,7 +370,7 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNIMPLEMENTED
+	 * LAURENCE TO IMPLEMENT
 	 * 
 	 * This method applys the bearing off strategy
 	 * 
