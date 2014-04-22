@@ -535,7 +535,7 @@ public class AiPlayer {
 		{
 			StoreIndex temp = new StoreIndex(index,
 					numberOfBlots(allBoardsList.get(index)),
-					lastOcuurence(allBoardsList.get(index)));
+					lastOccurence(allBoardsList.get(index)));
 			RaceList.add(temp);
 		}
 
@@ -567,7 +567,7 @@ public class AiPlayer {
 	 *            The current board
 	 * @return The index of last occurrence
 	 */
-	private int lastOcuurence(Board board)
+	private int lastOccurence(Board board)
 	{
 		for (int index = 0; index < board.checkers[playerId].length; index++)
 		{
