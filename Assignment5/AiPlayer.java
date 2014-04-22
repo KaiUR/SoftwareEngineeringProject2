@@ -270,6 +270,8 @@ public class AiPlayer {
 		int sixPrimeIndex = sixPrime(allBoardsList);
 		int raceIndex = findRaceIndex(allBoardsList);
 		int preparePrimeIndex = preparePrime(allBoardsList);
+		int make5Point;
+		int make20Point;
 
 		if (preparePrimeIndex != -1)
 		{
@@ -288,6 +290,27 @@ public class AiPlayer {
 		else if (fivePrimeIndex != -1)
 		{
 			return fivePrimeIndex;
+		}
+		/**
+		 * Try for four prime
+		 */
+		else if (fourPrimeIndex != -1)
+		{
+			return fourPrimeIndex;
+		}
+		/**
+		 * Make 5 point if possible
+		 */
+		else if (make5Point != -1)
+		{
+			return make5Point;
+		}
+		/**
+		 * Make the enemy's 5 point
+		 */
+		else if (make20Point != -1)
+		{
+			return make20Point;
 		}
 		/**
 		 * Try to make a point or wall up
