@@ -14,6 +14,8 @@ public class AiPlayer {
 	private Board gameBoard;
 	private Dice gameDice;
 	private boolean	FirstMove;
+	private boolean	primePrepared;
+	private boolean	inPrime;
 	
 	
 	AiPlayer (int setPlayerId, Board setBoard, Dice setDice) {
@@ -21,6 +23,8 @@ public class AiPlayer {
 		gameBoard = setBoard;
 		gameDice = setDice;
 		FirstMove = true;
+		primePrepared = false;
+		inPrime = false;
 	    return;
 	}
 	
@@ -362,12 +366,12 @@ public class AiPlayer {
 	 */
 	private int normalMove(ArrayList<Board> allBoardsList)
 	{
-		int hitIndex = -1; // Inclomplete
-		int makePointIndex = -1; // Inclomplete
-		int fivePrimeIndex = -1; // Inclomplete
-		int sixPrimeIndex = -1; // Inclomplete
+		int hitIndex = findHitIndex(allBoardsList);
+		int makePointIndex = findMakePointIndex(allBoardsList);
+		int fivePrimeIndex = fivePrime(allBoardsList);
+		int sixPrimeIndex = sixPrime(allBoardsList);
 		int raceIndex = findRaceIndex(allBoardsList);
-		int preparePrimeIndex = -1; // Inclomplete
+		int preparePrimeIndex = preparePrime(allBoardsList);
 
 		if (preparePrimeIndex != -1)
 		{
@@ -409,6 +413,83 @@ public class AiPlayer {
 			return raceIndex;
 		}
 	}
+	
+	/**
+	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
+	 * 
+	 * This method checks if you can prepare a prime move and sets flags
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index of the prime moves, or -1 if not
+	 */
+	private int preparePrime(ArrayList<Board> allBoardsList)
+	{
+		return -1;
+	}
+
+	/**
+	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
+	 * 
+	 * This method checks if you can make a six prime, and makes all the moves
+	 * after the six prime is made
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index of the prime moves, or -1 if not
+	 */
+	private int sixPrime(ArrayList<Board> allBoardsList)
+	{
+		return -1;
+	}
+
+	/**
+	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
+	 * 
+	 * This method checks if you can make a five prime, and makes all the moves
+	 * after the five prime is made
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index of the prime moves, or -1 if not
+	 */
+	private int fivePrime(ArrayList<Board> allBoardsList)
+	{
+		return -1;
+	}
+
+	/**
+	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
+	 * 
+	 * This method sees if you can make a point, i.e. wall up
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index to make a point, or -1 if no point can be made
+	 */
+	private int findMakePointIndex(ArrayList<Board> allBoardsList)
+	{
+		return -1;
+	}
+
+	/**
+	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
+	 * 
+	 * This method looks for hits based on the following rules:
+	 * 
+	 * 1- When not in home board- Can you hit? Then, which leaves less blots.
+	 * 
+	 * 2- When in Home can you hit, and leave no blot?
+	 * 
+	 * @param allBoardsList
+	 *            The list of all plays
+	 * @return The index of the best hit, or -1 if no hit
+	 */
+	private int findHitIndex(ArrayList<Board> allBoardsList)
+	{
+		return -1;
+	}
+
 
 	/**
 	 * This method finds the best move to race with
