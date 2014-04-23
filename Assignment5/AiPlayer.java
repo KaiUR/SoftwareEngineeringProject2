@@ -1,5 +1,6 @@
 /*
  * Team Name: CLKBG
+ * @author Laurence Quinn 12473478, Ciarán O'Niell 12432672, Kai-Uwe Rathjen 12343046
  * Version: 1.0
  *
  */
@@ -594,6 +595,10 @@ public class AiPlayer {
 			if(allBoardsList.get(index).checkers[this.getEnemyId()][Board.BAR] > currentEnemyOff){
 				mostHits = allBoardsList.get(index).checkers[this.getEnemyId()][Board.BAR];
 			}
+		}
+		
+		if(currentEnemyOff == mostHits){
+			return -1;
 		}
 		
 		ArrayList<Board> mostHitBoards = new ArrayList<Board>();
