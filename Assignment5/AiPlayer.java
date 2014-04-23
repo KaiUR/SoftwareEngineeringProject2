@@ -115,7 +115,7 @@ public class AiPlayer {
 	 */
 	private boolean checkGoingFirst()
 	{
-		return compareBoards(gameBoard, new Board(), playerId);
+		return compareBoards(gameBoard, new Board(), getEnemyId());
 	}
 	
 	/**
@@ -228,6 +228,7 @@ public class AiPlayer {
 		for (int index = 0; index < Board.NUM_PIPS; index++)
 		{
 			temp.checkers[playerId][index] = inputSequence[index];
+			temp.checkers[getEnemyId()][index] = inputSequence[index];
 		}
 
 		return temp;
@@ -254,10 +255,7 @@ public class AiPlayer {
 		FirstMoves countermoves = new FirstMoves();
 		if (compareBoards(countermoves.six_Five, gameBoard, getEnemyId()))
 		{
-			for (int index = 0; index < allBoardsList.size(); index++)
-			{
-				allBoardsList.get(index).doPlay(playerId, play);
-			}
+			
 		}
 		else if (compareBoards(countermoves.six_Four, gameBoard, getEnemyId()))
 		{
@@ -319,7 +317,7 @@ public class AiPlayer {
 		{
 			
 		}
-		return -1;
+		return 0;
 	}
 
 	/**
