@@ -250,7 +250,75 @@ public class AiPlayer {
 	 */
 	private int goingSecond(ArrayList<Board> allBoardsList)
 	{
-		return 0;
+		FirstMoves countermoves = new FirstMoves();
+		if (compareBoards(countermoves.six_Five, gameBoard, getEnemyId()))
+		{
+			for (int index = 0; index < allBoardsList.size(); index++)
+			{
+				allBoardsList.get(index).doPlay(playerId, play);
+			}
+		}
+		else if (compareBoards(countermoves.six_Four, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.six_Three, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.six_Two, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.six_One, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.five_Four, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.five_Three, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.five_Two, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.five_One, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.four_Three, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.four_Two, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.four_One, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.three_Two, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.three_One, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else if (compareBoards(countermoves.two_One, gameBoard, getEnemyId()))
+		{
+			
+		}
+		else
+		{
+			
+		}
+		return -1;
 	}
 
 	/**
