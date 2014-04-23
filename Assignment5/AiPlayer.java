@@ -537,8 +537,6 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
-	 * 
 	 * This method checks if you can make a six prime, and makes all the moves
 	 * after the six prime is made
 	 * 
@@ -548,12 +546,80 @@ public class AiPlayer {
 	 */
 	private int sixPrime(ArrayList<Board> allBoardsList)
 	{
-		return -1;
+		class StoreIndex
+		{
+			private int index;
+			private int blots;
+
+			StoreIndex(int index, int blots)
+			{
+				this.index = index;
+				this.blots = blots;
+			}
+
+			public int getIndex()
+			{
+				return index;
+			}
+
+			public int getBlots()
+			{
+				return blots;
+			}
+		}
+
+		ArrayList<StoreIndex> sixPrimeList = new ArrayList<StoreIndex>();
+		for (int index = 0; index < allBoardsList.size(); index++)
+		{
+			int[] temp = allBoardsList.get(index).checkers[playerId];
+			int count = 0;
+			boolean prime4 = false;
+			for (int index2 = 1; index < Board.NUM_PIPS - 1; index++)
+			{
+				if (temp[index2] > 2)
+				{
+					count++;
+				}
+				else
+				{
+					count = 0;
+				}
+
+				if (count == 6)
+				{
+					prime4 = true;
+				}
+			}
+
+			if (prime4 == true)
+			{
+				StoreIndex tempStore = new StoreIndex(index,
+						numberOfBlots(allBoardsList.get(index)));
+				sixPrimeList.add(tempStore);
+			}
+		}
+
+		if (sixPrimeList.size() == 0)
+		{
+			return -1;
+		}
+		else
+		{
+			Collections.sort(sixPrimeList, new Comparator<StoreIndex>()
+			{
+				public int compare(StoreIndex firstObject, StoreIndex secondObject)
+				{
+					return firstObject.getBlots() - secondObject.getBlots();
+				}
+
+			});
+
+			primePrepared = true;
+			return sixPrimeList.get(0).getIndex();
+		}
 	}
 
 	/**
-	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
-	 * 
 	 * This method checks if you can make a five prime, and makes all the moves
 	 * after the five prime is made
 	 * 
@@ -563,12 +629,80 @@ public class AiPlayer {
 	 */
 	private int fivePrime(ArrayList<Board> allBoardsList)
 	{
-		return -1;
+		class StoreIndex
+		{
+			private int index;
+			private int blots;
+
+			StoreIndex(int index, int blots)
+			{
+				this.index = index;
+				this.blots = blots;
+			}
+
+			public int getIndex()
+			{
+				return index;
+			}
+
+			public int getBlots()
+			{
+				return blots;
+			}
+		}
+
+		ArrayList<StoreIndex> fivePrimeList = new ArrayList<StoreIndex>();
+		for (int index = 0; index < allBoardsList.size(); index++)
+		{
+			int[] temp = allBoardsList.get(index).checkers[playerId];
+			int count = 0;
+			boolean prime4 = false;
+			for (int index2 = 1; index < Board.NUM_PIPS - 1; index++)
+			{
+				if (temp[index2] > 2)
+				{
+					count++;
+				}
+				else
+				{
+					count = 0;
+				}
+
+				if (count == 5)
+				{
+					prime4 = true;
+				}
+			}
+
+			if (prime4 == true)
+			{
+				StoreIndex tempStore = new StoreIndex(index,
+						numberOfBlots(allBoardsList.get(index)));
+				fivePrimeList.add(tempStore);
+			}
+		}
+
+		if (fivePrimeList.size() == 0)
+		{
+			return -1;
+		}
+		else
+		{
+			Collections.sort(fivePrimeList, new Comparator<StoreIndex>()
+			{
+				public int compare(StoreIndex firstObject, StoreIndex secondObject)
+				{
+					return firstObject.getBlots() - secondObject.getBlots();
+				}
+
+			});
+
+			primePrepared = true;
+			return fivePrimeList.get(0).getIndex();
+		}
 	}
 	
 	/**
-	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
-	 * 
 	 * This method checks if you can make a four prime, and makes all the moves
 	 * after the four prime is made
 	 * 
@@ -578,7 +712,77 @@ public class AiPlayer {
 	 */
 	private int fourPrime(ArrayList<Board> allBoardsList)
 	{
-		return -1;
+		class StoreIndex
+		{
+			private int index;
+			private int blots;
+
+			StoreIndex(int index, int blots)
+			{
+				this.index = index;
+				this.blots = blots;
+			}
+
+			public int getIndex()
+			{
+				return index;
+			}
+
+			public int getBlots()
+			{
+				return blots;
+			}
+		}
+
+		ArrayList<StoreIndex> fourPrimeList = new ArrayList<StoreIndex>();
+		for (int index = 0; index < allBoardsList.size(); index++)
+		{
+			int[] temp = allBoardsList.get(index).checkers[playerId];
+			int count = 0;
+			boolean prime4 = false;
+			for (int index2 = 1; index < Board.NUM_PIPS - 1; index++)
+			{
+				if (temp[index2] > 2)
+				{
+					count++;
+				}
+				else
+				{
+					count = 0;
+				}
+
+				if (count == 4)
+				{
+					prime4 = true;
+				}
+			}
+
+			if (prime4 == true)
+			{
+				StoreIndex tempStore = new StoreIndex(index,
+						numberOfBlots(allBoardsList.get(index)));
+				fourPrimeList.add(tempStore);
+			}
+		}
+
+		if (fourPrimeList.size() == 0)
+		{
+			return -1;
+		}
+		else
+		{
+			Collections.sort(fourPrimeList, new Comparator<StoreIndex>()
+			{
+				public int compare(StoreIndex firstObject, StoreIndex secondObject)
+				{
+					return firstObject.getBlots() - secondObject.getBlots();
+				}
+
+			});
+
+			primePrepared = true;
+			return fourPrimeList.get(0).getIndex();
+		}
 	}
 
 	/**
