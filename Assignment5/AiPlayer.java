@@ -16,7 +16,6 @@ public class AiPlayer {
 	private Dice gameDice;
 	private boolean	FirstMove;
 	private boolean	primePrepared;
-	private boolean	inPrime;
 	
 	
 	AiPlayer (int setPlayerId, Board setBoard, Dice setDice) {
@@ -25,7 +24,6 @@ public class AiPlayer {
 		gameDice = setDice;
 		FirstMove = true;
 		primePrepared = false;
-		inPrime = false;
 	    return;
 	}
 	
