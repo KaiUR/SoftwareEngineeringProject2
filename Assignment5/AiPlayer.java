@@ -15,7 +15,6 @@ public class AiPlayer {
 	private Board gameBoard;
 	private Dice gameDice;
 	private boolean	FirstMove;
-	private boolean	primePrepared;
 	
 	
 	AiPlayer (int setPlayerId, Board setBoard, Dice setDice) {
@@ -23,7 +22,6 @@ public class AiPlayer {
 		gameBoard = setBoard;
 		gameDice = setDice;
 		FirstMove = true;
-		primePrepared = false;
 	    return;
 	}
 	
@@ -334,18 +332,14 @@ public class AiPlayer {
 		int fivePrimeIndex = fivePrime(allBoardsList);
 		int sixPrimeIndex = sixPrime(allBoardsList);
 		int raceIndex = findRaceIndex(allBoardsList);
-		int preparePrimeIndex = preparePrime(allBoardsList);
 		int make5Point = make5PointIndex(allBoardsList);
 		int make20Point = make20PointIndex(allBoardsList);
 
-		if (preparePrimeIndex != -1)
-		{
-			return preparePrimeIndex;
-		}
+	
 		/**
 		 * Try for a six prime first
 		 */
-		else if (sixPrimeIndex != -1)
+		if (sixPrimeIndex != -1)
 		{
 			return sixPrimeIndex;
 		}
@@ -521,20 +515,6 @@ public class AiPlayer {
 			return make20pointList.get(0).getIndex();
 		}
 	}
-	
-	/**
-	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
-	 * 
-	 * This method checks if you can prepare a prime move and sets flags
-	 * 
-	 * @param allBoardsList
-	 *            The list of all plays
-	 * @return The index of the prime moves, or -1 if not
-	 */
-	private int preparePrime(ArrayList<Board> allBoardsList)
-	{
-		return -1;
-	}
 
 	/**
 	 * This method checks if you can make a six prime, and makes all the moves
@@ -614,7 +594,6 @@ public class AiPlayer {
 
 			});
 
-			primePrepared = true;
 			return sixPrimeList.get(0).getIndex();
 		}
 	}
@@ -697,7 +676,6 @@ public class AiPlayer {
 
 			});
 
-			primePrepared = true;
 			return fivePrimeList.get(0).getIndex();
 		}
 	}
@@ -780,7 +758,6 @@ public class AiPlayer {
 
 			});
 
-			primePrepared = true;
 			return fourPrimeList.get(0).getIndex();
 		}
 	}
