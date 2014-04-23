@@ -464,8 +464,6 @@ public class AiPlayer {
 	}
 
 	/**
-	 * UNIMPLEMENTED: Kai - Helper method for normalMove()
-	 * 
 	 * This method checks if you can make the enemy's 5 point
 	 * 
 	 * @param allBoardsList
@@ -474,7 +472,56 @@ public class AiPlayer {
 	 */
 	private int make20PointIndex(ArrayList<Board> allBoardsList)
 	{
-		return -1;
+		class StoreIndex
+		{
+			private int index;
+			private int blots;
+
+			StoreIndex(int index, int blots)
+			{
+				this.index = index;
+				this.blots = blots;
+			}
+
+			public int getIndex()
+			{
+				return index;
+			}
+
+			public int getBlots()
+			{
+				return blots;
+			}
+		}
+		ArrayList<StoreIndex> make20pointList = new ArrayList<StoreIndex>();
+
+		for (int index = 0; index < allBoardsList.size(); index++)
+		{
+			if (allBoardsList.get(index).checkers[playerId][5] > 1
+					&& gameBoard.checkers[playerId][5] <= 1)
+			{
+				StoreIndex temp = new StoreIndex(index, numberOfBlots(allBoardsList.get(index)));
+				make20pointList.add(temp);
+			}
+		}
+
+		if (make20pointList.size() == 0)
+		{
+			return -1;
+		}
+		else
+		{
+			Collections.sort(make20pointList, new Comparator<StoreIndex>()
+			{
+				public int compare(StoreIndex firstObject, StoreIndex secondObject)
+				{
+					return firstObject.getBlots() - secondObject.getBlots();
+				}
+
+			});
+
+			return make20pointList.get(0).getIndex();
+		}
 	}
 	
 	/**
