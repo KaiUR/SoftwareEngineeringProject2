@@ -554,6 +554,7 @@ public class AiPlayer {
 		{
 			int[] temp = allBoardsList.get(index).checkers[playerId];
 			int count = 0;
+			int tempIndex = 0;
 			boolean prime4 = false;
 			for (int index2 = 1; index < Board.NUM_PIPS - 1; index++)
 			{
@@ -569,13 +570,14 @@ public class AiPlayer {
 				if (count == 6)
 				{
 					prime4 = true;
+					tempIndex = index;
 				}
 			}
 
 			if (prime4 == true)
 			{
-				StoreIndex tempStore = new StoreIndex(index,
-						numberOfBlots(allBoardsList.get(index)));
+				StoreIndex tempStore = new StoreIndex(tempIndex,
+						numberOfBlots(allBoardsList.get(tempIndex)));
 				sixPrimeList.add(tempStore);
 			}
 		}
@@ -636,6 +638,7 @@ public class AiPlayer {
 		{
 			int[] temp = allBoardsList.get(index).checkers[playerId];
 			int count = 0;
+			int tempIndex = 0;
 			boolean prime4 = false;
 			for (int index2 = 1; index < Board.NUM_PIPS - 1; index++)
 			{
@@ -651,13 +654,14 @@ public class AiPlayer {
 				if (count == 5)
 				{
 					prime4 = true;
+					tempIndex = index;
 				}
 			}
 
 			if (prime4 == true)
 			{
-				StoreIndex tempStore = new StoreIndex(index,
-						numberOfBlots(allBoardsList.get(index)));
+				StoreIndex tempStore = new StoreIndex(tempIndex,
+						numberOfBlots(allBoardsList.get(tempIndex)));
 				fivePrimeList.add(tempStore);
 			}
 		}
@@ -718,6 +722,7 @@ public class AiPlayer {
 		{
 			int[] temp = allBoardsList.get(index).checkers[playerId];
 			int count = 0;
+			int tempIndex = 0;
 			boolean prime4 = false;
 			for (int index2 = 1; index < Board.NUM_PIPS - 1; index++)
 			{
@@ -733,13 +738,14 @@ public class AiPlayer {
 				if (count == 4)
 				{
 					prime4 = true;
+					tempIndex = index;
 				}
 			}
 
 			if (prime4 == true)
 			{
-				StoreIndex tempStore = new StoreIndex(index,
-						numberOfBlots(allBoardsList.get(index)));
+				StoreIndex tempStore = new StoreIndex(tempIndex,
+						numberOfBlots(allBoardsList.get(tempIndex)));
 				fourPrimeList.add(tempStore);
 			}
 		}
