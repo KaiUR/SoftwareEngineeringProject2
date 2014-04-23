@@ -122,7 +122,8 @@ public class AiPlayer {
 	private boolean checkBearOff()
 	{
 		
-		if(this.lastOccurence(gameBoard) < 19) return false;
+		int check = this.lastOccurence(gameBoard);
+		if(check < 19 && check != 0) return false;
 		else return true;
 		
 	}
