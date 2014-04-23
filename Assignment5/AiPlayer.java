@@ -741,11 +741,11 @@ public class AiPlayer {
 	{
 		
 		int bestOff = allBoardsList.get(0).checkers[playerId][Board.BAR];
-		int bestOffIndex = 0;
+		ArrayList<Integer> bestOffIndexes = new ArrayList<Integer>();
 		for(int index = 1; index < allBoardsList.size(); index++){
 			if(allBoardsList.get(index).checkers[playerId][Board.BAR] > bestOff){
 				bestOff = allBoardsList.get(index).checkers[playerId][Board.BAR];
-				bestOffIndex = index;
+				bestOffIndexes.add(index);
 			}
 		}
 		
