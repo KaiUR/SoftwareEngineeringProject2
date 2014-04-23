@@ -555,7 +555,7 @@ public class AiPlayer {
 			int[] temp = allBoardsList.get(index).checkers[playerId];
 			int count = 0;
 			boolean prime4 = false;
-			for (int index2 = 1; index < Board.NUM_PIPS - 1; index++)
+			for (int index2 = 1; index2 < Board.NUM_PIPS - 1; index2++)
 			{
 				if (temp[index2] > 2)
 				{
@@ -637,7 +637,7 @@ public class AiPlayer {
 			int[] temp = allBoardsList.get(index).checkers[playerId];
 			int count = 0;
 			boolean prime4 = false;
-			for (int index2 = 1; index < Board.NUM_PIPS - 1; index++)
+			for (int index2 = 1; index2 < Board.NUM_PIPS - 1; index2++)
 			{
 				if (temp[index2] > 2)
 				{
@@ -719,7 +719,7 @@ public class AiPlayer {
 			int[] temp = allBoardsList.get(index).checkers[playerId];
 			int count = 0;
 			boolean prime4 = false;
-			for (int index2 = 1; index < Board.NUM_PIPS - 1; index++)
+			for (int index2 = 1; index2 < Board.NUM_PIPS - 1; index2++)
 			{
 				if (temp[index2] > 2)
 				{
