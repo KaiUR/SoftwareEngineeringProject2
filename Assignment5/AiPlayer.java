@@ -3713,11 +3713,14 @@ public class AiPlayer {
 	private int findboard(ArrayList<Board> allBoardsList, Play temp)
 	{
 		ArrayList<Play> tempPlayList = gameBoard.allPossiblePlays(playerId, gameDice);
-		for (int index = 0; index < tempPlayList.size(); index++)
+		if (temp != null)
 		{
-			if (temp.toString().equals(tempPlayList.get(index).toString()))
+			for (int index = 0; index < tempPlayList.size(); index++)
 			{
-				return index;
+				if (temp.toString().equals(tempPlayList.get(index).toString()))
+				{
+					return index;
+				}
 			}
 		}
 		return normalMove(allBoardsList);
