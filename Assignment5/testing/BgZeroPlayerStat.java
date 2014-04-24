@@ -8,6 +8,8 @@ public class BgZeroPlayerStat
 	{
 		int Owins = 0;
 		int Xwins = 0;
+		
+		System.out.println("Processing ...");
 
 		for (int index = 0; index < 100; index++)
 		{
