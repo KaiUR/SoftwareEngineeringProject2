@@ -245,7 +245,6 @@ public class AiPlayer
 	}
 
 	/**
-	 * UNIMPLEMENTED
 	 * 
 	 * This method is used to make the first move if the player is going second
 	 * 
