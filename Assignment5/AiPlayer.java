@@ -862,7 +862,7 @@ public class AiPlayer {
 	{
 		
 		int currentEnemyOff = gameBoard.checkers[this.getEnemyId()][Board.BAR];
-		int mostHits = 0, index = 0;
+		int mostHits = currentEnemyOff, index = 0;
 		for(index = 0; index < allBoardsList.size(); index++){
 			if(allBoardsList.get(index).checkers[this.getEnemyId()][Board.BAR] > currentEnemyOff){
 				mostHits = allBoardsList.get(index).checkers[this.getEnemyId()][Board.BAR];
@@ -1012,16 +1012,21 @@ public class AiPlayer {
 	private int bearOffMove(ArrayList<Board> allBoardsList)
 	{
 		
-		int bestOff = allBoardsList.get(0).checkers[playerId][Board.BAR];
-		ArrayList<Integer> bestOffIndexes = new ArrayList<Integer>();
+		int bestOff = allBoardsList.get(0).checkers[playerId][Board.OFF];
 		for(int index = 1; index < allBoardsList.size(); index++){
-			if(allBoardsList.get(index).checkers[playerId][Board.BAR] > bestOff){
-				bestOff = allBoardsList.get(index).checkers[playerId][Board.BAR];
+			if(allBoardsList.get(index).checkers[playerId][Board.OFF] > bestOff){
+				bestOff = allBoardsList.get(index).checkers[playerId][Board.OFF];
+			}
+		}
+		
+		ArrayList<Integer> bestOffIndexes = new ArrayList<Integer>();
+		for(int index = 0; index < allBoardsList.size(); index++){
+			if(allBoardsList.get(index).checkers[playerId][Board.OFF] == bestOff){
 				bestOffIndexes.add(index);
 			}
 		}
 		
-		if(gameDice.getDiceList().size() == bestOff - gameBoard.checkers[playerId][Board.BAR]){
+		if(gameDice.getDiceList().size() == bestOff - gameBoard.checkers[playerId][Board.OFF]){
 			return bestOffIndexes.get(0);
 		}
 		
