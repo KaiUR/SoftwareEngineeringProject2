@@ -249,72 +249,3478 @@ public class AiPlayer {
 	 */
 	private int goingSecond(ArrayList<Board> allBoardsList)
 	{
+		Play fakeplay = null;
 		FirstMoves countermoves = new FirstMoves();
 		if (compareBoards(countermoves.six_Five, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(8, 5, 8, 5, 6, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 1, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 1, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 5, 6, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(8, 6, 6, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.six_Four, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 24, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 9, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(6, 1, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 7, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 5, 6, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(8, 6, 6, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.six_Four_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 22, 2, 20, 2, 18, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(13, 3, 13, 3, 10, 3, 10, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(8, 5, 8, 5, 6, 5, 6, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 2, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 6, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 18, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 21, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 6);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 6, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 6, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(13, 6, 6, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.six_Four_alt2, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(11, 2, 11, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(8, 5, 8, 5, 6, 5, 6, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 1, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 4, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 5, 6, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.six_Three, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(13, 3, 13, 3, 10, 3, 10, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 4, 9, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 6, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 5, 6, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 6, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(13, 6, 6, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.six_Three_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(13, 3, 13, 3, 6, 3, 6, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 11, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 3, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 3, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 7, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 5, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.six_Two, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(13, 3, 13, 3, 10, 3, 10, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 4, 9, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 6, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 5, 6, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 6, 24, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 6, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 18, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(13, 6, 6, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.six_Two_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 11, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(8, 3, 8, 3, 6, 3, 6, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(13, 4, 13, 4, 9, 4, 9, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 2, 22, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 3, 10, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 4, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 5, 6, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 6, 24, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.six_Two_alt2, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 22, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(8, 3, 8, 3, 6, 3, 6, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 3, 21, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 4, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(6, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 5, 6, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 6, 7, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.six_One, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(13, 6, 13, 6, 8, 6, 8, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 22, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 5, 6, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 21, 6);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(13, 6, 13, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.five_Four, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(8, 3, 8, 3, 6, 3, 6, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(13, 4, 13, 4, 9, 4, 9, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(8, 5, 8, 5, 6, 5, 6, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(13, 6, 13, 6, 24, 6, 24, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 7, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 5, 8, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 3, 13, 6);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(6, 4, 8, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.five_Four_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 24, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 6, 3, 6, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 20, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 18, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 21, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 18, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.five_Three, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 3, 6, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(8, 6, 6, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.five_Three_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 8, 3, 8, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 3, 6, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.five_Two, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(6, 3, 6, 3, 8, 3, 8, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 9, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 8, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 6, 7, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.five_Two_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(6, 3, 6, 3, 8, 3, 8, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 8, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 18, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.five_Two_alt2, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 24, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 8, 3, 8, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 2, 22, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 3, 20, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 7, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 21, 6);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 18, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.five_One, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 2, 22, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(6, 4, 2, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 18, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 21, 6);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(8, 6, 6, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.five_One_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(13, 3, 13, 3, 10, 3, 10, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 4, 9, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 6);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 6, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(13, 6, 6, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.five_One_alt2, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 22, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 8, 3, 8, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 3, 21, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 4, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(6, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 18, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 8, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 21, 6);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.four_Three, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(6, 1, 5, 1, 6, 1, 5, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(8, 3, 8, 3, 6, 3, 6, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(13, 4, 13, 4, 9, 4, 9, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(6, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 4, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 3, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(6, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 7, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 3, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 8, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 6, 7, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(6, 4, 8, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 13, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.four_Three_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(6, 1, 5, 1, 6, 1, 5, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 20, 4, 8, 4, 8, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(6, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(6, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 18, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 8, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 21, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 6, 7, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 4, 9, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.four_Three_alt2, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 5, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(8, 3, 8, 3, 6, 3, 6, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(13, 4, 13, 4, 9, 4, 9, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 7, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 4, 8, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 10, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(8, 6, 6, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.four_Two, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 24, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(6, 3, 6, 3, 8, 3, 8, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 20, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 3, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 3, 24, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 8, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(6, 4, 8, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.four_One, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 24, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 20, 4, 6, 4, 6, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(6, 4, 2, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 3, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 18, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 6, 4);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 21, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 6, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(6, 4, 8, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.four_One_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 22, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(8, 3, 8, 3, 6, 3, 6, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(13, 4, 13, 4, 9, 4, 9, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 6, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 3, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 4, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 7, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 4, 8, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 3, 6, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 8, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.four_One_alt2, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 22, 1, 21, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 22, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 8, 3, 8, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 20, 4, 8, 4, 8, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 3, 21, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 4, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 18, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 4, 24, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 21, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.three_Two, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(6, 1, 6, 1, 5, 1, 5, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 20, 4, 8, 4, 8, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(8, 5, 8, 5, 6, 5, 6, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(6, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 3, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(6, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(8, 4, 24, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 8, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 6, 7, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 5, 8, 4);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 18, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
+		}
+		else if (compareBoards(countermoves.three_Two_alt, gameBoard, getEnemyId()))
+		{
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(8, 1, 8, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 8, 3, 8, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 20, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 2, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 4, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 8, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 18, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.three_One, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 24, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(13, 4, 13, 4, 9, 4, 9, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 4, 24, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 8, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(13, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 18, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
 		else if (compareBoards(countermoves.two_One, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 6, 1, 6, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(13, 2, 13, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 13, 3, 13, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(6, 5, 6, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 2, 22, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(8, 3, 6, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(6, 4, 2, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(8, 4, 6, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 6, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(13, 4, 24, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 3, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 13, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 6, 18, 4);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
-		else
+		else if (compareBoards(countermoves.two_One_alt, gameBoard, getEnemyId()))
 		{
-			
+			if (gameDice.isDouble())
+			{
+				if (gameDice.getDie(0) == 1)
+				{
+					fakeplay = new Play(24, 1, 23, 1, 22, 1, 21, 1);
+				}
+				else if (gameDice.getDie(0) == 2)
+				{
+					fakeplay = new Play(24, 2, 22, 2, 6, 2, 6, 2);
+				}
+				else if (gameDice.getDie(0) == 3)
+				{
+					fakeplay = new Play(24, 3, 24, 3, 8, 3, 8, 3);
+				}
+				else if (gameDice.getDie(0) == 4)
+				{
+					fakeplay = new Play(24, 4, 24, 4, 13, 4, 13, 4);
+				}
+				else if (gameDice.getDie(0) == 5)
+				{
+					fakeplay = new Play(13, 5, 13, 5, 8, 5, 8, 5);
+				}
+				else if (gameDice.getDie(0) == 6)
+				{
+					fakeplay = new Play(24, 6, 24, 6, 13, 6, 13, 6);
+				}
+			}
+			else
+			{
+				if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 2)
+						|| (gameDice.getDie(0) == 2 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 2, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 3, 21, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(24, 4, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 5, 24, 1);
+				}
+				else if ((gameDice.getDie(0) == 1 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 1))
+				{
+					fakeplay = new Play(13, 6, 8, 1);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 3)
+						|| (gameDice.getDie(0) == 3 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 3, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 4, 13, 2);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(24, 2, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 2 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 2))
+				{
+					fakeplay = new Play(13, 6, 24, 2);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 4)
+						|| (gameDice.getDie(0) == 4 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 4, 24, 3);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(6, 3, 8, 5);
+				}
+				else if ((gameDice.getDie(0) == 3 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 3))
+				{
+					fakeplay = new Play(24, 6, 18, 3);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 5)
+						|| (gameDice.getDie(0) == 5 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 13, 5);
+				}
+				else if ((gameDice.getDie(0) == 4 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 4))
+				{
+					fakeplay = new Play(24, 4, 20, 6);
+				}
+				else if ((gameDice.getDie(0) == 5 && gameDice.getDie(1) == 6)
+						|| (gameDice.getDie(0) == 6 && gameDice.getDie(1) == 5))
+				{
+					fakeplay = new Play(24, 6, 18, 5);
+				}
+			}
 		}
-		return 0;
+		return findboard(allBoardsList, fakeplay);
+	}
+
+	private int findboard(ArrayList<Board> allBoardsList, Play temp)
+	{
+		ArrayList<Play> tempPlayList = gameBoard.allPossiblePlays(playerId, gameDice);
+		for (int index = 0; index < tempPlayList.size(); index++)
+		{
+			if (temp.toString().equals(tempPlayList.get(index).toString()))
+			{
+				return index;
+			}
+		}
+		return normalMove(allBoardsList);
 	}
 
 	/**
@@ -1089,79 +4495,100 @@ public class AiPlayer {
 	 */
 	class FirstMoves
 	{
-		int[]	intTwo_One		=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 1, 0, 4, 0,
-										0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 };
-		Board	two_One			= copyCheckers(intTwo_One);
+		int[] intTwo_One = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 };
+		Board two_One = copyCheckers(intTwo_One);
 
-		int[]	intThree_One	=
-								{ 0, 0, 0, 0, 0, 2, 4, 0, 2, 0, 0, 0, 0, 5, 0,
-										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
-		Board	three_One		= copyCheckers(intThree_One);
+		int[] intTwo_One_alt = { 0, 0, 0, 0, 0, 1, 4, 0, 3, 0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board two_One_alt = copyCheckers(intTwo_One_alt);
 
-		int[]	intFour_One		=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 1, 0, 0, 0, 4, 0,
-										0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 };
-		Board	four_One		= copyCheckers(intFour_One);
+		int[] intThree_One = { 0, 0, 0, 0, 0, 2, 4, 0, 2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board three_One = copyCheckers(intThree_One);
 
-		int[]	intFive_One		=
-								{ 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 0, 0, 0, 4, 0,
-										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
-		Board	five_One		= copyCheckers(intFive_One);
+		int[] intFour_One = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 };
+		Board four_One = copyCheckers(intFour_One);
 
-		int[]	intSix_One		=
-								{ 0, 0, 0, 0, 0, 0, 5, 2, 2, 0, 0, 0, 0, 4, 0,
-										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
-		Board	six_One			= copyCheckers(intSix_One);
+		int[] intFour_One_alt = { 0, 0, 0, 0, 0, 1, 4, 0, 3, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0 };
+		Board four_One_alt = copyCheckers(intFour_One_alt);
 
-		int[]	intThree_Two	=
-								{ 0, 0, 0, 0, 2, 0, 4, 0, 3, 0, 0, 1, 0, 4, 0,
-										0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0 };
-		Board	three_Two		= copyCheckers(intThree_Two);
+		int[] intFour_One_alt2 = { 0, 0, 0, 0, 0, 1, 4, 0, 3, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board four_One_alt2 = copyCheckers(intFour_One_alt2);
 
-		int[]	intFour_Two		=
-								{ 0, 0, 0, 0, 2, 0, 4, 0, 2, 0, 0, 0, 0, 5, 0,
-										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
-		Board	four_Two		= copyCheckers(intFour_Two);
+		int[] intFive_One = { 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 };
+		Board five_One = copyCheckers(intFive_One);
 
-		int[]	intFive_Two		=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 1, 0, 3, 0,
-										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
-		Board	five_Two		= copyCheckers(intFive_Two);
+		int[] intFive_One_alt = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0 };
+		Board five_One_alt = copyCheckers(intFive_One_alt);
 
-		int[]	intSix_Two		=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0,
-										0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
-		Board	six_Two			= copyCheckers(intSix_Two);
+		int[] intFive_One_alt2 = { 0, 0, 0, 0, 0, 1, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board five_One_alt2 = copyCheckers(intFive_One_alt2);
 
-		int[]	intFour_Three	=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0,
-										0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 };
-		Board	four_Three		= copyCheckers(intFour_Three);
+		int[] intSix_One = { 0, 0, 0, 0, 0, 0, 5, 2, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board six_One = copyCheckers(intSix_One);
 
-		int[]	intFive_Three	=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 1, 0, 0, 3, 0,
-										0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
-		Board	five_Three		= copyCheckers(intFive_Three);
+		int[] intThree_Two = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0 };
+		Board three_Two = copyCheckers(intThree_Two);
 
-		int[]	intSix_Three	=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0,
-										1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
-		Board	six_Three		= copyCheckers(intSix_Three);
+		int[] intThree_Two_alt = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 1, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board three_Two_alt = copyCheckers(intThree_Two_alt);
 
-		int[]	intFive_Four	=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0,
-										1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
-		Board	five_Four		= copyCheckers(intFive_Four);
+		int[] intFour_Two = { 0, 0, 0, 0, 2, 0, 4, 0, 2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board four_Two = copyCheckers(intFour_Two);
 
-		int[]	intSix_Four		=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 1,
-										0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
-		Board	six_Four		= copyCheckers(intSix_Four);
+		int[] intFive_Two = { 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0 };
+		Board five_Two = copyCheckers(intFive_Two);
 
-		int[]	intSix_Five		=
-								{ 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 6, 0,
-										0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
-		Board	six_Five		= new Board(copyCheckers(intSix_Five));
+		int[] intFive_Two_alt = { 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board five_Two_alt = copyCheckers(intFive_Two_alt);
+
+		int[] intFive_Two_alt2 = { 0, 0, 0, 0, 1, 0, 4, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board five_Two_alt2 = copyCheckers(intFive_Two_alt2);
+
+		int[] intSix_Two = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 1, 0, 4, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0 };
+		Board six_Two = copyCheckers(intSix_Two);
+
+		int[] intSix_Two_alt = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
+		Board six_Two_alt = copyCheckers(intSix_Two_alt);
+
+		int[] intSix_Two_alt2 = { 0, 0, 0, 0, 0, 1, 5, 0, 3, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board six_Two_alt2 = copyCheckers(intSix_Two_alt2);
+
+		int[] intFour_Three = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 };
+		Board four_Three = copyCheckers(intFour_Three);
+
+		int[] intFour_Three_alt = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0 };
+		Board four_Three_alt = copyCheckers(intFour_Three_alt);
+
+		int[] intFour_Three_alt2 = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 1, 0, 0, 4, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0 };
+		Board four_Three_alt2 = copyCheckers(intFour_Three_alt2);
+
+		int[] intFive_Three = { 0, 0, 0, 2, 0, 0, 4, 0, 2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board five_Three = copyCheckers(intFive_Three);
+
+		int[] intFive_Three_alt = { 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board five_Three_alt = copyCheckers(intFive_Three_alt);
+
+		int[] intSix_Three = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 1, 0, 0, 4, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0 };
+		Board six_Three = copyCheckers(intSix_Three);
+
+		int[] intSix_Three_alt = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
+		Board six_Three_alt = copyCheckers(intSix_Three_alt);
+
+		int[] intFive_Four = { 0, 0, 0, 0, 0, 0, 5, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0 };
+		Board five_Four = copyCheckers(intFive_Four);
+
+		int[] intFive_Four_alt = { 0, 0, 0, 0, 0, 0, 5, 0, 4, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board five_Four_alt = copyCheckers(intFive_Four_alt);
+
+		int[] intSix_Four = { 0, 0, 2, 0, 0, 0, 4, 0, 2, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0 };
+		Board six_Four = copyCheckers(intSix_Four);
+
+		int[] intSix_Four_alt = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 1, 0, 0, 0, 4, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0 };
+		Board six_Four_alt = copyCheckers(intSix_Four_alt);
+
+		int[] intSix_Four_alt2 = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
+		Board six_Four_alt2 = copyCheckers(intSix_Four_alt2);
+
+		int[] intSix_Five = { 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
+		Board six_Five = new Board(copyCheckers(intSix_Five));
 	}
 }
