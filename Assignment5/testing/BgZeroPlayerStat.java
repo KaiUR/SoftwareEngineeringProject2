@@ -11,8 +11,9 @@ public class BgZeroPlayerStat
 		
 		System.out.println("Processing ...");
 
-		for (int index = 0; index < 100; index++)
+		for (int index = 0; index < 10000; index++)
 		{
+			System.out.println(index);
 			Board gameBoard = new Board();
 			Dice gameDice = new Dice();
 			Play currentPlay = new Play();
@@ -60,7 +61,7 @@ public class BgZeroPlayerStat
 
 		}
 
-		System.out.println("O wins: " + Owins + " X wins: " + Xwins);
+		System.out.println("O wins: " + Owins / 100 + "% X wins: " + Xwins / 100 + "%");
 
 		return;
 	}
